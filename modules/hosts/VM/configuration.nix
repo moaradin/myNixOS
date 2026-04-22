@@ -33,10 +33,12 @@
     };
 
     programs.git = {
-    enable = true;
-    userName = "moara";
-    userEmail = "8263241+moaradin@users.noreply.github.com";
-    };
+      enable = true;
+      config = {
+        user.name = "moara";
+        user.email = "8263241+moaradin@users.noreply.github.com";
+        };
+      };
 
 
 
