@@ -285,6 +285,7 @@
 
           # --- Window Focus & Movement ---
           "Mod+Q".close-window = {};
+          "Ctrl+Q".spawn = [ "true" ]; # Disables quit application shortcut
           "Mod+Left".focus-column-left  = {};
           "Mod+Down".focus-window-down  = {};
           "Mod+Up".focus-window-up      = {};
