@@ -92,19 +92,17 @@
           "DP-3" = {
             mode = "2560x1440@144.0";
             scale = 1.0;
-            # FIXED: Reverted _props wrapper bypass
-            position = { x = 1920; y = 0; };
+            # DISABLED: A bug in the wrapper module prevents x/y properties from serializing correctly.
+            # position = { x = 1920; y = 0; };
             focus-at-startup = true;
             variable-refresh-rate = "on-demand";
-            # FIXED: Boolean true converted to empty flag {}
             hot-corners.off = {};
           };
           "DP-2" = {
             mode = "1920x1080@144.001";
             scale = 1.0;
-            # FIXED: Reverted _props wrapper bypass
-            position = { x = 0; y = 340; };
-            # FIXED: Boolean true converted to empty flag {}
+            # DISABLED: A bug in the wrapper module prevents x/y properties from serializing correctly.
+            # position = { x = 0; y = 340; };
             hot-corners.off = {};
           };
         };
@@ -142,8 +140,8 @@
           shadow = {
             softness = 30;
             spread = 5;
-            # FIXED: Reverted _props wrapper bypass
-            offset = { x = 0; y = 5; };
+            # DISABLED: A bug in the wrapper module prevents x/y properties from serializing correctly.
+            # offset = { x = 0; y = 5; };
             color = "#0007";
           };
         };
@@ -177,14 +175,14 @@
             open-floating = true;
             default-column-width.fixed = 473;
             default-window-height.fixed = 266;
-            # DISABLED: A bug in the wrapper module prevents this from serializing correctly.
+            # DISABLED: A bug in the wrapper module prevents x/y properties from serializing correctly.
             # default-floating-position = { x = 20; y = 20; relative-to = "bottom-right"; };
           }
 
           # Steam notification toasts
           {
             matches = [{ app-id = "steam"; title = "^notificationtoasts_\\d+_desktop$"; }];
-            # DISABLED: A bug in the wrapper module prevents this from serializing correctly.
+            # DISABLED: A bug in the wrapper module prevents x/y properties from serializing correctly.
             # default-floating-position = { x = 10; y = 10; relative-to = "bottom-right"; };
           }
 
@@ -211,7 +209,7 @@
             open-on-output = "DP-2";
             open-floating = true;
             open-focused = false;
-            # DISABLED: A bug in the wrapper module prevents this from serializing correctly.
+            # DISABLED: A bug in the wrapper module prevents x/y properties from serializing correctly.
             # default-floating-position = { x = -5000; y = -5000; relative-to = "top-right"; };
           }
 
@@ -240,7 +238,6 @@
             ];
             draw-border-with-background = false;
             opacity = 0.80;
-            # FIXED: Removed `background-effect.blur = true;` (Not supported in this KDL location)
           }
 
           # Ghostty — no border background
@@ -470,20 +467,4 @@
           (lib.getExe self'.packages.myNoctalia)
 
           # replaces: spawn-sh-at-startup "for i in {1..50}; do qs ... lockScreen lock ..."
-          "${pkgs.writeShellScript "noctalia-lock-wait" ''
-            for i in $(seq 1 50); do
-              ${lib.getExe self'.packages.myNoctalia} ipc call lockScreen lock \
-                > /dev/null 2>&1 && break || sleep 0.1
-            done
-          ''}"
-
-          # replaces: spawn-at-startup "/home/moara/.config/niri/niri_tweaks/niri_tile_to_n.py"
-          # Assuming you packaged and installed this globally as well
-          # "niri-tile-to-n"
-        ];
-
-        xwayland-satellite.path = "xwayland-satellite";
-      };
-    };
-  };
-}
+          "${pkgs.writeShellScript "noctalia
