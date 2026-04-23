@@ -88,21 +88,24 @@
           focus-follows-mouse.max-scroll-amount = "0%";
         };
 
-        # FIXED: Mode is now a string. Position uses _props.
         outputs = {
           "DP-3" = {
             mode = "2560x1440@144.0";
             scale = 1.0;
-            position._props = { x = 1920; y = 0; };
+            # FIXED: Reverted _props wrapper bypass
+            position = { x = 1920; y = 0; };
             focus-at-startup = true;
             variable-refresh-rate = "on-demand";
-            hot-corners.off = true;
+            # FIXED: Boolean true converted to empty flag {}
+            hot-corners.off = {};
           };
           "DP-2" = {
             mode = "1920x1080@144.001";
             scale = 1.0;
-            position._props = { x = 0; y = 340; };
-            hot-corners.off = true;
+            # FIXED: Reverted _props wrapper bypass
+            position = { x = 0; y = 340; };
+            # FIXED: Boolean true converted to empty flag {}
+            hot-corners.off = {};
           };
         };
 
@@ -136,11 +139,11 @@
             urgent-color = "#9b0000";
           };
 
-          # FIXED: Offset uses _props to avoid wrapper node bug
           shadow = {
             softness = 30;
             spread = 5;
-            offset._props = { x = 0; y = 5; };
+            # FIXED: Reverted _props wrapper bypass
+            offset = { x = 0; y = 5; };
             color = "#0007";
           };
         };
@@ -237,7 +240,7 @@
             ];
             draw-border-with-background = false;
             opacity = 0.80;
-            background-effect.blur = true;
+            # FIXED: Removed `background-effect.blur = true;` (Not supported in this KDL location)
           }
 
           # Ghostty — no border background
