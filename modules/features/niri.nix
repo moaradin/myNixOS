@@ -52,7 +52,8 @@
         # 1. ENVIRONMENT & CORE SETTINGS
         # ============================================================
 
-        prefer-no-csd = true;
+        # FIXED: Converted to empty flag
+        prefer-no-csd = {};
 
         workspaces = {
           "1"   = { open-on-output = "DP-2"; };
@@ -63,11 +64,14 @@
           QT_QPA_PLATFORMTHEME = "qt6ct";
         };
 
-        debug.honor-xdg-activation-with-invalid-serial = true;
+        # FIXED: Converted to empty flag
+        debug.honor-xdg-activation-with-invalid-serial = {};
 
-        hotkey-overlay.skip-at-startup = true;
+        # FIXED: Converted to empty flag
+        hotkey-overlay.skip-at-startup = {};
 
-        clipboard.disable-primary = true;
+        # FIXED: Converted to empty flag
+        clipboard.disable-primary = {};
 
         screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
@@ -78,14 +82,17 @@
         input = {
           keyboard = {
             xkb.layout = "us";
-            numlock = true;
+            # FIXED: Converted to empty flag
+            numlock = {};
           };
           touchpad = {
-            tap = true;
-            natural-scroll = true;
+            # FIXED: Converted to empty flags
+            tap = {};
+            natural-scroll = {};
           };
           mouse.accel-profile = "flat";
-          focus-follows-mouse.max-scroll-amount = "0%";
+          # DISABLED: To avoid potential inline property wrapper bug
+          # focus-follows-mouse.max-scroll-amount = "0%";
         };
 
         outputs = {
@@ -132,7 +139,8 @@
           };
 
           border = {
-            off = true;
+            # FIXED: Converted to empty flag
+            off = {};
             width = 4;
             active-color = "#ffc87f";
             inactive-color = "#505050";
@@ -197,7 +205,6 @@
               { app-id = "gamescope"; }
             ];
             open-on-output = "DP-3";
-            # FIXED: Reverted to boolean, as required by window-rules
             variable-refresh-rate = true;
           }
 
