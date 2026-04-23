@@ -12,6 +12,8 @@
         user = "moara";
       };
     };
+    
+    services.gvfs.enable = true;
 
     environment.systemPackages = with pkgs; [
       wl-clipboard
@@ -67,7 +69,7 @@
 
         hotkey-overlay.skip-at-startup = {};
 
-        clipboard.disable-primary = {};
+      #  clipboard.disable-primary = {};
 
         screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
@@ -274,7 +276,7 @@
           # --- Applications ---
           "Mod+T".spawn = [ "ghostty" ];
           "Mod+A".spawn-sh = "nautilus --new-window";
-          "Mod+E".spawn = [ "zen-browser" ];
+          "Mod+E".spawn = [ "zen" ];
           "Mod+D".spawn = [ "equibop" ];
 
           "Shift+Print".screenshot = {};
@@ -412,7 +414,7 @@
           ''}"
         ];
 
-        xwayland-satellite.path = "xwayland-satellite";
+        xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
       };
     };
   };
