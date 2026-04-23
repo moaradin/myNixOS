@@ -59,6 +59,10 @@
       #   proton-ge-bin              # Community Proton with extra patches & codecs
       # ];
     };
+    
+    "${pkgs.writeShellScript "steam-silent" ''
+      exec ${pkgs.steam}/bin/steam -silent
+     ''}"
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 
