@@ -22,6 +22,7 @@
       papirus-icon-theme
       adw-gtk3
       nwg-look
+      bibata-cursors
       kdePackages.qt6ct
       gnome-system-monitor
       # Keybind dependencies
@@ -64,6 +65,8 @@
         environment = {
           QT_QPA_PLATFORMTHEME = "qt6ct";
           QS_ICON_THEME="Papirus";
+          XCURSOR_THEME = "Bibata-Modern-Ice";
+          XCURSOR_SIZE = "24";
         };
 
         debug.honor-xdg-activation-with-invalid-serial = {};
