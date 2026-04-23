@@ -122,6 +122,9 @@
       # Vulkan / OpenGL diagnostics
       vulkan-tools           # vulkaninfo, vkcube
       mesa-demos             # glxinfo, glxgears
+      
+      # Other
+      fflogs
 
     ];
 
