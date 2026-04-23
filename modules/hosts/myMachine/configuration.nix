@@ -8,6 +8,8 @@
       self.nixosModules.zram                # was ./zram.nix
       self.nixosModules.niri
       self.nixosModules.nvidia
+      self.nixosModules.gaming
+      
     ];
 
     boot.loader.systemd-boot.enable = true;
