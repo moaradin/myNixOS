@@ -1,4 +1,6 @@
+
 {
+ "settings": {
   "settingsVersion": 59,
   "bar": {
     "barType": "simple",
@@ -692,4 +694,5 @@
     "gridSnapScale": false,
     "monitorWidgets": []
   }
+}
 }
