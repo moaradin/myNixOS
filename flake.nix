@@ -7,6 +7,8 @@
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
     
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     

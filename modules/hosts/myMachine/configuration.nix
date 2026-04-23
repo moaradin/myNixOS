@@ -10,12 +10,13 @@
       self.nixosModules.nvidia
       self.nixosModules.gaming
       self.nixosModules.mounts
+      self.nixosModules.cachyos
       
     ];
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    # boot.kernelPackages = pkgs.linuxPackages_latest;
 
     networking.hostName = "myMachine";
     networking.networkmanager.enable = true;
