@@ -65,7 +65,7 @@
         environment = {
           QT_QPA_PLATFORMTHEME = "qt6ct";
           QS_ICON_THEME="Papirus";
-          XCURSOR_THEME = "Bibata-Modern-Ice";
+          XCURSOR_THEME = "Bibata Modern Ice";
           XCURSOR_SIZE = "24";
         };
 
