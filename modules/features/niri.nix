@@ -154,12 +154,7 @@
 
           # Rounded corners for all windows
           {
-            geometry-corner-radius = {
-              top-left     = 20;
-              top-right    = 20;
-              bottom-right = 20;
-              bottom-left  = 20;
-            };
+            geometry-corner-radius = 20.0;
             clip-to-geometry = true;
           }
 
