@@ -10,13 +10,13 @@
       self.nixosModules.nvidia
       self.nixosModules.gaming
       self.nixosModules.mounts
-      self.nixosModules.cachyos
+      #self.nixosModules.cachyos
       
     ];
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-    # boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
     networking.hostName = "myMachine";
     networking.networkmanager.enable = true;
@@ -164,6 +164,17 @@
 
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    
+    nix.settings = {
+  substituters = [
+    "https://attic.xuyh0120.win/lantian"
+    "https://cache.nixos.org"
+  ];
+  trusted-public-keys = [
+    "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+  ];
+};
 
     system.stateVersion = "25.11";
   };
