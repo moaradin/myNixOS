@@ -32,6 +32,11 @@
       MOZ_DISABLE_RDD_SANDBOX = "1";
       # Disables the forced power boost the GPU gets when CUDA is activated. This should reduce the power usage when decoding video
       CUDA_DISABLE_PERF_BOOST = "1";
+      
+      # Increase Nvidia's shader cache size to 12GB
+      __GL_SHADER_DISK_CACHE_SIZE = "12000000000";
+      
+      
     };
 
     # Firefox hardware acceleration
