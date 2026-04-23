@@ -52,7 +52,6 @@
         # 1. ENVIRONMENT & CORE SETTINGS
         # ============================================================
 
-        # FIXED: Converted to empty flag
         prefer-no-csd = {};
 
         workspaces = {
@@ -64,13 +63,10 @@
           QT_QPA_PLATFORMTHEME = "qt6ct";
         };
 
-        # FIXED: Converted to empty flag
         debug.honor-xdg-activation-with-invalid-serial = {};
 
-        # FIXED: Converted to empty flag
         hotkey-overlay.skip-at-startup = {};
 
-        # FIXED: Converted to empty flag
         clipboard.disable-primary = {};
 
         screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
@@ -82,11 +78,9 @@
         input = {
           keyboard = {
             xkb.layout = "us";
-            # FIXED: Converted to empty flag
             numlock = {};
           };
           touchpad = {
-            # FIXED: Converted to empty flags
             tap = {};
             natural-scroll = {};
           };
@@ -139,7 +133,6 @@
           };
 
           border = {
-            # FIXED: Converted to empty flag
             off = {};
             width = 4;
             active-color = "#ffc87f";
@@ -266,10 +259,7 @@
 
           # --- System & UI ---
           "Mod+Shift+Slash".show-hotkey-overlay = {};
-          "Mod+Escape" = {
-            allow-inhibiting = false;
-            toggle-keyboard-shortcuts-inhibit = {};
-          };
+          "Mod+Escape".toggle-keyboard-shortcuts-inhibit = {};
           "Mod+Shift+E".quit     = {};
           "Ctrl+Alt+Delete".quit = {};
           "Mod+Shift+P".power-off-monitors = {};
@@ -282,75 +272,17 @@
           "Mod+Alt+W".spawn-sh    = "${getExe self'.packages.myNoctalia} ipc call wallpaper get DP-3 | wl-copy | xargs notify-send 'Current Wallpaper'";
 
           # --- Applications ---
-          "Mod+T" = {
-            hotkey-overlay-title = "Open a Terminal: ghostty";
-            repeat = false;
-            spawn = [ "ghostty" ];
-          };
-          "Mod+A" = {
-            hotkey-overlay-title = "Run an Application: nautilus";
-            spawn-sh = "nautilus --new-window";
-          };
-          "Mod+E" = {
-            # zen-browser: adjust package name to match your flake input/overlay
-            hotkey-overlay-title = "Run an Application: zen";
-            repeat = false;
-            spawn = [ "zen-browser" ];
-          };
-          "Mod+D" = {
-            hotkey-overlay-title = "Open Discord: Equibop";
-            repeat = false;
-            spawn = [ "equibop" ];
-          };
+          "Mod+T".spawn = [ "ghostty" ];
+          "Mod+A".spawn-sh = "nautilus --new-window";
+          "Mod+E".spawn = [ "zen-browser" ];
+          "Mod+D".spawn = [ "equibop" ];
 
           "Shift+Print".screenshot = {};
           # Package your niri-screenshot.sh as self'.packages.niriScreenshot
           "Print".spawn = [ "niri-screenshot" ];
 
-          # --- Media & Hardware ---
-          # "XF86AudioRaiseVolume" = {
-          #   allow-when-locked = true;
-          #   spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0";
-          # };
-          # "XF86AudioLowerVolume" = {
-          #   allow-when-locked = true;
-          #   spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
-          # };
-          # "XF86AudioMute" = {
-          #   allow-when-locked = true;
-          #   spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          # };
-          # "XF86AudioMicMute" = {
-          #   allow-when-locked = true;
-          #   spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-          # };
-          #"XF86AudioPlay" = {
-          #  allow-when-locked = true;
-          #  spawn-sh = "playerctl play-pause";
-          #};
-          #"XF86AudioStop" = {
-          #  allow-when-locked = true;
-          #  spawn-sh = "playerctl stop";
-          #};
-          #"XF86AudioPrev" = {
-          #  allow-when-locked = true;
-          #  spawn-sh = "playerctl previous";
-          #};
-          #"XF86AudioNext" = {
-          #  allow-when-locked = true;
-          #  spawn-sh = "playerctl next";
-          #};
-          # "XF86MonBrightnessUp" = {
-          #   allow-when-locked = true;
-          #   spawn = [ "brightnessctl" "--class=backlight" "set" "+10%" ];
-          # };
-          # "XF86MonBrightnessDown" = {
-          #   allow-when-locked = true;
-          #   spawn = [ "brightnessctl" "--class=backlight" "set" "10%-" ];
-          # };
-
           # --- Window Focus & Movement ---
-          "Mod+Q" = { repeat = false; close-window = {}; };
+          "Mod+Q".close-window = {};
           "Mod+Left".focus-column-left  = {};
           "Mod+Down".focus-window-down  = {};
           "Mod+Up".focus-window-up      = {};
@@ -375,7 +307,7 @@
           "Mod+Ctrl+End".move-column-to-last  = {};
 
           # --- Workspace & Monitor Management ---
-          "Mod+O" = { repeat = false; toggle-overview = {}; };
+          "Mod+O".toggle-overview = {};
 
           "Mod+Shift+Left".focus-monitor-left  = {};
           "Mod+Shift+Down".focus-monitor-down  = {};
@@ -414,8 +346,8 @@
           "Mod+WheelScrollUp".focus-column-left          = {};
           "Mod+Shift+WheelScrollDown".move-column-right  = {};
           "Mod+Shift+WheelScrollUp".move-column-left     = {};
-          "Mod+Ctrl+WheelScrollDown" = { cooldown-ms = 150; focus-workspace-down = {}; };
-          "Mod+Ctrl+WheelScrollUp"   = { cooldown-ms = 150; focus-workspace-up   = {}; };
+          "Mod+Ctrl+WheelScrollDown".focus-workspace-down = {};
+          "Mod+Ctrl+WheelScrollUp".focus-workspace-up   = {};
           "Mod+MouseForward".expel-window-from-column  = {};
           "Mod+MouseBack".consume-window-into-column   = {};
 
@@ -468,25 +400,16 @@
         # ============================================================
         # 6. AUTOSTART
         # ============================================================
-        # NOTE: `include "./noctalia.kdl"` has no direct equivalent in the
-        # Nix settings attrset. Merge noctalia.kdl's contents directly into
-        # this settings block, or use extraConfig if your wrapper supports it.
 
         spawn-at-startup = [
-          # replaces: spawn-at-startup "qs" "-c" "noctalia-shell" "--no-duplicate"
           (lib.getExe self'.packages.myNoctalia)
 
-          # replaces: spawn-sh-at-startup "for i in {1..50}; do qs ... lockScreen lock ..."
           "${pkgs.writeShellScript "noctalia-lock-wait" ''
             for i in $(seq 1 50); do
               ${lib.getExe self'.packages.myNoctalia} ipc call lockScreen lock \
                 > /dev/null 2>&1 && break || sleep 0.1
             done
           ''}"
-
-          # replaces: spawn-at-startup "/home/moara/.config/niri/niri_tweaks/niri_tile_to_n.py"
-          # Assuming you packaged and installed this globally as well
-          # "niri-tile-to-n"
         ];
 
         xwayland-satellite.path = "xwayland-satellite";
