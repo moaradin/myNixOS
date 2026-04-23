@@ -68,10 +68,12 @@
           XCURSOR_PATH = "${pkgs.bibata-cursors}/share/icons";
         };
         
-        cursor = {
+        cursor = _: {
+         props = {
           theme = "Bibata-Modern-Ice";
           size = 24;
-        };  
+        };
+       }; 
 
         debug.honor-xdg-activation-with-invalid-serial = {};
 
