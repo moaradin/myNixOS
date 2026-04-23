@@ -67,6 +67,11 @@
           QS_ICON_THEME="Papirus";
           XCURSOR_PATH = "${pkgs.bibata-cursors}/share/icons";
         };
+        
+        cursor = {
+          theme = "Bibata-Modern-Ice";
+          size = 24;
+        };  
 
         debug.honor-xdg-activation-with-invalid-serial = {};
 
@@ -114,11 +119,7 @@
             hot-corners.off = {};
           };
         };
-        
-        programs.niri.settings.cursor = {
-           theme = "Bibata-Modern-Ice";
-           size = 24;
-          }; 
+         
 
         # ============================================================
         # 3. APPEARANCE & LAYOUT
