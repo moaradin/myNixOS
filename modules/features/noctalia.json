@@ -463,13 +463,15 @@
     "backgroundOpacity": 1,
     "floatingRatio": 1,
     "size": 1,
-    "onlySameOutput": true,
+    "onlySameOutput": false,
     "monitors": [],
     "pinnedApps": [
       "org.gnome.Nautilus",
+      "com.mitchellh.ghostty",
       "zen",
       "steam",
-      "com.mitchellh.ghostty"
+      "electron",
+      "com.stremio.Stremio"
     ],
     "colorizeIcons": false,
     "showLauncherIcon": false,
