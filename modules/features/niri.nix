@@ -63,6 +63,7 @@
 
         environment = {
           QT_QPA_PLATFORMTHEME = "qt6ct";
+          QS_ICON_THEME="Papirus";
         };
 
         debug.honor-xdg-activation-with-invalid-serial = {};
