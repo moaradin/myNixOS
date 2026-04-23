@@ -42,6 +42,9 @@
         user.email = "8263241+moaradin@users.noreply.github.com";
         };
       };
+      
+      # Flatpak
+      services.flatpak.enable = true;
 
 
 
@@ -81,7 +84,6 @@
 	bitwarden-desktop
 	mpv
 	yt-dlp
-	stremio-linux-shell
         inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 
