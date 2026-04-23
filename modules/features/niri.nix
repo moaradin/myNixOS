@@ -88,19 +88,20 @@
           focus-follows-mouse.max-scroll-amount = "0%";
         };
 
+        # FIXED: Mode is now a string. Position uses _props.
         outputs = {
           "DP-3" = {
-            mode = { width = 2560; height = 1440; refresh = 144.0; };
+            mode = "2560x1440@144.0";
             scale = 1.0;
-            position = { x = 1920; y = 0; };
+            position._props = { x = 1920; y = 0; };
             focus-at-startup = true;
             variable-refresh-rate = "on-demand";
             hot-corners.off = true;
           };
           "DP-2" = {
-            mode = { width = 1920; height = 1080; refresh = 144.001; };
+            mode = "1920x1080@144.001";
             scale = 1.0;
-            position = { x = 0; y = 340; };
+            position._props = { x = 0; y = 340; };
             hot-corners.off = true;
           };
         };
@@ -135,10 +136,11 @@
             urgent-color = "#9b0000";
           };
 
+          # FIXED: Offset uses _props to avoid wrapper node bug
           shadow = {
             softness = 30;
             spread = 5;
-            offset = { x = 0; y = 5; };
+            offset._props = { x = 0; y = 5; };
             color = "#0007";
           };
         };
