@@ -434,4 +434,56 @@
 
           # --- Layout Manipulation ---
           "Mod+BracketLeft".consume-or-expel-window-left   = {};
-          "Mod+BracketRight".consume-or-expel-window-right
+          "Mod+BracketRight".consume-or-expel-window-right = {};
+          "Mod+Comma".consume-window-into-column  = {};
+          "Mod+Period".expel-window-from-column   = {};
+
+          "Mod+R".switch-preset-column-width        = {};
+          "Mod+Shift+R".switch-preset-window-height = {};
+          "Mod+Ctrl+R".reset-window-height          = {};
+          "Mod+F".maximize-column                   = {};
+          "Mod+Shift+F".fullscreen-window           = {};
+          "Mod+Ctrl+F".expand-column-to-available-width = {};
+          "Mod+C".center-column                     = {};
+          "Mod+Ctrl+C".center-visible-columns       = {};
+          "Mod+Alt+F".maximize-window-to-edges      = {};
+
+          "Mod+Minus".set-column-width        = "-10%";
+          "Mod+Equal".set-column-width        = "+10%";
+          "Mod+Shift+Minus".set-window-height = "-10%";
+          "Mod+Shift+Equal".set-window-height = "+10%";
+
+          "Mod+V".toggle-window-floating                        = {};
+          "Mod+Shift+V".switch-focus-between-floating-and-tiling = {};
+          "Mod+W".toggle-column-tabbed-display                  = {};
+        };
+
+        # ============================================================
+        # 6. AUTOSTART
+        # ============================================================
+        # NOTE: `include "./noctalia.kdl"` has no direct equivalent in the
+        # Nix settings attrset. Merge noctalia.kdl's contents directly into
+        # this settings block, or use extraConfig if your wrapper supports it.
+
+        spawn-at-startup = [
+          # replaces: spawn-at-startup "qs" "-c" "noctalia-shell" "--no-duplicate"
+          (lib.getExe self'.packages.myNoctalia)
+
+          # replaces: spawn-sh-at-startup "for i in {1..50}; do qs ... lockScreen lock ..."
+          "${pkgs.writeShellScript "noctalia-lock-wait" ''
+            for i in $(seq 1 50); do
+              ${lib.getExe self'.packages.myNoctalia} ipc call lockScreen lock \
+                > /dev/null 2>&1 && break || sleep 0.1
+            done
+          ''}"
+
+          # replaces: spawn-at-startup "/home/moara/.config/niri/niri_tweaks/niri_tile_to_n.py"
+          # Assuming you packaged and installed this globally as well
+          # "niri-tile-to-n"
+        ];
+
+        xwayland-satellite.path = "xwayland-satellite";
+      };
+    };
+  };
+}
