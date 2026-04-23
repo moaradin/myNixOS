@@ -62,7 +62,7 @@
         };
 
         environment = {
-          QT_QPA_PLATFORMTHEME = "gtk3";
+          QT_QPA_PLATFORMTHEME = "qt6ct";
         };
 
         debug.honor-xdg-activation-with-invalid-serial = {};
