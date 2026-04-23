@@ -81,7 +81,7 @@
 	bitwarden-desktop
 	mpv
 	yt-dlp
-	stremio-linux-shell
+	stremio
         inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 

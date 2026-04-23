@@ -1,6 +1,5 @@
-
 {
- "settings": {
+  "settings": {
   "settingsVersion": 59,
   "bar": {
     "barType": "simple",
@@ -466,14 +465,19 @@
     "size": 1,
     "onlySameOutput": true,
     "monitors": [],
-    "pinnedApps": [],
+    "pinnedApps": [
+      "org.gnome.Nautilus",
+      "zen",
+      "steam",
+      "com.mitchellh.ghostty"
+    ],
     "colorizeIcons": false,
     "showLauncherIcon": false,
     "launcherPosition": "end",
     "launcherUseDistroLogo": false,
     "launcherIcon": "",
     "launcherIconColor": "none",
-    "pinnedStatic": false,
+    "pinnedStatic": true,
     "inactiveIndicators": false,
     "groupApps": false,
     "groupContextMenuMode": "extended",
