@@ -67,6 +67,7 @@
           QS_ICON_THEME="Papirus";
           XCURSOR_THEME = "Bibata Modern Ice";
           XCURSOR_SIZE = "24";
+          XCURSOR_PATH = "${pkgs.bibata-cursors}/share/icons";
         };
 
         debug.honor-xdg-activation-with-invalid-serial = {};
