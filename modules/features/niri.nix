@@ -54,7 +54,6 @@
 
         prefer-no-csd = true;
 
-        # FIXED: Converted from a list `[ ... ]` to an attribute set `{ ... }`
         workspaces = {
           "1"   = { open-on-output = "DP-2"; };
           "obs" = { open-on-output = "DP-2"; };
@@ -173,14 +172,15 @@
             open-floating = true;
             default-column-width.fixed = 473;
             default-window-height.fixed = 266;
-            # FIXED: Uses `_props` to force wrapper to output properties instead of children
-            default-floating-position._props = { x = 20; y = 20; relative-to = "bottom-right"; };
+            # DISABLED: A bug in the wrapper module prevents this from serializing correctly.
+            # default-floating-position = { x = 20; y = 20; relative-to = "bottom-right"; };
           }
 
           # Steam notification toasts
           {
             matches = [{ app-id = "steam"; title = "^notificationtoasts_\\d+_desktop$"; }];
-            default-floating-position._props = { x = 10; y = 10; relative-to = "bottom-right"; };
+            # DISABLED: A bug in the wrapper module prevents this from serializing correctly.
+            # default-floating-position = { x = 10; y = 10; relative-to = "bottom-right"; };
           }
 
           # VRR game support — force to DP-3
@@ -206,7 +206,8 @@
             open-on-output = "DP-2";
             open-floating = true;
             open-focused = false;
-            default-floating-position._props = { x = -5000; y = -5000; relative-to = "top-right"; };
+            # DISABLED: A bug in the wrapper module prevents this from serializing correctly.
+            # default-floating-position = { x = -5000; y = -5000; relative-to = "top-right"; };
           }
 
           # Genshin Impact — main monitor
@@ -248,8 +249,6 @@
         # ============================================================
         # 5. KEYBINDINGS
         # ============================================================
-        
-        # FIXED: Replaced all `= null;` values with `= {};`
 
         binds = with lib; {
 
