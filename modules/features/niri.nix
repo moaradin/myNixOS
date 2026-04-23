@@ -24,6 +24,7 @@
       nwg-look
       bibata-cursors
       kdePackages.qt6ct
+      ffmpegthumbnailer
       gnome-system-monitor
       # Keybind dependencies
       # playerctl
