@@ -90,6 +90,7 @@
     environment.systemPackages = with pkgs; [
       neovim
       git
+      python3
       fastfetch
       wget
       unzip

@@ -407,6 +407,8 @@
 
         spawn-at-startup = [
           (lib.getExe self'.packages.myNoctalia)
+          
+          "/home/moara/.config/niri/scripts/niri_tile_to_n.py"
 
           "${pkgs.writeShellScript "noctalia-lock-wait" ''
             for i in $(seq 1 50); do
