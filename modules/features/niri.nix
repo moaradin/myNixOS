@@ -65,15 +65,8 @@
         environment = {
           QT_QPA_PLATFORMTHEME = "qt6ct";
           QS_ICON_THEME="Papirus";
-          XCURSOR_PATH = "${pkgs.bibata-cursors}/share/icons";
         };
         
-        cursor = _: {
-         props = {
-          theme = "Bibata-Modern-Ice";
-          size = 24;
-        };
-       }; 
 
         debug.honor-xdg-activation-with-invalid-serial = {};
 
