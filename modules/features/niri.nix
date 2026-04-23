@@ -115,9 +115,9 @@
           };
         };
         
-        cursor = {
-           theme "Bibata-Modern-Ice";
-           size 24;
+        programs.niri.settings.cursor = {
+           theme = "Bibata-Modern-Ice";
+           size = 24;
           }; 
 
         # ============================================================
