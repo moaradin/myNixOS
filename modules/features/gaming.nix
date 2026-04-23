@@ -60,9 +60,6 @@
       # ];
     };
     
-    "${pkgs.writeShellScript "steam-silent" ''
-      exec ${pkgs.steam}/bin/steam -silent
-     ''}"
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 
