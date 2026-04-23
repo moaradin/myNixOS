@@ -54,7 +54,6 @@
 
         prefer-no-csd = true;
 
-        # FIXED: Converted from a list `[ ... ]` to an attribute set `{ ... }`
         workspaces = {
           "1"   = { open-on-output = "DP-2"; };
           "obs" = { open-on-output = "DP-2"; };
@@ -139,7 +138,7 @@
           shadow = {
             softness = 30;
             spread = 5;
-            offset = { x = 0; y = 5; };
+            offset = { x = 0.0; y = 5.0; }; # Changed to float to be safe
             color = "#0007";
           };
         };
@@ -171,15 +170,15 @@
               { app-id = "zen$";     title = "^Picture-in-Picture$"; }
             ];
             open-floating = true;
-            default-column-width.fixed = 473;
-            default-window-height.fixed = 266;
-            default-floating-position = { x = 20; y = 20; relative-to = "bottom-right"; };
+            default-column-width.fixed = 473.0; # Float
+            default-window-height.fixed = 266.0; # Float
+            default-floating-position = { x = 20.0; y = 20.0; relative-to = "bottom-right"; }; # Floats
           }
 
           # Steam notification toasts
           {
             matches = [{ app-id = "steam"; title = "^notificationtoasts_\\d+_desktop$"; }];
-            default-floating-position = { x = 10; y = 10; relative-to = "bottom-right"; };
+            default-floating-position = { x = 10.0; y = 10.0; relative-to = "bottom-right"; }; # Floats
           }
 
           # VRR game support — force to DP-3
@@ -205,7 +204,7 @@
             open-on-output = "DP-2";
             open-floating = true;
             open-focused = false;
-            default-floating-position = { x = -5000; y = -5000; relative-to = "top-right"; };
+            default-floating-position = { x = -5000.0; y = -5000.0; relative-to = "top-right"; }; # Floats
           }
 
           # Genshin Impact — main monitor
@@ -247,8 +246,6 @@
         # ============================================================
         # 5. KEYBINDINGS
         # ============================================================
-        
-        # FIXED: Replaced all `= null;` values with `= {};`
 
         binds = with lib; {
 
