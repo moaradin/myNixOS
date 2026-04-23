@@ -467,4 +467,20 @@
           (lib.getExe self'.packages.myNoctalia)
 
           # replaces: spawn-sh-at-startup "for i in {1..50}; do qs ... lockScreen lock ..."
-          "${pkgs.writeShellScript "noctalia
+          "${pkgs.writeShellScript "noctalia-lock-wait" ''
+            for i in $(seq 1 50); do
+              ${lib.getExe self'.packages.myNoctalia} ipc call lockScreen lock \
+                > /dev/null 2>&1 && break || sleep 0.1
+            done
+          ''}"
+
+          # replaces: spawn-at-startup "/home/moara/.config/niri/niri_tweaks/niri_tile_to_n.py"
+          # Assuming you packaged and installed this globally as well
+          # "niri-tile-to-n"
+        ];
+
+        xwayland-satellite.path = "xwayland-satellite";
+      };
+    };
+  };
+}
