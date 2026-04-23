@@ -95,7 +95,6 @@
             # DISABLED: A bug in the wrapper module prevents x/y properties from serializing correctly.
             # position = { x = 1920; y = 0; };
             
-            # FIXED: Converted boolean and string to empty flags
             focus-at-startup = {};
             variable-refresh-rate = {};
             
@@ -198,8 +197,8 @@
               { app-id = "gamescope"; }
             ];
             open-on-output = "DP-3";
-            # FIXED: Converted boolean to empty flag
-            variable-refresh-rate = {};
+            # FIXED: Reverted to boolean, as required by window-rules
+            variable-refresh-rate = true;
           }
 
           # Genshin FPS Unlocker — hide off-screen on DP-2
