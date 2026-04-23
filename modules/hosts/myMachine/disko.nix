@@ -10,7 +10,7 @@
     disko.devices = {
       disk.main = {
         type = "disk";
-        device = "/dev/nvme2n1";
+        device = "/dev/disk/by-id/nvme-Fanxiang_S501_128GB_26030409611000389";
         content = {
           type = "gpt";
           partitions = {

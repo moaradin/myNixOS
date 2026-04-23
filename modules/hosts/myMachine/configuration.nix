@@ -9,6 +9,7 @@
       self.nixosModules.niri
       self.nixosModules.nvidia
       self.nixosModules.gaming
+      self.nixosModules.mounts
       
     ];
 
@@ -68,18 +69,18 @@
       isNormalUser = true;
       shell = pkgs.fish;
       initialHashedPassword = "$y$j9T$ehIFnAgbxYtk19FXvbEgo/$OP7Hd8L22rUf2MShZ0IhrpiqX26rgpJ8L9zNkXtuVF4";
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "gamemode" ];
       packages = with pkgs; [
         tree
         firefox
-	      equibop
-	      yazi
-	      helix
-	      thunderbird
-	      qbittorrent
-	      bitwarden-desktop
-	      mpv
-	      yt-dlp
+	equibop
+	yazi
+	helix
+	thunderbird
+	qbittorrent
+	bitwarden-desktop
+	mpv
+	yt-dlp
         inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 
@@ -102,6 +103,7 @@
       nixd
       lazygit
       cliphist
+      ghostty
       
       #Gnome Extensions
       #gnomeExtensions.blur-my-shell

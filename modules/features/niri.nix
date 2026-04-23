@@ -21,6 +21,7 @@
       adw-gtk3
       nwg-look
       kdePackages.qt6ct
+      gnome-system-monitor
 
     ];
     
