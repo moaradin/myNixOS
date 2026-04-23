@@ -65,8 +65,6 @@
         environment = {
           QT_QPA_PLATFORMTHEME = "qt6ct";
           QS_ICON_THEME="Papirus";
-          XCURSOR_THEME = "Bibata-Modern-Ice";
-          XCURSOR_SIZE = "24";
           XCURSOR_PATH = "${pkgs.bibata-cursors}/share/icons";
         };
 
@@ -116,6 +114,11 @@
             hot-corners.off = {};
           };
         };
+        
+        cursor = {
+           theme "Bibata-Modern-Ice";
+           size 24;
+          }; 
 
         # ============================================================
         # 3. APPEARANCE & LAYOUT
