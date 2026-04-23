@@ -88,7 +88,7 @@
           };
           mouse.accel-profile = "flat";
           # DISABLED: To avoid potential inline property wrapper bug
-          focus-follows-mouse = {};
+           focus-follows-mouse = _: { props.max-scroll-amount = "25%"; };
         };
 
         outputs = {
@@ -99,7 +99,7 @@
             # position = { x = 1920; y = 0; };
             
             focus-at-startup = {};
-            variable-refresh-rate = "on-demand";
+           # variable-refresh-rate = "on-demand";
             
             hot-corners.off = {};
           };
