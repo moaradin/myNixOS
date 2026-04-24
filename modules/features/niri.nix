@@ -18,6 +18,7 @@
     services.gnome.gnome-keyring.enable = true;
 
     environment.systemPackages = with pkgs; [
+      seahorse
       wl-clipboard
       nautilus
       gnome-text-editor
