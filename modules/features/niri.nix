@@ -16,6 +16,7 @@
     services.gvfs.enable = true;
 
     environment.systemPackages = with pkgs; [
+      gnome-keyring
       wl-clipboard
       nautilus
       gnome-text-editor
