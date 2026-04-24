@@ -14,9 +14,10 @@
     };
     
     services.gvfs.enable = true;
+    
+    services.gnome.gnome-keyring.enable = true;
 
     environment.systemPackages = with pkgs; [
-      gnome-keyring
       wl-clipboard
       nautilus
       gnome-text-editor
