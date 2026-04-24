@@ -114,6 +114,7 @@
 
       # Capture & streaming
       obs-studio
+      gpu-screen-recorder
 
       # Controller & input
       # antimicrox             # Remap gamepad buttons to keyboard/mouse
