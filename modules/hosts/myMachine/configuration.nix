@@ -11,13 +11,15 @@
       self.nixosModules.gaming
       self.nixosModules.mounts
       self.nixosModules.cachyos
+      self.nixosModules.home
       
     ];
 
     boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    #boot.kernelPackages = pkgs.linuxPackages_latest;
-
+    boot.loader.efi.canTouchEfiVariables = true; 
+    #Regular Kernel. Disable when using CachyOS
+    #boot.kernelPackages = pkgs.linuxPackages_latest; 
+    
     networking.hostName = "myMachine";
     networking.networkmanager.enable = true;
 
@@ -30,19 +32,6 @@
       font = "Lat2-Terminus16";
       keyMap = "us";
     };
-
-    programs.fish = {
-      enable = true;
-      interactiveShellInit = ''set fish_greeting'';
-    };
-
-    programs.git = {
-      enable = true;
-      config = {
-        user.name = "moara";
-        user.email = "8263241+moaradin@users.noreply.github.com";
-        };
-      };
       
       # Flatpak
       services.flatpak.enable = true;
@@ -71,24 +60,8 @@
 
     users.users.moara = {
       isNormalUser = true;
-      shell = pkgs.fish;
       initialHashedPassword = "$y$j9T$ehIFnAgbxYtk19FXvbEgo/$OP7Hd8L22rUf2MShZ0IhrpiqX26rgpJ8L9zNkXtuVF4";
       extraGroups = [ "wheel" "networkmanager" "gamemode" ];
-      packages = with pkgs; [
-        tree
-        firefox
-	equibop
-	yazi
-	helix
-	thunderbird
-	qbittorrent
-	bitwarden-desktop
-	mpv
-	yt-dlp
-        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-
-      ];
     };
 
     environment.systemPackages = with pkgs; [
@@ -108,7 +81,6 @@
       nixd
       lazygit
       cliphist
-      ghostty
       
       #Gnome Extensions
       #gnomeExtensions.blur-my-shell
