@@ -35,6 +35,13 @@
           inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
         
+          gtk = {
+          enable = true;
+          theme.name = "adw-gtk3";
+          cursorTheme.name = "Bibata-Modern-Ice";
+          iconTheme.name = "GruvboxPlus";
+        }  
+        
         programs.fish = {
           enable = true;
           interactiveShellInit = ''
