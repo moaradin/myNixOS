@@ -28,7 +28,12 @@
           inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
         
-        programs.fish.enable = true;
+        programs.fish = {
+          enable = true;
+          interactiveShellInit = ''
+           fastfetch
+         '';
+        }; 
         
         programs.ghostty = {
           enable = true;
