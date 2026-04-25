@@ -81,22 +81,6 @@
       nixd
       lazygit
       cliphist
-      
-      #Gnome Extensions
-      #gnomeExtensions.blur-my-shell
-      #gnomeExtensions.just-perfection
-      #gnomeExtensions.arc-menu
-      #gnomeExtensions.dash-to-panel
-      #gnomeExtensions.clipboard-indicator
-      #gnomeExtensions.appindicator
-      
-      fishPlugins.hydro
-      fishPlugins.done
-      fishPlugins.autopair
-      fishPlugins.forgit
-      fishPlugins.grc
-      fishPlugins.fzf-fish
-      fishPlugins.z
       grc
       fzf
       

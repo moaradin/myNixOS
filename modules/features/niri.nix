@@ -35,13 +35,6 @@
       libnotify      # notify-send
     ];
 
-    programs.dconf = {
-      enable = true;
-      profiles.user.databases = [{
-        settings."org/gnome/desktop/interface".icon-theme = lib.gvariant.mkString "Papirus";
-      }];
-    };
-
     gtk.iconCache.enable = true;
     xdg.portal = {
       enable = true;
