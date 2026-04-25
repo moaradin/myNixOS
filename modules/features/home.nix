@@ -39,6 +39,7 @@
           settings = {
           # Tells Ghostty to launch Fish instead of the system default shell (Bash)
           command = "${pkgs.fish}/bin/fish";
+          theme = "noctalia";
       
           # You can add the rest of your Ghostty configuration here
           # For example:
