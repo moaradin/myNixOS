@@ -50,9 +50,13 @@
         # Example: You can optionally move your Git config here from configuration.nix
          programs.git = {
            enable = true;
-           userName = "moara";
-           userEmail = "8263241+moaradin@users.noreply.github.com";
-         };
+           settings = {
+             user = {
+               name = "moara";
+               email = "8263241+moaradin@users.noreply.github.com";
+            };
+          };
+        }; 
       };
     };
   };
