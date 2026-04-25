@@ -31,6 +31,8 @@
         programs.fish = {
           enable = true;
           interactiveShellInit = ''
+           set -g fish-greeting
+           
            fastfetch
          '';
         }; 
