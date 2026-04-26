@@ -10,11 +10,9 @@
       
       users.moara = {
       
-imports = let
-          programDir = ./programs;
-          files = builtins.attrNames (builtins.readDir programDir);
-        in
-          map (file: import (programDir + "/${file}") { inherit pkgs; }) files;
+      imports = [
+       ./programs/ghostty.nix
+      ]; 
       
         # Must match the stateVersion in your configuration.nix
         home.stateVersion = "25.11"; 
