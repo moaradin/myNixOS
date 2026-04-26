@@ -9,6 +9,13 @@
       extraSpecialArgs = { inherit self inputs; };
       
       users.moara = {
+      
+       # --- AUTO-IMPORT PROGRAMS ---
+           imports = let
+             programDir = ./programs;
+           in
+             map (file: "${programDir}/${file}") (builtins.attrNames (builtins.readDir programDir));
+      
         # Must match the stateVersion in your configuration.nix
         home.stateVersion = "25.11"; 
         
@@ -80,11 +87,6 @@
         ];
       };
         
- # --- AUTO-IMPORT PROGRAMS ---
-           imports = let
-             programDir = ./programs;
-           in
-             map (file: "${programDir}/${file}") (builtins.attrNames (builtins.readDir programDir));
 
         # Example: You can optionally move your Git config here from configuration.nix
          programs.git = {
