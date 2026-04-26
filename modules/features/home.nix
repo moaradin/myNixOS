@@ -35,38 +35,6 @@
           inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
         
-        # 1. Cursor Theme
-        home.pointerCursor = {
-          name = "Bibata-Modern-Ice";
-          package = pkgs.bibata-cursors;
-          size = 24;
-          
-          # Injects the cursor settings into GTK configurations
-          gtk.enable = true;
-          
-          # Crucial for Wayland gaming: Ensures the cursor theme applies 
-          # consistently when playing games through Proton/Xwayland
-          x11.enable = true;
-        };
-
-        # 2. Application Icons and Themes (GTK)
-        gtk = {
-          enable = true;
-          
-          iconTheme = {
-            name = "Papirus";
-            package = pkgs.papirus-icon-theme;
-          };
-          
-          # Optionally set your overall application theme here as well
-          theme = {
-            name = "adw-gtk3";
-            package = pkgs.adw-gtk3;
-          };
-          
-          gtk4.theme = null;
-        };
-        
         programs.fish = {
           enable = true;
           interactiveShellInit = ''

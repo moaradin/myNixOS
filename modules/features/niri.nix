@@ -13,6 +13,29 @@
       };
     };
     
+    home-manager.users.moara = {
+      home.pointerCursor = {
+        name = "Bibata-Modern-Classic";
+        package = pkgs.bibata-cursors;
+        size = 24;
+        gtk.enable = true;
+        x11.enable = true;
+      };
+
+      gtk = {
+        enable = true;
+        iconTheme = {
+          name = "Papirus";
+          package = pkgs.papirus-icon-theme;
+        };
+        theme = {
+          name = "adw-gtk3";
+          package = pkgs.adw-gtk3;
+        };
+        gtk4.theme = null;
+      };
+    };
+    
     services.gvfs.enable = true;
     
     services.gnome.gnome-keyring.enable = true;
