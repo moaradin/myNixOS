@@ -237,7 +237,7 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" repeat=false { spawn "ghostty"; }
     Mod+A hotkey-overlay-title="Open Files: nautilus"                  { spawn "nautilus" "--new-window"; }
     Mod+E hotkey-overlay-title="Open Browser: zen"        repeat=false { spawn "zen"; }
-    Mod+D hotkey-overlay-title="Open Discord: equibop"    repeat=false { spawn "equibop"; }
+    Mod+D hotkey-overlay-title="Open Discord: equibop"    repeat=false { spawn "vesktop"; }
 
     Shift+Print { screenshot; }
     Print       { spawn "niri-screenshot"; }
