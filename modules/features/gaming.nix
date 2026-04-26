@@ -61,6 +61,8 @@
       ];
     };
     
+    # ── Services ────────────────────────────────────────────────────────────
+    services.lact.enable = true;
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 
