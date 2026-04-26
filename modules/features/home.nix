@@ -27,6 +27,7 @@
 	  xdg-utils
 	  cliphist
 	  yt-dlp
+	  gabutdm
           inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
         
