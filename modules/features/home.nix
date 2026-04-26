@@ -9,11 +9,6 @@
       extraSpecialArgs = { inherit self inputs; };
       
       users.moara = {
-      
-      imports = [
-       ./programs/ghostty.nix
-      ]; 
-      
         # Must match the stateVersion in your configuration.nix
         home.stateVersion = "25.11"; 
         
@@ -85,6 +80,27 @@
         ];
       };
         
+        programs.ghostty = {
+          enable = true;
+    
+          # Automatically injects Ghostty's shell integration scripts for Fish
+          enableFishIntegration = true; 
+    
+          settings = {
+          # Tells Ghostty to launch Fish instead of the system default shell (Bash)
+          command = "${pkgs.fish}/bin/fish";
+          theme = "noctalia";
+          background-opacity = 0.80;
+          clipboard-read = true;
+          clipboard-write = true;
+          copy-on-select = true;
+      
+          # You can add the rest of your Ghostty configuration here
+          # For example:
+          # theme = "catppuccin-mocha";
+          # font-family = "FiraCode Nerd Font";
+         };
+        };
 
         # Example: You can optionally move your Git config here from configuration.nix
          programs.git = {
@@ -93,8 +109,6 @@
              user = {
                name = "moara";
                email = "8263241+moaradin@users.noreply.github.com";
-               
-               
             };
           };
         }; 
