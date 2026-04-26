@@ -54,7 +54,9 @@
     # ── System services ───────────────────────────────────────────────────
 
     services.gvfs.enable = true;
-    # gnome-keyring is handled automatically by niri-flake — not needed here
+    
+    # gnome-keyring for greetd
+    security.pam.services.greetd.enableGnomeKeyring = true;
 
     gtk.iconCache.enable = true;
     # niri-flake installs xdg-desktop-portal-gnome for screencasting.
