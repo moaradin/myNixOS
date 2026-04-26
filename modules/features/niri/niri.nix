@@ -15,7 +15,7 @@
     # Point niri at the plain KDL file sitting next to this module.
     # niri-flake will still run `niri validate` against it at build time,
     # so broken configs are caught before you switch — but you edit plain KDL.
-    home-manager.users.moara.programs.niri.config = builtins.readFile ./config.kdl;
+   # home-manager.users.moara.programs.niri.config = builtins.readFile ./config.kdl;
 
     # ── Session ───────────────────────────────────────────────────────────
 
@@ -30,6 +30,9 @@
     # ── Cursor & GTK theme ────────────────────────────────────────────────
 
     home-manager.users.moara = {
+     
+      xdg.configFile."niri/config.kdl".text = builtins.readFile ./config.kdl;
+     
       home.pointerCursor = {
         name    = "Bibata-Modern-Ice";
         package = pkgs.bibata-cursors;
@@ -65,6 +68,7 @@
     # ── System packages ───────────────────────────────────────────────────
 
     environment.systemPackages = with pkgs; [
+      xwayland-satellite
       seahorse
       wl-clipboard
       nautilus
