@@ -33,6 +33,9 @@
     console = {
       font = "Lat2-Terminus16";
       keyMap = "us";
+      packages = with pkgs; [
+        terminus_font
+       ]; 
     };
       
       # Flatpak
@@ -130,7 +133,7 @@
         };
       };
     };
-
+    
     services.openssh.enable = true;
 
     nixpkgs.config.allowUnfree = true;
