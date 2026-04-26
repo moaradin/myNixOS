@@ -7,6 +7,7 @@
       self.nixosModules.myMachineDisko      # was ./disk-config.nix
       self.nixosModules.zram                # was ./zram.nix
       self.nixosModules.niri
+      self.nixosModules.noctalia
       self.nixosModules.nvidia
       self.nixosModules.gaming
       self.nixosModules.mounts
