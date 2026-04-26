@@ -57,6 +57,8 @@
     
     # gnome-keyring for greetd
     security.pam.services.greetd.enableGnomeKeyring = true;
+    
+    services.gnome.gnome-keyring.enable = true;
 
     gtk.iconCache.enable = true;
     # niri-flake installs xdg-desktop-portal-gnome for screencasting.
