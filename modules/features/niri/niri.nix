@@ -5,7 +5,12 @@
       inputs.niri-flake.nixosModules.niri  # handles portals, polkit, keyring, session
     ];
 
-    programs.niri.enable = true;
+    # niri-flake's overlay exposes pkgs.niri-stable and pkgs.niri-unstable.
+    # niri-unstable tracks the latest commit to niri's main branch.
+    nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
+
+    programs.niri.enable = false;
+    programs.niri.package = pkgs.niri-unstable;
 
     # Point niri at the plain KDL file sitting next to this module.
     # niri-flake will still run `niri validate` against it at build time,
