@@ -385,4 +385,4 @@ spawn-at-startup "/home/moara/myNixOS/modules/features/niri/scripts/niri_tile_to
 
 // Noctalia generates its niri color theme here at startup.
 // This must stay so niri picks up the colors on each launch.
-// include "/home/moara/.config/niri/noctalia.kdl"
+include "/home/moara/.config/niri/noctalia.kdl"
