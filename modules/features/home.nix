@@ -17,8 +17,6 @@ _module.args.pkgs = pkgs;
           programDir = ./programs;
         in
           map (file: "${programDir}/${file}") (builtins.attrNames (builtins.readDir programDir));
-
-        home.stateVersion = "25.11";
       
         # Must match the stateVersion in your configuration.nix
         home.stateVersion = "25.11"; 
