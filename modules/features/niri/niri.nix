@@ -9,7 +9,7 @@
     # niri-unstable tracks the latest commit to niri's main branch.
     nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
 
-    programs.niri.enable = false;
+    programs.niri.enable = true;
     programs.niri.package = pkgs.niri-unstable;
 
     # Point niri at the plain KDL file sitting next to this module.
