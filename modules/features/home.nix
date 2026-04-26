@@ -10,11 +10,9 @@
       
       users.moara = {
       
-       # --- AUTO-IMPORT PROGRAMS ---
-           imports = let
-             programDir = ./programs;
-           in
-             map (file: "${programDir}/${file}") (builtins.attrNames (builtins.readDir programDir));
+      imports = [
+          ./programs/ghostty.nix
+         ]; 
       
         # Must match the stateVersion in your configuration.nix
         home.stateVersion = "25.11"; 
