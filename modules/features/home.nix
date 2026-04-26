@@ -10,13 +10,11 @@
       
       users.moara = {
       
-_module.args.pkgs = pkgs;
-
-        # Now your auto-import will work safely again!
-        imports = let
+imports = let
           programDir = ./programs;
+          files = builtins.attrNames (builtins.readDir programDir);
         in
-          map (file: "${programDir}/${file}") (builtins.attrNames (builtins.readDir programDir));
+          map (file: import (programDir + "/${file}") { inherit pkgs; }) files;
       
         # Must match the stateVersion in your configuration.nix
         home.stateVersion = "25.11"; 
