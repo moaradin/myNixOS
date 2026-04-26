@@ -18,7 +18,6 @@
           tree
           firefox
 	  vesktop
-	  equibop
 	  yazi
 	  helix
 	  thunderbird
