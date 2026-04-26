@@ -10,9 +10,15 @@
       
       users.moara = {
       
-      imports = [
-          ./programs/ghostty.nix
-         ]; 
+_module.args.pkgs = pkgs;
+
+        # Now your auto-import will work safely again!
+        imports = let
+          programDir = ./programs;
+        in
+          map (file: "${programDir}/${file}") (builtins.attrNames (builtins.readDir programDir));
+
+        home.stateVersion = "25.11";
       
         # Must match the stateVersion in your configuration.nix
         home.stateVersion = "25.11"; 
