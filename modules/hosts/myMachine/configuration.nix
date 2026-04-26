@@ -83,6 +83,12 @@
       cliphist
       grc
       fzf
+      eza
+      bat
+      bat-extras.batgrep
+      bat-extras.batman
+      copycat
+      tealdeer
       
       # Gstreamer
       gst_all_1.gstreamer

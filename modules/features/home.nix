@@ -25,24 +25,60 @@
 	  bitwarden-desktop
 	  mpv
 	  yt-dlp
-          fishPlugins.hydro
-          fishPlugins.done
-          fishPlugins.autopair
-          fishPlugins.forgit
-          fishPlugins.grc
-          fishPlugins.fzf-fish
-          fishPlugins.z
           inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
         
-        programs.fish = {
-          enable = true;
-          interactiveShellInit = ''
-           set -g fish_greeting
-           
-           fastfetch
-         '';
-        }; 
+        programs.fish = let
+        pluginList = plugins: map (plugin: {
+          name = "${plugin}";
+          src = pkgs.fishPlugins."${plugin}".src;
+        }) plugins;
+      in {
+        enable = true;
+        
+        interactiveShellInit = ''
+          # Clears the greeting
+          set -g fish_greeting 
+          set -gx sponge_purge_only_on_exit true
+          
+          # Keep your fastfetch startup!
+          fastfetch
+        '';
+
+        shellAbbrs = {
+          ff = "fastfetch";
+          lg = "lazygit";
+        };
+
+        shellAliases = {
+          cat = "bat";
+          man = "batman";
+          shx = "sudo hx";
+          mkdir = "mkdir -pv";
+          cp = "rsync -ah --info=progress2";
+          ls = "eza --all --group-directories-first --git --color=always --icons=always";
+          ll = "eza -l --all --group-directories-first --git --color=always --icons=always";
+          lt = "eza --tree --level 3 --git-ignore";
+          fzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
+        };
+
+        functions = {
+          copycat = "cat $argv | wl-copy";
+        };
+
+        plugins = pluginList [
+          "autopair"
+          "done"
+          "puffer"
+          "hydro"
+          "sponge"
+          "fzf-fish"
+          "z"
+          "grc"
+          "forgit"
+          "plugin-sudope"
+        ];
+      };
         
         programs.ghostty = {
           enable = true;
