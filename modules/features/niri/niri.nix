@@ -49,6 +49,11 @@
         };
         gtk4.theme = null;
       };
+      
+      services.gnome-keyring = {
+        enable = true;
+        components = [ "pkcs11" "secrets" "ssh" ];
+      };
     };
 
     # ── System services ───────────────────────────────────────────────────
@@ -56,9 +61,7 @@
     services.gvfs.enable = true;
     
     # gnome-keyring for greetd
-    security.pam.services.greetd.enableGnomeKeyring = true;
-    
-    services.gnome.gnome-keyring.enable = true;
+     security.pam.services.greetd.enableGnomeKeyring = true;
 
     gtk.iconCache.enable = true;
     # niri-flake installs xdg-desktop-portal-gnome for screencasting.
