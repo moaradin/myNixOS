@@ -55,12 +55,12 @@
       remotePlay.openFirewall      = true;
       dedicatedServer.openFirewall = true;
       gamescopeSession.enable      = true;
+      protontricks.enable          = true;
       # extraCompatPackages = with pkgs; [
       #   proton-ge-bin              # Community Proton with extra patches & codecs
       # ];
     };
     
-    protontricks.enable = true;
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 
