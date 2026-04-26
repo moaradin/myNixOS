@@ -10,9 +10,9 @@
       command = "${pkgs.fish}/bin/fish";
       theme = "noctalia";
       background-opacity = 0.80;
-      clipboard-read = allow;
-      clipboard-write = allow;
-      copy-on-select = clipboard;
+      clipboard-read = true;
+      clipboard-write = true;
+      copy-on-select = true;
     };
   };
 }
