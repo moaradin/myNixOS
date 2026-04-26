@@ -80,6 +80,11 @@
         ];
       };
         
+ # --- AUTO-IMPORT PROGRAMS ---
+           imports = let
+             programDir = ./programs;
+           in
+             map (file: "${programDir}/${file}") (builtins.attrNames (builtins.readDir programDir));
 
         # Example: You can optionally move your Git config here from configuration.nix
          programs.git = {
@@ -89,11 +94,7 @@
                name = "moara";
                email = "8263241+moaradin@users.noreply.github.com";
                
-           # --- AUTO-IMPORT PROGRAMS ---
-           imports = let
-             programDir = ./programs;
-           in
-             map (file: "${programDir}/${file}") (builtins.attrNames (builtins.readDir programDir));
+               
             };
           };
         }; 
