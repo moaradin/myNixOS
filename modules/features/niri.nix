@@ -22,10 +22,6 @@
       wl-clipboard
       nautilus
       gnome-text-editor
-      papirus-icon-theme
-      adw-gtk3
-      nwg-look
-      bibata-cursors
       kdePackages.qt6ct
       ffmpegthumbnailer
       gnome-system-monitor
@@ -34,6 +30,7 @@
       # brightnessctl
       libnotify      # notify-send
     ];
+
 
     gtk.iconCache.enable = true;
     xdg.portal = {
