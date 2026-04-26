@@ -82,27 +82,6 @@
         ];
       };
         
-        programs.ghostty = {
-          enable = true;
-    
-          # Automatically injects Ghostty's shell integration scripts for Fish
-          enableFishIntegration = true; 
-    
-          settings = {
-          # Tells Ghostty to launch Fish instead of the system default shell (Bash)
-          command = "${pkgs.fish}/bin/fish";
-          theme = "noctalia";
-          background-opacity = 0.80;
-          clipboard-read = "allow";
-          clipboard-write = "allow";
-          copy-on-select = "clipboard";
-      
-          # You can add the rest of your Ghostty configuration here
-          # For example:
-          # theme = "catppuccin-mocha";
-          # font-family = "FiraCode Nerd Font";
-         };
-        };
 
         # Example: You can optionally move your Git config here from configuration.nix
          programs.git = {

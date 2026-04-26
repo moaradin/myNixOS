@@ -13,6 +13,7 @@
       self.nixosModules.mounts
       self.nixosModules.cachyos
       self.nixosModules.home
+      self.nixosModules.programs
       
     ];
 
