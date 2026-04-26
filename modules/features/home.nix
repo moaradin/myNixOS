@@ -91,9 +91,9 @@
           command = "${pkgs.fish}/bin/fish";
           theme = "noctalia";
           background-opacity = 0.80;
-          clipboard-read = allow;
-          clipboard-write = allow;
-          copy-on-select = true;
+          clipboard-read = "allow";
+          clipboard-write = "allow";
+          copy-on-select = "clipboard";
       
           # You can add the rest of your Ghostty configuration here
           # For example:
