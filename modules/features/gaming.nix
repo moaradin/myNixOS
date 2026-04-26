@@ -56,9 +56,9 @@
       dedicatedServer.openFirewall = true;
       gamescopeSession.enable      = true;
       protontricks.enable          = true;
-      # extraCompatPackages = with pkgs; [
-      #   proton-ge-bin              # Community Proton with extra patches & codecs
-      # ];
+      extraPackages = with pkgs; [
+       libsecret
+      ];
     };
     
 
