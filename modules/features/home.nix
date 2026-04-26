@@ -28,6 +28,7 @@
 	  cliphist
 	  yt-dlp
 	  gabutdm
+	  aria2
           inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
         
