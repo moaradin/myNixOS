@@ -60,6 +60,7 @@
       # ];
     };
     
+    protontricks.enable = true;
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 
