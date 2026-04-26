@@ -17,7 +17,8 @@
     ];
 
     boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true; 
+    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader.systemd-boot.configurationLimit = 10;
     #Regular Kernel. Disable when using CachyOS
     #boot.kernelPackages = pkgs.linuxPackages_latest; 
     
@@ -36,6 +37,13 @@
       
       # Flatpak
       services.flatpak.enable = true;
+      
+      programs.nh = {
+        enable = true;
+        clean.enable = true;
+        clean.extraArgs = "--keep 10";
+        flake = "/home/moara/myNixOS"; # sets NH_OS_FLAKE variable for you
+      };     
 
 
 
