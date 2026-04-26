@@ -78,6 +78,7 @@
 
     environment.systemPackages = with pkgs; [
       neovim
+      go
       git
       python3
       fastfetch
@@ -92,7 +93,6 @@
       fd
       nixd
       lazygit
-      cliphist
       grc
       fzf
       eza

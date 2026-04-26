@@ -24,6 +24,8 @@
 	  qbittorrent
 	  bitwarden-desktop
 	  mpv
+	  xdg-utils
+	  cliphist
 	  yt-dlp
           inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
