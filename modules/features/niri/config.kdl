@@ -378,10 +378,10 @@ binds {
 spawn-at-startup "noctalia-shell"
 
 // Wait for Noctalia IPC, then lock the screen (used for lock-on-start)
-spawn-sh-at-startup "for i in $(seq 1 50); do noctalia-shell ipc call lockScreen lock > /dev/null 2>&1 && break || sleep 0.1; done"
+spawn-sh-at-startup "/home/moara/myNixOS/modules/features/niri/scripts/noctalia-lock.sh"
 
 // Tile helper script
-spawn-at-startup "./scripts/niri_tile_to_n.py"
+spawn-at-startup "/home/moara/myNixOS/modules/features/niri/scripts/niri_tile_to_n.py"
 
 // Noctalia generates its niri color theme here at startup.
 // This must stay so niri picks up the colors on each launch.
