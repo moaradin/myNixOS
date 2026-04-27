@@ -238,13 +238,9 @@
         # ── Git ───────────────────────────────────────────────────────────────
 
         git = {
-          enable        = true;
-          gitsigns.enable = true;
+          enable              = true;
+          gitsigns.enable     = true;
           gitsigns.codeActions.enable = true;   # stage hunk via code-action menu
-
-          # lazygit — you already have it in systemPackages
-          lazygit.enable = true;
-          mappings.lazygit = "<leader>gg";
         };
 
         # ── Terminal ──────────────────────────────────────────────────────────
@@ -330,6 +326,8 @@
 
         luaConfigPost = ''
           vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle file tree" })
+          -- lazygit is in systemPackages; open it in a floating terminal
+          vim.keymap.set("n", "<leader>gg", "<cmd>terminal lazygit<cr>", { desc = "Open lazygit" })
         '';
         spellcheck = {
           enable    = true;
