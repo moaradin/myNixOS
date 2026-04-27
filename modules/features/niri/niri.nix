@@ -61,15 +61,7 @@
         components = [ "pkcs11" "secrets" "ssh" ];
       };
       
-      programs.kdeconnect = {
-      enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
-      };
-      
-      programs.gnome-shell = {
-        enable = true;
-        extensions = [{ package = pkgs.gnomeExtensions.gsconnect; }];
-      };
+      services.kdeconnect.enable = true;
       
       xdg.userDirs = {
         enable = true;
@@ -115,6 +107,7 @@
       loupe
       gnome-text-editor
       kdePackages.qt6ct
+      kdePackages.dolphin
       ffmpegthumbnailer
       gnome-system-monitor
       gruvbox-kvantum
