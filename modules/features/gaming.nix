@@ -133,6 +133,13 @@
       sgdboop
 
     ];
-
+    
+    users.moara.services.input-remapper = {
+      enable = true;
+      package = with pkgs [
+        input-remapper
+      ]
+    };  
+ 
   };
 }
