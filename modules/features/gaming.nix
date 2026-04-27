@@ -9,10 +9,6 @@
      services.udev.extraRules = ''
        KERNEL=="userfaultfd", GROUP="kvm", MODE="0660"
      '';
-     
-     environment.sessionVariables = {
-       PROTON_VERSION = "GE-Proton10-34";
-     };
 
     # boot.kernel.sysctl = {
     #   "vm.max_map_count"            = 2147483642; # Required by many games (Star Citizen, Elden Ring, anti-cheat)
@@ -68,6 +64,7 @@
       protontricks.enable          = true;
       extraPackages = with pkgs; [
        libsecret
+       proton-ge-bin
       ];
     };
     
