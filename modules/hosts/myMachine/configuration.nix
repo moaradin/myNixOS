@@ -83,7 +83,7 @@
       jq
       git
       sshfs
-      haskellPackages.libfuse3
+      fuse
       inxi
       pciutils
       wayland-utils
