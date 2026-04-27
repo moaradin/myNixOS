@@ -123,35 +123,32 @@
           # Nix — nixd for evaluation-aware completions, alejandra for formatting
           nix = {
             enable    = true;
-            lsp.enable = true;
-            lsp.server = "nixd";
+            lsp.enable   = true;
+            lsp.servers  = [ "nixd" ];   # list — "nil" is the other option
             format.enable = true;
-            format.type   = "alejandra";
             extraDiagnostics.enable = true;
           };
 
           # Lua — for editing this very nvf config and other Neovim plugins
           lua = {
             enable    = true;
-            lsp.enable = true;
+            lsp.enable   = true;
             format.enable = true;
-            format.type   = "stylua";
             extraDiagnostics.enable = true;
           };
 
           # Python
           python = {
             enable    = true;
-            lsp.enable = true;
+            lsp.enable   = true;
             format.enable = true;
-            format.type   = "black";
             extraDiagnostics.enable = true;
           };
 
           # Bash / shell scripts
           bash = {
             enable    = true;
-            lsp.enable = true;
+            lsp.enable   = true;
             format.enable = true;
             extraDiagnostics.enable = true;
           };
@@ -159,7 +156,7 @@
           # Go — you have `go` in systemPackages
           go = {
             enable    = true;
-            lsp.enable = true;
+            lsp.enable   = true;
             format.enable = true;
             extraDiagnostics.enable = true;
           };
@@ -167,7 +164,7 @@
           # Markdown — notes, READMEs
           markdown = {
             enable    = true;
-            lsp.enable = true;
+            lsp.enable   = true;
             format.enable = true;
             extraDiagnostics.enable = true;
           };
@@ -175,7 +172,7 @@
           # YAML — NixOS hardware/config files, GitHub Actions etc.
           yaml = {
             enable    = true;
-            lsp.enable = true;
+            lsp.enable   = true;
             format.enable = true;
             extraDiagnostics.enable = true;
           };
@@ -183,14 +180,14 @@
           # TOML — Cargo.toml, pyproject.toml etc.
           toml = {
             enable    = true;
-            lsp.enable = true;
+            lsp.enable   = true;
             format.enable = true;
           };
 
           # HTML / CSS
           html = {
             enable    = true;
-            lsp.enable = true;
+            lsp.enable   = true;
             format.enable = true;
           };
 
