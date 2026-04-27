@@ -62,10 +62,9 @@
       ];
     };
     
-    programs.input-remapper.enable = true;
-    
     # ── Services ────────────────────────────────────────────────────────────
     services.lact.enable = true;
+    services.input-remapper.enable = true;
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 

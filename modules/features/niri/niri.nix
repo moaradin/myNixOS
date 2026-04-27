@@ -109,6 +109,7 @@
       kdePackages.qt6ct
       kdePackages.dolphin
       ffmpegthumbnailer
+      polkit_gnome
       gnome-system-monitor
       gruvbox-kvantum
       kvmarwaita
