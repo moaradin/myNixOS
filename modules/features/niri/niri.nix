@@ -54,6 +54,13 @@
         enable = true;
         components = [ "pkcs11" "secrets" "ssh" ];
       };
+      
+      services.kdeconnect.enable = true;
+
+      networking.firewall = rec {
+        allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+        allowedUDPPortRanges = allowedTCPPortRanges;
+      };
     };
 
     # ── System services ───────────────────────────────────────────────────
@@ -81,7 +88,6 @@
       gnome-system-monitor
       libnotify       # notify-send (used by Mod+Alt+W wallpaper bind)
       playerctl       # media key binds
-      kdePackages.kdeconnect-kde
     ];
   };
 }
