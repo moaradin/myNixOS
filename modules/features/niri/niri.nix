@@ -50,6 +50,11 @@
         gtk4.theme = null;
       };
       
+     qt = {
+       enable = true;
+       style = "kvantum";
+     };
+      
       services.gnome-keyring = {
         enable = true;
         components = [ "pkcs11" "secrets" "ssh" ];
