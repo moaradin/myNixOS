@@ -81,6 +81,7 @@
       neovim
       go
       git
+      inxi
       python3
       fastfetch
       wget
