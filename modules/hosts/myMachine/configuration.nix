@@ -82,6 +82,13 @@
       go
       git
       inxi
+      wayland-utils
+      wlr-randr
+      wmctrl
+      xorg.xdpyinfo
+      xorg.xprop
+      xdriinfo
+      xorg.xrandr
       python3
       fastfetch
       wget
