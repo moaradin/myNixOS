@@ -114,7 +114,6 @@
 
         languages = {
 
-          enableLSP        = true;   # global toggle for all per-language LSPs
           enableFormat     = true;   # global toggle for all per-language formatters
           enableTreesitter = true;   # global toggle for all per-language grammars
           enableExtraDiagnostics = true;
@@ -240,7 +239,7 @@
 
         terminal.toggleterm = {
           enable    = true;
-          direction = "float";   # float | horizontal | vertical | tab
+          setupOpts.direction = "float";   # float | horizontal | vertical | tab
           mappings.open = "<leader>t";
         };
 
@@ -260,11 +259,11 @@
           modes-nvim.enable   = false;  # colour-coded cursor (optional, set true to try)
           noice.enable        = true;   # replaces cmdline + notifications with floating UI
           smartcolumn = {
-            enable            = true;
-            columnAt.languages = {
-              nix    = 100;
-              python = 88;
-              go     = 120;
+            enable = true;
+            setupOpts.custom_colorcolumn = {
+              nix    = "100";   # must be string, not int
+              python = "88";
+              go     = "120";
             };
           };
         };
