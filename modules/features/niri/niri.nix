@@ -52,7 +52,8 @@
       
      qt = {
        enable = true;
-       style = "kvantum";
+       platformTheme.name = "kvantum";
+       style.name = "kvantum";
      };
       
       services.gnome-keyring = {
