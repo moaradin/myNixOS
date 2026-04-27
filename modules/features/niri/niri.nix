@@ -61,6 +61,11 @@
         components = [ "pkcs11" "secrets" "ssh" ];
       };
       
+      programs.kdeconnect = {
+      enable = true;
+      package = pkgs.gnomeExtensions.gsconnect;
+      };
+      
       programs.gnome-shell = {
         enable = true;
         extensions = [{ package = pkgs.gnomeExtensions.gsconnect; }];
