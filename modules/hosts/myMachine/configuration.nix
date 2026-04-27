@@ -82,6 +82,7 @@
       go
       jq
       git
+      sshfs
       inxi
       pciutils
       wayland-utils
