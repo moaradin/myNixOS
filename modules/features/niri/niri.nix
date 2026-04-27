@@ -56,6 +56,19 @@
       };
       
       services.kdeconnect.enable = true;
+      
+      xdg.userDirs = {
+        enable = true;
+        createDirectories = true;
+        desktop     = "/home/moara/Desktop";
+        documents   = "/home/moara/Documents";
+        download    = "/home/moara/Downloads";
+        music       = "/home/moara/Music";
+        pictures    = "/home/moara/Pictures";
+        publicShare = "/home/moara/Public";
+        templates   = "/home/moara/Templates";
+        videos      = "/home/moara/Videos";
+      };
 
     };
     
