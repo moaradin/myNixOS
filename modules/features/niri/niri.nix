@@ -81,6 +81,7 @@
       gnome-system-monitor
       libnotify       # notify-send (used by Mod+Alt+W wallpaper bind)
       playerctl       # media key binds
+      kdePackages.kdeconnect-kde
     ];
   };
 }
