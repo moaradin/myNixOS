@@ -4,11 +4,6 @@
 
    #  ── Kernel tweaks (optional, uncomment to enable) ─────────────────────
      
-     boot.kernel.sysctl."kernel.unprivileged_userfaultfd" = 1;
-     
-     services.udev.extraRules = ''
-       KERNEL=="userfaultfd", GROUP="kvm", MODE="0660"
-     '';
 
     # boot.kernel.sysctl = {
     #   "vm.max_map_count"            = 2147483642; # Required by many games (Star Citizen, Elden Ring, anti-cheat)
@@ -61,7 +56,7 @@
       remotePlay.openFirewall      = true;
       dedicatedServer.openFirewall = true;
       gamescopeSession.enable      = true;
-     #protontricks.enable          = true;
+      protontricks.enable          = true;
       extraPackages = with pkgs; [
        libsecret
       ];
@@ -115,7 +110,6 @@
       protonplus             # GE-Proton & Wine-GE download manager
       wine-staging           # Wine with staging patches
       winetricks             # Install Windows runtimes into Wine prefixes
-      protontricks
       # protonup-qt            # Alternative GE-Proton manager
 
       # GPU tuning
