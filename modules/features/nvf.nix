@@ -150,7 +150,6 @@
             enable    = true;
             lsp.enable   = true;
             format.enable = true;
-            extraDiagnostics.enable = true;
           };
 
           # Go — you have `go` in systemPackages
@@ -166,7 +165,6 @@
             enable    = true;
             lsp.enable   = true;
             format.enable = true;
-            extraDiagnostics.enable = true;
           };
 
           # YAML — NixOS hardware/config files, GitHub Actions etc.
@@ -174,7 +172,6 @@
             enable    = true;
             lsp.enable   = true;
             format.enable = true;
-            extraDiagnostics.enable = true;
           };
 
           # TOML — Cargo.toml, pyproject.toml etc.
