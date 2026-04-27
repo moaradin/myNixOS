@@ -13,6 +13,7 @@
       self.nixosModules.mounts
       self.nixosModules.cachyos
       self.nixosModules.home
+      self.nixosModules.nvf
       self.nixosModules.programs
       
     ];
@@ -78,7 +79,6 @@
     };
 
     environment.systemPackages = with pkgs; [
-      neovim
       go
       jq
       git
