@@ -80,6 +80,7 @@
     environment.systemPackages = with pkgs; [
       neovim
       go
+      jq
       git
       inxi
       pciutils
