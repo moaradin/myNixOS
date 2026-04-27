@@ -98,10 +98,13 @@
       seahorse
       wl-clipboard
       nautilus
+      loupe
       gnome-text-editor
       kdePackages.qt6ct
       ffmpegthumbnailer
       gnome-system-monitor
+      gruvbox-kvantum
+      kvmarwaita
       libnotify       # notify-send (used by Mod+Alt+W wallpaper bind)
       playerctl       # media key binds
     ];
