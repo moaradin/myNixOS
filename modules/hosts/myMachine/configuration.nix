@@ -26,6 +26,10 @@
     
     networking.hostName = "myMachine";
     networking.networkmanager.enable = true;
+    
+    hardware.bluetooth.enable = true;
+    
+    services.power-profiles-daemon.enable = true;
 
     custom.zram.enable = true;
 
