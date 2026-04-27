@@ -218,10 +218,7 @@
 
         # ── File Explorer ─────────────────────────────────────────────────────
 
-        filetree.neo-tree = {
-          enable = true;
-          mappings.toggle = "<leader>e";
-        };
+        filetree.neo-tree.enable = true;
 
         # ── Status Line ───────────────────────────────────────────────────────
 
@@ -327,6 +324,13 @@
 
         # ── Spell ─────────────────────────────────────────────────────────────
 
+
+        # ── Extra Keybinds (lua) ─────────────────────────────────────────────
+        # neo-tree toggle (mappings submodule doesn't exist in this nvf version)
+
+        luaConfigPost = """
+          vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle file tree" })
+        """;
         spellcheck = {
           enable    = true;
           languages = [ "en" ];
