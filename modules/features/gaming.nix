@@ -2,7 +2,7 @@
 
   flake.nixosModules.gaming = { pkgs, lib, config, ... }: {
 
-     ── Kernel tweaks (optional, uncomment to enable) ─────────────────────
+   #  ── Kernel tweaks (optional, uncomment to enable) ─────────────────────
      
      boot.kernel.sysctl."kernel.unprivileged_userfaultfd" = 1;
 
