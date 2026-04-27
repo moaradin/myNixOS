@@ -5,6 +5,10 @@
    #  ── Kernel tweaks (optional, uncomment to enable) ─────────────────────
      
      boot.kernel.sysctl."kernel.unprivileged_userfaultfd" = 1;
+     
+     services.udev.extraRules = ''
+       KERNEL=="userfaultfd", GROUP="kvm", MODE="0660"
+     '';
 
     # boot.kernel.sysctl = {
     #   "vm.max_map_count"            = 2147483642; # Required by many games (Star Citizen, Elden Ring, anti-cheat)
