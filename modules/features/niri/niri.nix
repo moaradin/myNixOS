@@ -60,6 +60,7 @@
       xdg.userDirs = {
         enable = true;
         createDirectories = true;
+        setSessionVariables = false;
         desktop     = "/home/moara/Desktop";
         documents   = "/home/moara/Documents";
         download    = "/home/moara/Downloads";
