@@ -59,6 +59,7 @@
       protontricks.enable          = true;
       extraPackages = with pkgs; [
        libsecret
+       sgdboop
       ];
     };
     
