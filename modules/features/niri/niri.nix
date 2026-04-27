@@ -61,7 +61,10 @@
         components = [ "pkcs11" "secrets" "ssh" ];
       };
       
-      services.kdeconnect.enable = true;
+      programs.gnome-shell = {
+        enable = true;
+        extensions = [{ package = pkgs.gnomeExtensions.gsconnect; }];
+      };
       
       xdg.userDirs = {
         enable = true;
