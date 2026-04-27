@@ -59,7 +59,6 @@
       protontricks.enable          = true;
       extraPackages = with pkgs; [
        libsecret
-       sgdboop
       ];
     };
     
@@ -131,6 +130,7 @@
       
       # Other
       fflogs
+      sgdboop
 
     ];
 
