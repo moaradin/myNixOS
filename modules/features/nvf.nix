@@ -328,9 +328,9 @@
         # ── Extra Keybinds (lua) ─────────────────────────────────────────────
         # neo-tree toggle (mappings submodule doesn't exist in this nvf version)
 
-        luaConfigPost = """
+        luaConfigPost = ''
           vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle file tree" })
-        """;
+        '';
         spellcheck = {
           enable    = true;
           languages = [ "en" ];
