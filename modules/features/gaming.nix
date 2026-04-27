@@ -134,12 +134,8 @@
 
     ];
     
-    users.moara.services.input-remapper = {
-      enable = true;
-      package = with pkgs [
-        input-remapper
-      ];
-    };  
- 
+    users.moara.services.input-remapper.package = [pkgs.input-remapper];
+    users.moara.services.input-remapper.enable = true;
+    
   };
 }
