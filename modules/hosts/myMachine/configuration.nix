@@ -83,6 +83,7 @@
       jq
       git
       sshfs
+      fuse3
       inxi
       pciutils
       wayland-utils
