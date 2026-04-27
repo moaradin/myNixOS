@@ -22,6 +22,18 @@
         user = "moara";
       };
     };
+    
+    systemd.user.services.polkit-gnome-agent = {
+    description = "Polkit GNOME Authentication Agent";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+    };
+  };
 
     # ── Home User Settings ────────────────────────────────────────────────
 

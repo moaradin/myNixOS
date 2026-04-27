@@ -378,8 +378,6 @@ binds {
 // Noctalia — launched directly, no qs wrapper needed with the official flake
 spawn-at-startup "noctalia-shell"
 
-spawn-at-startup "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"
-
 // Wait for Noctalia IPC, then lock the screen (used for lock-on-start)
 spawn-sh-at-startup "/home/moara/myNixOS/modules/features/niri/scripts/noctalia-lock.sh"
 
