@@ -138,7 +138,7 @@
       enable = true;
       package = with pkgs [
         input-remapper
-      ]
+      ];
     };  
  
   };
