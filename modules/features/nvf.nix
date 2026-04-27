@@ -169,23 +169,20 @@
 
           # YAML — NixOS hardware/config files, GitHub Actions etc.
           yaml = {
-            enable    = true;
+            enable       = true;
             lsp.enable   = true;
-            format.enable = true;
           };
 
           # TOML — Cargo.toml, pyproject.toml etc.
           toml = {
-            enable    = true;
+            enable       = true;
             lsp.enable   = true;
-            format.enable = true;
           };
 
           # HTML / CSS
           html = {
-            enable    = true;
+            enable       = true;
             lsp.enable   = true;
-            format.enable = true;
           };
 
           css = {
