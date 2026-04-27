@@ -23,7 +23,7 @@
         preventJunkFiles     = true;         # no swap/backup/undo files scattered around
         searchCase           = "smart";      # case-insensitive unless you type a capital
         hideSearchHighlight  = true;         # clear highlights after moving off search
-        useSystemClipboard   = true;         # sync + and * registers with wl-clipboard
+        clipboard.registers  = "unnamedplus"; # sync with system clipboard (wl-clipboard)
         enableLuaLoader      = true;         # byte-compile Lua modules for faster startup
         bell                 = "visual";     # no audio bell
 
@@ -88,7 +88,6 @@
           formatOnSave        = true;
           lspkind.enable      = true;   # pictogram icons in completion menu
           lspsaga.enable      = true;   # richer LSP UI (code actions, hover)
-          nvimCodeActionMenu.enable = false;
           trouble.enable      = true;   # diagnostics panel
           lspSignature.enable = true;   # parameter hints while typing
 
