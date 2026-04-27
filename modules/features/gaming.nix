@@ -64,6 +64,7 @@
     
     # ── Services ────────────────────────────────────────────────────────────
     services.lact.enable = true;
+    services.input-remapper.enable = true;
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 
@@ -121,6 +122,7 @@
       gpu-screen-recorder
 
       # Controller & input
+      input-remapper
       # antimicrox             # Remap gamepad buttons to keyboard/mouse
       # oversteer              # Force-feedback tuning for steering wheels
 
@@ -132,10 +134,6 @@
       fflogs
       sgdboop
 
-    ];
-    
-    users.moara.services.input-remapper.package = [pkgs.input-remapper];
-    users.moara.services.input-remapper.enable = true;
-    
+    ];    
   };
 }

@@ -79,7 +79,7 @@
     users.users.moara = {
       isNormalUser = true;
       initialHashedPassword = "$y$j9T$ehIFnAgbxYtk19FXvbEgo/$OP7Hd8L22rUf2MShZ0IhrpiqX26rgpJ8L9zNkXtuVF4";
-      extraGroups = [ "wheel" "networkmanager" "gamemode" ];
+      extraGroups = [ "wheel" "networkmanager" "gamemode" "input" "uinput" ];
     };
 
     environment.systemPackages = with pkgs; [
