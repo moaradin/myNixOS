@@ -58,12 +58,12 @@
           gtk = {
             enable = true;
             iconTheme = {
-              name = "Papirus";
-              package = pkgs.papirus-icon-theme;
+              name = "Gruvbox Dark";
+              package = pkgs.gruvbox-plus-icons;
             };
             theme = {
-              name = "adw-gtk3";
-              package = pkgs.adw-gtk3;
+              name = "gruvbox-dark-gtk";
+              package = pkgs.gruvbox-dark-gtk;
             };
             gtk4.theme = null;
           };
