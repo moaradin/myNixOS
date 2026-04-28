@@ -227,6 +227,13 @@
             enable = true;
           };
 
+          # ── Custom Lua ─────────────────────────────────────────────────────
+          luaConfigRC.scrollwheel = ''
+            -- Scroll viewport without moving cursor
+            vim.keymap.set({"n", "v", "i"}, "<ScrollWheelUp>",   "<C-Y>", { noremap = true })
+            vim.keymap.set({"n", "v", "i"}, "<ScrollWheelDown>", "<C-E>", { noremap = true })
+          '';
+
         };
       };
     };
