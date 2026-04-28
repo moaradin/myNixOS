@@ -13,9 +13,9 @@
           name = "gruvbox";
           style = "dark";
           transparent = true;
-
-        vim.languages.nix.enable = true;
        };
+       
+       vim.languages.nix.enable = true;
       };
      };
     };
