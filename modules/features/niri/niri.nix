@@ -58,11 +58,11 @@
           gtk = {
             enable = true;
             iconTheme = {
-              name = "Gruvbox Dark";
+              name = "Gruvbox-Plus-Dark";
               package = pkgs.gruvbox-plus-icons;
             };
             theme = {
-              name = "gruvbox-dark-gtk";
+              name = "gruvbox-dark";
               package = pkgs.gruvbox-dark-gtk;
             };
             gtk4.theme = null;
