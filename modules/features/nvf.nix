@@ -212,9 +212,7 @@
             # View colour values (hex/rgb) in-line
             ccc.enable          = true;
             # Indent/scope motion
-            motion.hop.enable = true;  # <leader>hw/hl/hj/hk jumps
-            # Highlight TODO/FIXME/HACK/NOTE comments
-            todo-comments.enable = true;
+            motion.hop.enable = true;
             # Diff viewer (great for git history)
             diffview-nvim.enable = true;
           };
