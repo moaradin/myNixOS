@@ -176,7 +176,7 @@
               enable        = true;
               lsp.enable    = true;
               format.enable = true;
-              format.type   = "black";
+              format.type   = [ "black" ];
               dap.enable    = true;
             };
 
