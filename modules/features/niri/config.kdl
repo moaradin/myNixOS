@@ -67,7 +67,7 @@ output "DP-3" {
     scale 1.0
     position x=1920 y=0
     focus-at-startup
-  //  variable-refresh-rate on-demand=true
+    variable-refresh-rate on-demand=true
 
     hot-corners {
         off
@@ -241,7 +241,7 @@ binds {
     Mod+D hotkey-overlay-title="Open Discord: equibop"    repeat=false { spawn "vesktop"; }
 
     Shift+Print { screenshot; }
-    Print       { spawn "niri-screenshot"; }
+    Print       { spawn "./scripts/niri-screenshot.sh" }
 
     // --- Media & Hardware ---
     XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
