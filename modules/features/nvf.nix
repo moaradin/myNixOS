@@ -203,8 +203,8 @@
 
             # Markdown — README / notes
             markdown = {
-              enable             = true;
-              extensions.glow.enable = true;   # in-editor preview
+              enable                              = true;
+              extensions.render-markdown-nvim.enable = true;
             };
           };
 
