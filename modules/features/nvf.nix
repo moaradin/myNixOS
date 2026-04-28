@@ -51,7 +51,7 @@
               highlight-undo.enable = true; # flash highlight on undo/redo
               indent-blankline.enable = true; # indent guide lines
               # cinnamon-nvim gives smooth scroll — pairs nicely with niri animations
-              # cinnamon-nvim.enable      = true;
+              cinnamon-nvim.enable = true;
             };
 
             # ── Statusline ─────────────────────────────────────────────────────
@@ -229,14 +229,6 @@
             dashboard.alpha = {
               enable = true;
             };
-
-            # ── Custom Lua ─────────────────────────────────────────────────────
-            luaConfigRC.scrollwheel = ''
-              -- Scroll viewport without moving cursor
-              vim.keymap.set({"n", "v", "i"}, "<ScrollWheelUp>",   "<C-Y>", { noremap = true })
-              vim.keymap.set({"n", "v", "i"}, "<ScrollWheelDown>", "<C-E>", { noremap = true })
-            '';
-
           };
         };
       };
