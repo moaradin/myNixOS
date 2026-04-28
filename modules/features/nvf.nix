@@ -14,11 +14,24 @@
           style = "dark";
           transparent = true;
        };
-       
+
+       vim.lsp.servers.nixd.enable = true;
+ 
        vim.languages = {
-        nix.enable = true;
+       enableFormat = true;
+       enableDAP = true;
+       enableExtraDiagnostics = true;
+       enableTreesitter = true;
+       nix = {
+         enable = true;
+         format.enable = true;
+         format.type = [ "nixfmt" ];
+
+
       };
      };
     };
    };
-  } 
+  };
+ } 
+                       
