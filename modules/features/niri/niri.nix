@@ -41,7 +41,11 @@
         in
         {
 
-          xdg.configFile."niri/config.kdl".text = builtins.readFile ./config.kdl;
+          xdg.configFile."niri/config.kdl".text =
+            builtins.replaceStrings
+              [ "spawn \"niri-screenshot\"" ]
+              [ "spawn \"${niri-screenshot}/bin/niri-screenshot\"" ]
+              (builtins.readFile ./config.kdl);
 
           home.pointerCursor = {
             name = "Bibata-Modern-Ice";
@@ -94,6 +98,8 @@
             templates = "/home/moara/Templates";
             videos = "/home/moara/Videos";
           };
+
+          home.packages = [ niri-screenshot ];
 
         };
 
