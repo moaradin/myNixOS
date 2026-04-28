@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # 1. Get the focused window's App ID
 APP_NAME=$(niri msg --json focused-window | jq -r '.app_id // "Unknown"')
 
@@ -21,19 +19,19 @@ TIMEOUT=20
 ELAPSED=0
 
 while [ $ELAPSED -lt $TIMEOUT ]; do
-    NEW_LATEST=$(ls -t "$SOURCE_DIR"/*.png 2>/dev/null | head -1)
-    
-    # If the newest file is different from what we recorded before, the new screenshot is ready!
-    if [ "$NEW_LATEST" != "$OLD_LATEST" ] && [ -n "$NEW_LATEST" ]; then
-        # Wait a tiny fraction of a second to ensure Niri is completely done writing the file
-        sleep 0.2
-        mv "$NEW_LATEST" "$DEST_BASE_DIR/"
-        exit 0
-    fi
-    
-    # Check every 0.5 seconds
-    sleep 0.5
-    ELAPSED=$((ELAPSED + 1))
+  NEW_LATEST=$(ls -t "$SOURCE_DIR"/*.png 2>/dev/null | head -1)
+
+  # If the newest file is different from what we recorded before, the new screenshot is ready!
+  if [ "$NEW_LATEST" != "$OLD_LATEST" ] && [ -n "$NEW_LATEST" ]; then
+    # Wait a tiny fraction of a second to ensure Niri is completely done writing the file
+    sleep 0.2
+    mv "$NEW_LATEST" "$DEST_BASE_DIR/"
+    exit 0
+  fi
+
+  # Check every 0.5 seconds
+  sleep 0.5
+  ELAPSED=$((ELAPSED + 1))
 done
 
 echo "Error: Screenshot creation timed out."
