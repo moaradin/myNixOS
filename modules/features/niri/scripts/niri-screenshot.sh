@@ -1,5 +1,9 @@
 # 1. Get the focused window's App ID
-APP_NAME=$(niri msg --json focused-window | jq -r '.app_id // "Unknown"')
+WINDOW_JSON=$(niri msg --json focused-window)
+APP_NAME=$(echo "$WINDOW_JSON" | jq -r '.app_id // "Unknown"')
+
+# Debug log — remove once confirmed working
+echo "$(date): window_json=$WINDOW_JSON app_name=$APP_NAME" >>/tmp/niri-screenshot-debug.log
 
 # 2. Define your source and destination directories
 SOURCE_DIR="/home/moara/Pictures/Screenshots"
@@ -12,7 +16,7 @@ mkdir -p "$DEST_BASE_DIR"
 OLD_LATEST=$(find "$SOURCE_DIR" -maxdepth 1 -name "*.png" -printf "%T@ %p\n" 2>/dev/null |
   sort -rn | head -1 | cut -d' ' -f2- || true)
 
-# 4. Trigger the screenshot
+# 4. Trigger a screenshot
 niri msg action screenshot-screen
 
 # 5. Wait for the new screenshot to appear (with a 10-second timeout)
@@ -23,10 +27,10 @@ while [ $ELAPSED -lt $TIMEOUT ]; do
   NEW_LATEST=$(find "$SOURCE_DIR" -maxdepth 1 -name "*.png" -printf "%T@ %p\n" 2>/dev/null |
     sort -rn | head -1 | cut -d' ' -f2- || true)
 
-  # If the newest file differs from what we recorded before, it's ready
   if [ "$NEW_LATEST" != "$OLD_LATEST" ] && [ -n "$NEW_LATEST" ]; then
     sleep 0.2
     mv "$NEW_LATEST" "$DEST_BASE_DIR/"
+    echo "$(date): moved $NEW_LATEST -> $DEST_BASE_DIR/" >>/tmp/niri-screenshot-debug.log
     exit 0
   fi
 
@@ -34,5 +38,5 @@ while [ $ELAPSED -lt $TIMEOUT ]; do
   ELAPSED=$((ELAPSED + 1))
 done
 
-echo "Error: Screenshot creation timed out." >&2
+echo "$(date): timed out waiting for screenshot" >>/tmp/niri-screenshot-debug.log
 exit 1
