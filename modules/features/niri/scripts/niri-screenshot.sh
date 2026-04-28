@@ -9,29 +9,29 @@ DEST_BASE_DIR="/home/moara/Pictures/Niri/$APP_NAME"
 mkdir -p "$DEST_BASE_DIR"
 
 # 3. Record the current newest file to detect when Niri creates the new one
-OLD_LATEST=$(ls -t "$SOURCE_DIR"/*.png 2>/dev/null | head -1)
+#    Use "|| true" so set -e doesn't abort when the directory is empty
+OLD_LATEST=$(ls -t "$SOURCE_DIR"/*.png 2>/dev/null | head -1 || true)
 
 # 4. Trigger the screenshot
 niri msg action screenshot-screen
 
-# 5. Wait for the new screenshot to appear (with a 10-second timeout to prevent infinite loops)
+# 5. Wait for the new screenshot to appear (with a 10-second timeout)
 TIMEOUT=20
 ELAPSED=0
 
 while [ $ELAPSED -lt $TIMEOUT ]; do
-  NEW_LATEST=$(ls -t "$SOURCE_DIR"/*.png 2>/dev/null | head -1)
+  NEW_LATEST=$(ls -t "$SOURCE_DIR"/*.png 2>/dev/null | head -1 || true)
 
-  # If the newest file is different from what we recorded before, the new screenshot is ready!
+  # If the newest file differs from what we recorded before, it's ready
   if [ "$NEW_LATEST" != "$OLD_LATEST" ] && [ -n "$NEW_LATEST" ]; then
-    # Wait a tiny fraction of a second to ensure Niri is completely done writing the file
     sleep 0.2
     mv "$NEW_LATEST" "$DEST_BASE_DIR/"
     exit 0
   fi
 
-  # Check every 0.5 seconds
   sleep 0.5
   ELAPSED=$((ELAPSED + 1))
 done
 
-echo "Error: Screenshot creation timed out."
+echo "Error: Screenshot creation timed out." >&2
+exit 1
