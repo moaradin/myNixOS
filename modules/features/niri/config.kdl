@@ -241,7 +241,7 @@ binds {
     Mod+D hotkey-overlay-title="Open Discord: equibop"    repeat=false { spawn "vesktop"; }
 
     Shift+Print { screenshot; }
-    Print       { spawn "/home/moara/myNixOS/modules/features/niri/scripts/niri-screenshot.sh"; }
+    Print       { spawn "niri-screenshot"; }
 
     // --- Media & Hardware ---
     XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
