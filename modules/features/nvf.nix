@@ -196,9 +196,8 @@
             };
 
             yaml = {
-              enable        = true;
-              lsp.enable    = true;
-              format.enable = true;
+              enable     = true;
+              lsp.enable = true;
             };
 
             # Markdown — README / notes
