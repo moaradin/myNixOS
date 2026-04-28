@@ -9,8 +9,8 @@ DEST_BASE_DIR="/home/moara/Pictures/Niri/$APP_NAME"
 mkdir -p "$DEST_BASE_DIR"
 
 # 3. Record the current newest file to detect when Niri creates the new one
-#    Use "|| true" so set -e doesn't abort when the directory is empty
-OLD_LATEST=$(ls -t "$SOURCE_DIR"/*.png 2>/dev/null | head -1 || true)
+OLD_LATEST=$(find "$SOURCE_DIR" -maxdepth 1 -name "*.png" -printf "%T@ %p\n" 2>/dev/null |
+  sort -rn | head -1 | cut -d' ' -f2- || true)
 
 # 4. Trigger the screenshot
 niri msg action screenshot-screen
@@ -20,7 +20,8 @@ TIMEOUT=20
 ELAPSED=0
 
 while [ $ELAPSED -lt $TIMEOUT ]; do
-  NEW_LATEST=$(ls -t "$SOURCE_DIR"/*.png 2>/dev/null | head -1 || true)
+  NEW_LATEST=$(find "$SOURCE_DIR" -maxdepth 1 -name "*.png" -printf "%T@ %p\n" 2>/dev/null |
+    sort -rn | head -1 | cut -d' ' -f2- || true)
 
   # If the newest file differs from what we recorded before, it's ready
   if [ "$NEW_LATEST" != "$OLD_LATEST" ] && [ -n "$NEW_LATEST" ]; then
