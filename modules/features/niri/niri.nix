@@ -27,63 +27,75 @@
 
       # ── Home User Settings ────────────────────────────────────────────────
 
-      home-manager.users.moara = {
-
-        xdg.configFile."niri/config.kdl".text = builtins.readFile ./config.kdl;
-
-        home.pointerCursor = {
-          name = "Bibata-Modern-Ice";
-          package = pkgs.bibata-cursors;
-          size = 24;
-          gtk.enable = true;
-          x11.enable = true;
-        };
-
-        gtk = {
-          enable = true;
-          iconTheme = {
-            name = "Papirus";
-            package = pkgs.papirus-icon-theme;
+      home-manager.users.moara =
+        { config, ... }:
+        let
+          niri-screenshot = pkgs.writeShellApplication {
+            name = "niri-screenshot";
+            runtimeInputs = [
+              pkgs.jq
+              pkgs.niri-unstable
+            ];
+            text = builtins.readFile ./scripts/niri-screenshot.sh;
           };
-          theme = {
-            name = "adw-gtk3";
-            package = pkgs.adw-gtk3;
+        in
+        {
+
+          xdg.configFile."niri/config.kdl".text = builtins.readFile ./config.kdl;
+
+          home.pointerCursor = {
+            name = "Bibata-Modern-Ice";
+            package = pkgs.bibata-cursors;
+            size = 24;
+            gtk.enable = true;
+            x11.enable = true;
           };
-          gtk4.theme = null;
+
+          gtk = {
+            enable = true;
+            iconTheme = {
+              name = "Papirus";
+              package = pkgs.papirus-icon-theme;
+            };
+            theme = {
+              name = "adw-gtk3";
+              package = pkgs.adw-gtk3;
+            };
+            gtk4.theme = null;
+          };
+
+          qt = {
+            enable = true;
+            platformTheme.name = "kvantum";
+            style.name = "kvantum";
+          };
+
+          services.gnome-keyring = {
+            enable = true;
+            components = [
+              "pkcs11"
+              "secrets"
+              "ssh"
+            ];
+          };
+
+          services.kdeconnect.enable = true;
+
+          xdg.userDirs = {
+            enable = true;
+            createDirectories = true;
+            setSessionVariables = false;
+            desktop = "/home/moara/Desktop";
+            documents = "/home/moara/Documents";
+            download = "/home/moara/Downloads";
+            music = "/home/moara/Music";
+            pictures = "/home/moara/Pictures";
+            publicShare = "/home/moara/Public";
+            templates = "/home/moara/Templates";
+            videos = "/home/moara/Videos";
+          };
+
         };
-
-        qt = {
-          enable = true;
-          platformTheme.name = "kvantum";
-          style.name = "kvantum";
-        };
-
-        services.gnome-keyring = {
-          enable = true;
-          components = [
-            "pkcs11"
-            "secrets"
-            "ssh"
-          ];
-        };
-
-        services.kdeconnect.enable = true;
-
-        xdg.userDirs = {
-          enable = true;
-          createDirectories = true;
-          setSessionVariables = false;
-          desktop = "/home/moara/Desktop";
-          documents = "/home/moara/Documents";
-          download = "/home/moara/Downloads";
-          music = "/home/moara/Music";
-          pictures = "/home/moara/Pictures";
-          publicShare = "/home/moara/Public";
-          templates = "/home/moara/Templates";
-          videos = "/home/moara/Videos";
-        };
-
-      };
 
       # ── Firewall Settings ────────────────────────────────────────────────
       networking.firewall = rec {
