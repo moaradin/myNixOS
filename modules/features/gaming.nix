@@ -65,6 +65,45 @@
     # ── Services ────────────────────────────────────────────────────────────
     services.lact.enable = true;
     services.input-remapper.enable = true;
+    
+    services.kanata = {
+    enable = true;
+    keyboards.ffxiv = {
+      devices = [
+        # The verified interface for the Aerox 9 side buttons
+        "/dev/input/by-id/usb-SteelSeries_SteelSeries_Aerox_9_Wireless-if05-event-kbd"
+      ];
+      extraDefCfg = "process-unmapped-keys yes";
+      config = ''
+        (defsrc
+          1 2 3 pause
+        )
+        (deflayer ffxiv
+          left down right del
+        )
+      '';
+    };
+  };
+  
+  # Prevent the service from grabbing the mouse on system boot
+  systemd.services.kanata-ffxiv.wantedBy = lib.mkForce [];
+
+  # Sudo rules allowing your wrapper script to start/stop the preset
+  security.sudo.extraRules = [
+    {
+      users = [ "moara" ];
+      commands = [
+        { 
+          command = "/run/current-system/sw/bin/systemctl start kanata-ffxiv.service"; 
+          options = [ "NOPASSWD" ]; 
+        }
+        { 
+          command = "/run/current-system/sw/bin/systemctl stop kanata-ffxiv.service"; 
+          options = [ "NOPASSWD" ]; 
+        }
+      ];
+    }
+  ];
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 
