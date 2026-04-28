@@ -149,7 +149,6 @@
             lspSignature.enable = true;   # signature help while typing args
             trouble.enable      = true;   # pretty diagnostics list
             lightbulb.enable    = true;   # code-action bulb in sign column
-            lsplines.enable     = false;  # inline virtual text (can be noisy)
             nvim-docs-view.enable = true; # hover docs in a side panel
           };
 
