@@ -167,7 +167,7 @@ window-rule {
     match app-id=r#"steam_app_.*"#
     match app-id="gamescope"
     open-on-output "DP-3"
-    variable-refresh-rate true
+  //  variable-refresh-rate true
 }
 
 // Genshin FPS Unlocker — hide off-screen on DP-2
