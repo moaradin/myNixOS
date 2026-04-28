@@ -64,8 +64,8 @@
     
     # ── Services ────────────────────────────────────────────────────────────
     services.lact.enable = true;
-    services.input-remapper.enable = true;
     
+    # ── FFXIV BINDINGS ───────────────────────────────────────────────────────
     services.kanata = {
     enable = true;
     keyboards.ffxiv = {
@@ -104,6 +104,35 @@
       ];
     }
   ];
+  
+  systemd.user.services.kanata-ffxiv-watcher = {
+    description = "Auto-toggle Kanata when FFXIV is running";
+    wantedBy = [ "default.target" ];
+    path = [ pkgs.procps ]; # Gives the script access to 'pgrep'
+    script = ''
+      is_running=false
+
+      while true; do
+        # Check if the FFXIV executable is currently in the process list
+        if pgrep -x "ffxiv_dx11.exe" > /dev/null; then
+          if [ "$is_running" = false ]; then
+            echo "FFXIV detected, starting Kanata..."
+            sudo /run/current-system/sw/bin/systemctl start kanata-ffxiv.service
+            is_running=true
+          fi
+        else
+          if [ "$is_running" = true ]; then
+            echo "FFXIV closed, stopping Kanata..."
+            sudo /run/current-system/sw/bin/systemctl stop kanata-ffxiv.service
+            is_running=false
+          fi
+        fi
+        
+        # Pause for 3 seconds before checking again (virtually 0 CPU usage)
+        sleep 3
+      done
+    '';
+  };
 
     # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
 
