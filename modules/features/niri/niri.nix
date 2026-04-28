@@ -13,7 +13,7 @@
       nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
 
       programs.niri.enable = true;
-      programs.niri.package = pkgs.niri-stable;
+      programs.niri.package = pkgs.niri-unstable;
 
       # ── Session ───────────────────────────────────────────────────────────
 
