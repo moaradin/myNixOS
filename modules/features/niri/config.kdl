@@ -192,10 +192,7 @@ window-rule {
   default-floating-position x=-5000 y=-5000 relative-to="top-right"
 }
 
-window-rule {
-  match title="NTEGlobalGame"
-  open-fullscreen true 
-}
+
 
 window-rule {
   match title=r#"Log in"#
