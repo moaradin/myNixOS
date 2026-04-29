@@ -187,6 +187,7 @@ window-rule {
 window-rule {
   match app-id="steam_app_2816997005"   title=r#"^$"#
   open-on-output "DP-2"
+  open-on-workspace "obs"
   open-focused false
   default-floating-position x=-5000 y=-5000 relative-to="top-right"
 }
@@ -195,6 +196,13 @@ window-rule {
   match title="NTEGlobalGame"
   open-fullscreen true 
 }
+
+window-rule {
+  match title=r#"Log in"#
+  match app-id="steam_app_2816997005"
+  open-floating true
+}
+
 // Genshin Impact — main monitor
 window-rule {
     match app-id="steam_app_2527870827" title=r#"^Genshin Impact$"#
