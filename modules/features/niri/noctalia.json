@@ -343,7 +343,7 @@
     "wallpaper": {
       "enabled": true,
       "overviewEnabled": false,
-      "directory": "/home/moara/.local/share/wallpapers/GruvboxAlt",
+      "directory": "/home/moara/.local/share/wallpapers/Gruvbox",
       "monitorDirectories": [],
       "enableMultiMonitorDirectories": false,
       "showHiddenFiles": true,
@@ -679,7 +679,7 @@
     },
     "colorSchemes": {
       "useWallpaperColors": false,
-      "predefinedScheme": "Gruvbox",
+      "predefinedScheme": "GruvboxAlt",
       "darkMode": true,
       "schedulingMode": "off",
       "manualSunrise": "06:30",
