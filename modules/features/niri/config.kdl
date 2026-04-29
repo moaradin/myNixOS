@@ -195,8 +195,7 @@ window-rule {
 
 
 window-rule {
-  match title=r#"Log in"#
-  match app-id="steam_app_2816997005"
+match app-id="steam_app_2816997005"      title=r#"Log in"#
   open-floating true
 }
 
