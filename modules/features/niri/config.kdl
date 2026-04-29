@@ -190,6 +190,22 @@ window-rule {
     open-on-output "DP-3"
 }
 
+// NTE — main game window: tiling, open fullscreen on DP-3
+window-rule {
+    match app-id=r#"^steam_app_2816997005$"# title=r#"^NTE\s"#
+    open-on-output "DP-3"
+    open-fullscreen true
+}
+
+// NTE — floating overlay (160×20, empty title): hide off-screen on DP-2
+window-rule {
+    match app-id=r#"^steam_app_2816997005$"# title=r#"^$"#
+    open-on-output "DP-2"
+    open-floating true
+    open-focused false
+    default-floating-position x=-5000 y=-5000 relative-to="top-right"
+}
+
 // OBS / portal / Archon — open to obs workspace, unfocused
 window-rule {
     match app-id="com.obsproject.Studio"
