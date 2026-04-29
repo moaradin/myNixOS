@@ -183,6 +183,18 @@ window-rule {
     default-floating-position x=-5000 y=-5000 relative-to="top-right"
 }
 
+// NTE stuff
+window-rule {
+  match app-id="steam_app_2816997005"   title=r#"^$"#
+  open-on-output "DP-2"
+  open-focused false
+  default-floating-position x=-5000 y=-5000 relative-to="top-right"
+}
+
+window-rule {
+  match title="NTEGlobalGame"
+  fullscreen-window
+}
 // Genshin Impact — main monitor
 window-rule {
     match app-id="steam_app_2527870827" title=r#"^Genshin Impact$"#
