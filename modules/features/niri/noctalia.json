@@ -343,7 +343,7 @@
     "wallpaper": {
       "enabled": true,
       "overviewEnabled": false,
-      "directory": "/home/moara/.local/share/wallpapers/Gruvbox",
+      "directory": "/home/moara/.local/share/wallpapers/GruvboxAlt",
       "monitorDirectories": [],
       "enableMultiMonitorDirectories": false,
       "showHiddenFiles": true,
