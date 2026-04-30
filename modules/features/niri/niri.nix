@@ -25,7 +25,7 @@
             name = "niri-screenshot";
             runtimeInputs = [
               pkgs.jq
-              pkgs.niri-unstable
+              pkgs.niri
             ];
             text = builtins.readFile ./scripts/niri-screenshot.sh;
           };
