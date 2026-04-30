@@ -221,9 +221,9 @@ window-rule {
     match app-id="org.gnome.TextEditor"
     draw-border-with-background false
     opacity 0.80
-   // background-effect {
-   //     blur true
-   // }
+    background-effect {
+        blur true
+    }
 }
 
 // Ghostty — no border background
