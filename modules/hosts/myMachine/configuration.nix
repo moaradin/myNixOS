@@ -122,6 +122,7 @@
         zoxide
         fd
         nixd
+        nix-output-monitor
         lazygit
         grc
         fzf
