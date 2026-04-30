@@ -31,6 +31,8 @@
             cliphist
             yt-dlp
             aria2
+            inotify-tools
+            zenity
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
 
