@@ -4,16 +4,7 @@
     { pkgs, lib, ... }:
     {
 
-      imports = [
-        inputs.niri-flake.nixosModules.niri # handles portals, polkit, keyring, session
-      ];
-
-      # niri-flake's overlay exposes pkgs.niri-stable and pkgs.niri-unstable.
-      # niri-unstable tracks the latest commit to niri's main branch.
-      nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
-
       programs.niri.enable = true;
-      programs.niri.package = pkgs.niri-unstable;
 
       # ── Session ───────────────────────────────────────────────────────────
 
