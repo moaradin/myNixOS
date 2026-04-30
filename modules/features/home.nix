@@ -34,6 +34,7 @@
             aria2
             inotify-tools
             zenity
+            gowall
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
 
