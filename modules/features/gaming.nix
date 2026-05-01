@@ -30,29 +30,30 @@
 
       # ── GameMode ──────────────────────────────────────────────────────────
 
-      programs.gamemode = {
-        enable = true;
-        settings = {
-          general = {
-            renice = 10;
-            inhibit_screensaver = 1;
-          };
-          gpu = {
-            apply_gpu_optimisations = "accept-responsibility";
-            gpu_device = 0;
-            nv_powermizer_mode = 1; # NVIDIA: prefer maximum performance
-          };
-          cpu = {
-            park_cores = "no";
-            pin_cores = "yes";
-          };
-        };
-      };
+      #programs.gamemode = {
+      #  enable = true;
+      #  settings = {
+      #    general = {
+      #      renice = 10;
+      #      inhibit_screensaver = 1;
+      #    };
+      #    gpu = {
+      #      apply_gpu_optimisations = "accept-responsibility";
+      #      gpu_device = 0;
+      #      nv_powermizer_mode = 1; # NVIDIA: prefer maximum performance
+      #    };
+      #    cpu = {
+      #      park_cores = "no";
+      #      pin_cores = "yes";
+      #    };
+      #  };
+      #};
 
       # ── Gamescope ─────────────────────────────────────────────────────────
 
       programs.gamescope = {
         enable = true;
+
       };
 
       # ── Steam ─────────────────────────────────────────────────────────────
