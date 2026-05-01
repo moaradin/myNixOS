@@ -53,7 +53,7 @@
 
       programs.gamescope = {
         package = pkgs.gamescope.overrideAttrs (old: {
-          src = pkgs.fetchFromGithub {
+          src = pkgs.fetchFromGitHub {
             owner = "barramee27";
             repo = "gamescope";
             rev = "feat/nvidia-blackwell-explicit-sync";
