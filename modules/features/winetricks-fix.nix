@@ -31,12 +31,7 @@
             # The upstream commit that adds WINE_BIN / WINESERVER_BIN support.
             # Remove this block if your winetricks build fails with a patch error
             # (it means 20260125 already includes it).
-            patches = (old.patches or [ ]) ++ [
-              (prev.fetchpatch {
-                url = "https://github.com/Winetricks/winetricks/commit/1d441b422d9a9cc8b0a53fa203557957ca1adc44.patch";
-                hash = "sha256-AYXV2qLHlxuyHC5VqUjDu4qi1TcAl2pMSAi8TEp8db4=";
-              })
-            ];
+
 
             # Inject NixOS-appropriate defaults right after the shebang line.
             # : "${VAR:=default}"  →  bash no-op that sets VAR only if unset/empty.
