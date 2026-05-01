@@ -49,7 +49,7 @@
       #  };
       #};
 
-      # ── Gamescope ─────────────────────────────────────────────────────────
+      # ── Gamescope with custom nvidia patches ───────────────────────────────
 
       programs.gamescope = {
         package = pkgs.gamescope.overrideAttrs (old: {
