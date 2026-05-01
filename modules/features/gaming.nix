@@ -56,7 +56,7 @@
           src = pkgs.fetchFromGitHub {
             owner = "barramee27";
             repo = "gamescope";
-            rev = "feat/nvidia-blackwell-explicit-sync";
+            rev = "refs/heads/feat/nvidia-blackwell-explicit-sync";
             hash = "";
             fetchSubmodules = true;
           };
