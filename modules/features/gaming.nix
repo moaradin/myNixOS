@@ -63,6 +63,7 @@
           version = "nvdia-blackwell-patched";
         });
         enable = true;
+        capSysNice = true;
 
       };
 
