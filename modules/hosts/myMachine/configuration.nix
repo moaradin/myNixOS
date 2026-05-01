@@ -23,8 +23,6 @@
         self.nixosModules.home
         self.nixosModules.nvf
         self.nixosModules.programs
-        self.nixosModules.winetricksFix
-
       ];
 
       boot.loader.systemd-boot.enable = true;
