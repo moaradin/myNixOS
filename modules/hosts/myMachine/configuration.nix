@@ -23,6 +23,7 @@
         self.nixosModules.home
         self.nixosModules.nvf
         self.nixosModules.programs
+        self.nixosModules.winetricksFix
 
       ];
 
