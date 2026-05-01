@@ -33,7 +33,7 @@
             yt-dlp
             aria2
             inotify-tools
-            zenity
+            yad
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
 

@@ -62,7 +62,7 @@
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
         gamescopeSession.enable = true;
-        protontricks.enable = true;
+        #protontricks.enable = true;
         extraPackages = with pkgs; [
           libsecret
         ];
@@ -184,6 +184,7 @@
         protonplus # GE-Proton & Wine-GE download manager
         wine-staging # Wine with staging patches
         winetricks # Install Windows runtimes into Wine prefixes
+        protontricks # winetricks fork for games
         # protonup-qt            # Alternative GE-Proton manager
 
         # GPU tuning
