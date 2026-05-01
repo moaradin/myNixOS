@@ -52,6 +52,16 @@
       # ── Gamescope ─────────────────────────────────────────────────────────
 
       programs.gamescope = {
+        package = pkgs.gamescope.overrideAttrs (old: {
+          src = pkgs.fetchFromGithub {
+            owner = "barramee27";
+            repo = "gamescope";
+            rev = "feat/nvidia-blackwell-explicit-sync";
+            hash = "lib.fakeHash";
+            fetchSubmodules = true;
+          };
+          version = "nvdia-blackwell-patched";
+        });
         enable = true;
 
       };
