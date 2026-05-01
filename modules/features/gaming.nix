@@ -182,8 +182,8 @@
 
         # Proton / Wine tooling
         protonplus # GE-Proton & Wine-GE download manager
-        wine-staging # Wine with staging patches
-        winetricks # Install Windows runtimes into Wine prefixes
+        #wine-staging # Wine with staging patches
+        #winetricks # Install Windows runtimes into Wine prefixes
         #protontricks # winetricks fork for games
         # protonup-qt            # Alternative GE-Proton manager
 
