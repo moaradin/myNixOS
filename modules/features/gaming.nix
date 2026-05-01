@@ -57,7 +57,7 @@
             owner = "barramee27";
             repo = "gamescope";
             rev = "feat/nvidia-blackwell-explicit-sync";
-            hash = "lib.fakeHash";
+            hash = "";
             fetchSubmodules = true;
           };
           version = "nvdia-blackwell-patched";
