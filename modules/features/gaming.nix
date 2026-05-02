@@ -51,17 +51,21 @@
 
       # ── Gamescope with custom nvidia patches ───────────────────────────────
 
+      # programs.gamescope = {
+      #   package = pkgs.gamescope.overrideAttrs (old: {
+      #     src = pkgs.fetchFromGitHub {
+      #       owner = "barramee27";
+      #       repo = "gamescope";
+      #       rev = "refs/heads/feat/nvidia-blackwell-explicit-sync";
+      #       hash = "sha256-12r75rCcO4Z/W8nu9mHq5FQSosMHjWRuyCHAtDrf+Mg=";
+      #       fetchSubmodules = true;
+      #     };
+      #     version = "nvdia-blackwell-patched";
+      #   });
+      #   enable = true;
+      # };
+
       programs.gamescope = {
-        package = pkgs.gamescope.overrideAttrs (old: {
-          src = pkgs.fetchFromGitHub {
-            owner = "barramee27";
-            repo = "gamescope";
-            rev = "refs/heads/feat/nvidia-blackwell-explicit-sync";
-            hash = "sha256-12r75rCcO4Z/W8nu9mHq5FQSosMHjWRuyCHAtDrf+Mg=";
-            fetchSubmodules = true;
-          };
-          version = "nvdia-blackwell-patched";
-        });
         enable = true;
       };
 
