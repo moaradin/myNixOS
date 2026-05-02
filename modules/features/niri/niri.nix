@@ -48,14 +48,30 @@
 
           gtk = {
             enable = true;
+
             iconTheme = {
               name = "Gruvbox-Plus-Dark";
-              package = pkgs.gruvbox-plus-icons;
+              package = pkgs.gruvbox-plus-icons.overrideAttrs (oldAttrs: {
+                postInstall = (oldAttrs.postInstall or "") + ''
+                  for theme in Gruvbox-Plus-Dark Gruvbox-Plus-Light; do
+                    if [ -d "$out/share/icons/$theme/apps" ]; then
+                      pushd "$out/share/icons/$theme/apps" > /dev/null
+                      for size in "16" "16@2x" "22" "22@2x" "24" "24@2x"; do
+                        rm -rf "$size"
+                        ln -s scalable "$size"
+                      done
+                      popd > /dev/null
+                    fi
+                  done
+                '';
+              });
             };
+
             theme = {
               name = "gruvbox-dark";
               package = pkgs.gruvbox-dark-gtk;
             };
+
             gtk4.theme = null;
           };
 
