@@ -136,17 +136,5 @@
         playerctl # media key binds
       ];
 
-      nixpkgs.overlays = [
-        (final: prev: {
-          xwayland = prev.xwayland.overrideAttrs (_: {
-            version = "24.1.10";
-            src = prev.fetchurl {
-              url = "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-24.1.10.tar.xz";
-              hash = "sha256-RZdivo6gRslDhmh9d6h63WBzhovuFPApE+r+u5RbeqA="; # you'll need to fill this in
-            };
-          });
-        })
-      ];
-
     };
 }
