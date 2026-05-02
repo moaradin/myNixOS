@@ -508,7 +508,7 @@
       "dockType": "floating",
       "backgroundOpacity": 1,
       "floatingRatio": 1,
-      "size": 1,
+      "size": 1.36,
       "onlySameOutput": false,
       "monitors": [],
       "pinnedApps": [
@@ -517,8 +517,8 @@
         "bitwarden",
         "zen",
         "steam",
-        "vesktop",
-        "com.stremio.Stremio"
+        "com.stremio.Stremio",
+        "equibop"
       ],
       "colorizeIcons": false,
       "showLauncherIcon": false,
