@@ -122,6 +122,7 @@
         fd
         nixd
         nix-output-monitor
+        nvd
         lazygit
         grc
         fzf
