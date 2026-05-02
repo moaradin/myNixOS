@@ -47,25 +47,14 @@
           };
 
           gtk = {
-
             enable = true;
             iconTheme = {
-
               name = "Gruvbox-Plus-Dark";
-<<<<<<< Updated upstream
               package = pkgs.gruvbox-plus-icons;
-=======
-
-              package = pkgs.gruvbox-plus-icons;
-
->>>>>>> Stashed changes
             };
             theme = {
-
               name = "gruvbox-dark";
-
               package = pkgs.gruvbox-dark-gtk;
-
             };
             gtk4.theme = null;
           };
