@@ -76,7 +76,7 @@
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
         gamescopeSession.enable = true;
-        #protontricks.enable = true;
+        #protontricks.enable = true;  # native version doesn't work for me
         extraPackages = with pkgs; [
           libsecret
         ];
@@ -85,11 +85,11 @@
       # ── Services ────────────────────────────────────────────────────────────
       services.lact.enable = true;
 
-      # services.ananicy = {
-      #   enable = true;
-      #   package = pkgs.ananicy-cpp;
-      #   rulesProvider = pkgs.ananicy-rules-cachyos;
-      # };
+      services.ananicy = {
+        enable = true;
+        package = pkgs.ananicy-cpp;
+        rulesProvider = pkgs.ananicy-rules-cachyos;
+      };
 
       # ── FFXIV BINDINGS ───────────────────────────────────────────────────────
       services.kanata = {
