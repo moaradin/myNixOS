@@ -108,6 +108,11 @@
               };
             };
           };
+
+          imports = [
+            ./scripts/steam-wire.nix
+          ];
+
         };
       };
     };
