@@ -110,7 +110,7 @@
           };
 
           imports = [
-            ./scripts/steam-wire.nix
+            ../../scripts/steam-wire.nix
           ];
 
         };
