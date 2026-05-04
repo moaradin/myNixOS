@@ -47,7 +47,7 @@
           # };
 
           home.pointerCursor = {
-            name = "Capitaine Cursors";
+            name = "BreezeX-RoséPineDawn";
             package = pkgs.capitaine-cursors-themed;
             size = 24;
             gtk.enable = true;
