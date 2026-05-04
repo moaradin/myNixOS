@@ -110,7 +110,8 @@
           };
 
           imports = [
-            ../../scripts
+            ../../scripts/steam-wire.nix
+            ../../scripts/zen-browser.nix
           ];
 
         };
