@@ -49,7 +49,7 @@
           home.pointerCursor = {
             name = "Capitaine Cursors (Gruvbox)";
             package = pkgs.capitaine-cursors-themed;
-            size = 24;
+            size = 22;
             gtk.enable = true;
             x11.enable = true;
           };
