@@ -98,6 +98,91 @@
             VISUAL = "nvim";
           };
 
+          xdg.mimeApps = {
+            enable = true;
+            defaultApplications =
+              let
+                browser = [ "zen.desktop" ];
+                filemanager = [ "org.gnome.Nautilus.desktop" ];
+                texteditor = [ "org.gnome.TextEditor.desktop" ];
+                video = [ "mpv.desktop" ];
+                audio = [ "mpv.desktop" ];
+              in
+              {
+                # ── Browser ───────────────────────────────────────────────────────────
+                "text/html" = browser;
+                "application/xhtml+xml" = browser;
+                "x-scheme-handler/http" = browser;
+                "x-scheme-handler/https" = browser;
+                "x-scheme-handler/ftp" = browser;
+                "x-scheme-handler/about" = browser;
+                "x-scheme-handler/unknown" = browser;
+                "x-scheme-handler/webcal" = browser;
+
+                # ── File manager ──────────────────────────────────────────────────────
+                "inode/directory" = filemanager;
+
+                # ── Text / code ───────────────────────────────────────────────────────
+                "text/plain" = texteditor;
+                "text/markdown" = texteditor;
+                "text/css" = texteditor;
+                "text/javascript" = texteditor;
+                "text/typescript" = texteditor;
+                "text/x-python" = texteditor;
+                "text/x-script.python" = texteditor;
+                "text/x-shellscript" = texteditor;
+                "text/x-csrc" = texteditor;
+                "text/x-chdr" = texteditor;
+                "text/x-c++src" = texteditor;
+                "text/x-lua" = texteditor;
+                "text/xml" = texteditor;
+                "application/json" = texteditor;
+                "application/xml" = texteditor;
+                "application/x-shellscript" = texteditor;
+                "application/x-yaml" = texteditor;
+                "application/toml" = texteditor;
+
+                # ── Video ─────────────────────────────────────────────────────────────
+                "video/mp4" = video;
+                "video/x-matroska" = video; # mkv
+                "video/webm" = video;
+                "video/avi" = video;
+                "video/x-msvideo" = video; # avi (alt)
+                "video/vnd.avi" = video; # avi (alt)
+                "video/quicktime" = video; # mov
+                "video/x-flv" = video;
+                "video/mp2t" = video; # ts
+                "video/mpeg" = video; # mpeg/mpg
+                "video/ogg" = video; # ogv
+                "video/x-ogm+ogg" = video;
+                "video/3gpp" = video;
+                "video/3gpp2" = video;
+                "video/x-ms-wmv" = video;
+                "video/x-ms-asf" = video;
+                "video/dv" = video;
+                "video/x-divx" = video;
+                "video/x-xvid" = video;
+                "video/x-h264" = video;
+                "video/x-h265" = video;
+                "video/H264" = video;
+                "video/H265" = video;
+
+                # ── Audio ─────────────────────────────────────────────────────────────
+                "audio/mpeg" = audio; # mp3
+                "audio/mp4" = audio; # m4a/aac
+                "audio/aac" = audio;
+                "audio/ogg" = audio;
+                "audio/flac" = audio;
+                "audio/x-flac" = audio;
+                "audio/wav" = audio;
+                "audio/x-wav" = audio;
+                "audio/opus" = audio;
+                "audio/webm" = audio;
+                "audio/x-ms-wma" = audio;
+                "audio/x-matroska" = audio; # mka
+              };
+          };
+
           # Example: You can optionally move your Git config here from configuration.nix
           programs.git = {
             enable = true;
