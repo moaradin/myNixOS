@@ -47,9 +47,9 @@
           # };
 
           home.pointerCursor = {
-            name = "Capitaine Cursors (Gruvbox) - White";
+            name = "Capitaine Cursors";
             package = pkgs.capitaine-cursors-themed;
-            size = 22;
+            size = 24;
             gtk.enable = true;
             x11.enable = true;
           };
