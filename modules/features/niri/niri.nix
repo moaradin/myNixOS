@@ -38,17 +38,9 @@
           #   [ "spawn \"${niri-screenshot}/bin/niri-screenshot\"" ]
           #   (builtins.readFile ./config.kdl);
 
-          # home.pointerCursor = {
-          #   name = "Bibata-Modern-Ice";
-          #   package = pkgs.bibata-cursors;
-          #   size = 24;
-          #   gtk.enable = true;
-          #   x11.enable = true;
-          # };
-
           home.pointerCursor = {
-            name = "BreezeX-RoséPine";
-            package = pkgs.capitaine-cursors-themed;
+            name = "Bibata-Modern-Ice";
+            package = pkgs.bibata-cursors;
             size = 24;
             gtk.enable = true;
             x11.enable = true;
