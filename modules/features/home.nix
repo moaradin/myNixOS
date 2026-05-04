@@ -61,6 +61,7 @@
               shellAbbrs = {
                 ff = "fastfetch";
                 lg = "lazygit";
+                y = "yazi";
               };
 
               shellAliases = {

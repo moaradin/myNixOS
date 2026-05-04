@@ -9,6 +9,9 @@
       ...
     }:
     {
+      imports = [
+        ../../scripts/ffxiv-kanata.nix
+      ];
 
       #  ── Kernel tweaks (optional, uncomment to enable) ─────────────────────
 
@@ -89,74 +92,6 @@
         enable = true;
         package = pkgs.ananicy-cpp;
         rulesProvider = pkgs.ananicy-rules-cachyos;
-      };
-
-      # ── FFXIV BINDINGS ───────────────────────────────────────────────────────
-      services.kanata = {
-        enable = true;
-        keyboards.ffxiv = {
-          devices = [
-            # The verified interface for the Aerox 9 side buttons
-            "/dev/input/by-id/usb-SteelSeries_SteelSeries_Aerox_9_Wireless-if05-event-kbd"
-          ];
-          extraDefCfg = "process-unmapped-keys yes";
-          config = ''
-            (defsrc
-              1 2 3 pause
-            )
-            (deflayer ffxiv
-              left down right del
-            )
-          '';
-        };
-      };
-
-      # Prevent the service from grabbing the mouse on system boot
-      systemd.services.kanata-ffxiv.wantedBy = lib.mkForce [ ];
-
-      # Sudo rules allowing your wrapper script to start/stop the preset
-      security.sudo.extraRules = [
-        {
-          users = [ "moara" ];
-          commands = [
-            {
-              command = "/run/current-system/sw/bin/systemctl start kanata-ffxiv.service";
-              options = [ "NOPASSWD" ];
-            }
-            {
-              command = "/run/current-system/sw/bin/systemctl stop kanata-ffxiv.service";
-              options = [ "NOPASSWD" ];
-            }
-          ];
-        }
-      ];
-
-      systemd.user.services.kanata-ffxiv-watcher = {
-        description = "Auto-toggle Kanata when FFXIV is running";
-        wantedBy = [ "default.target" ];
-        path = [ pkgs.procps ];
-        script = ''
-          is_running=false
-
-          while true; do
-            if pgrep -x "ffxiv_dx11.exe" > /dev/null; then
-              if [ "$is_running" = false ]; then
-                echo "FFXIV detected, starting Kanata..."
-                # Using the absolute path for both sudo and systemctl
-                /run/wrappers/bin/sudo /run/current-system/sw/bin/systemctl start kanata-ffxiv.service
-                is_running=true
-              fi
-            else
-              if [ "$is_running" = true ]; then
-                echo "FFXIV closed, stopping Kanata..."
-                /run/wrappers/bin/sudo /run/current-system/sw/bin/systemctl stop kanata-ffxiv.service
-                is_running=false
-              fi
-            fi
-            
-            sleep 3
-          done
-        '';
       };
 
       # ── NVIDIA gaming variables (optional, uncomment to enable) ───────────
