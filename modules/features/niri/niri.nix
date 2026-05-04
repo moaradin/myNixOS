@@ -38,9 +38,17 @@
           #   [ "spawn \"${niri-screenshot}/bin/niri-screenshot\"" ]
           #   (builtins.readFile ./config.kdl);
 
+          # home.pointerCursor = {
+          #   name = "Bibata-Modern-Ice";
+          #   package = pkgs.bibata-cursors;
+          #   size = 24;
+          #   gtk.enable = true;
+          #   x11.enable = true;
+          # };
+
           home.pointerCursor = {
-            name = "Bibata-Modern-Ice";
-            package = pkgs.bibata-cursors;
+            name = "Capitaine Cursors (Gruvbox)";
+            package = pkgs.capitaine-cursors-themed;
             size = 24;
             gtk.enable = true;
             x11.enable = true;
