@@ -108,6 +108,9 @@
                 video = [ "mpv.desktop" ];
                 audio = [ "mpv.desktop" ];
                 image = [ "org.gnome.Loupe.desktop" ];
+                archive = [ "org.gnome.Nautilus.desktop" ];
+                torrent = [ "org.qbittorrent.qBittorrent.desktop" ];
+                mail = [ "thunderbird.desktop" ];
               in
               {
                 # ── Browser ───────────────────────────────────────────────────────────
@@ -128,7 +131,9 @@
 
                 # ── App scheme handlers ───────────────────────────────────────────────
                 "x-scheme-handler/discord" = [ "equibop.desktop" ];
-                "x-scheme-handler/kdeconnect" = filemanager;
+                "x-scheme-handler/kdeconnect" = [ "org.kde.dolphin.desktop" ];
+                "x-scheme-handler/magnet" = torrent;
+                "x-scheme-handler/mailto" = mail;
 
                 # ── File manager ──────────────────────────────────────────────────────
                 "inode/directory" = filemanager;
@@ -152,6 +157,31 @@
                 "application/x-shellscript" = texteditor;
                 "application/x-yaml" = texteditor;
                 "application/toml" = texteditor;
+
+                # ── Subtitles ─────────────────────────────────────────────────────────
+                "text/x-ssa" = texteditor; # ass/ssa
+                "application/x-subrip" = texteditor; # srt
+
+                # ── PDF ───────────────────────────────────────────────────────────────
+                "application/pdf" = browser;
+
+                # ── Archives ─────────────────────────────────────────────────────────
+                "application/zip" = archive;
+                "application/x-tar" = archive;
+                "application/x-7z-compressed" = archive;
+                "application/x-rar" = archive;
+                "application/gzip" = archive;
+                "application/zstd" = archive;
+
+                # ── Torrents ──────────────────────────────────────────────────────────
+                "application/x-bittorrent" = torrent;
+
+                # ── Email ─────────────────────────────────────────────────────────────
+                "message/rfc822" = mail;
+
+                # ── Calendar ─────────────────────────────────────────────────────────
+                "text/calendar" = mail;
+                "application/ics" = mail;
 
                 # ── Image ─────────────────────────────────────────────────────────────
                 "image/jpeg" = image;
