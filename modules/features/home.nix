@@ -110,7 +110,7 @@
           };
 
           imports = [
-            ../../scripts/
+            ../../scripts
           ];
 
         };
