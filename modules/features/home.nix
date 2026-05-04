@@ -107,17 +107,28 @@
                 texteditor = [ "org.gnome.TextEditor.desktop" ];
                 video = [ "mpv.desktop" ];
                 audio = [ "mpv.desktop" ];
+                image = [ "org.gnome.Loupe.desktop" ];
               in
               {
                 # ── Browser ───────────────────────────────────────────────────────────
                 "text/html" = browser;
                 "application/xhtml+xml" = browser;
+                "application/x-extension-htm" = browser;
+                "application/x-extension-html" = browser;
+                "application/x-extension-shtml" = browser;
+                "application/x-extension-xhtml" = browser;
+                "application/x-extension-xht" = browser;
                 "x-scheme-handler/http" = browser;
                 "x-scheme-handler/https" = browser;
                 "x-scheme-handler/ftp" = browser;
+                "x-scheme-handler/chrome" = browser;
                 "x-scheme-handler/about" = browser;
                 "x-scheme-handler/unknown" = browser;
                 "x-scheme-handler/webcal" = browser;
+
+                # ── App scheme handlers ───────────────────────────────────────────────
+                "x-scheme-handler/discord" = [ "equibop.desktop" ];
+                "x-scheme-handler/kdeconnect" = filemanager;
 
                 # ── File manager ──────────────────────────────────────────────────────
                 "inode/directory" = filemanager;
@@ -142,6 +153,20 @@
                 "application/x-yaml" = texteditor;
                 "application/toml" = texteditor;
 
+                # ── Image ─────────────────────────────────────────────────────────────
+                "image/jpeg" = image;
+                "image/png" = image;
+                "image/gif" = image;
+                "image/webp" = image;
+                "image/avif" = image;
+                "image/heic" = image;
+                "image/heif" = image;
+                "image/tiff" = image;
+                "image/bmp" = image;
+                "image/x-bmp" = image;
+                "image/vnd.microsoft.icon" = image; # ico
+                "image/svg+xml" = image;
+
                 # ── Video ─────────────────────────────────────────────────────────────
                 "video/mp4" = video;
                 "video/x-matroska" = video; # mkv
@@ -162,8 +187,6 @@
                 "video/dv" = video;
                 "video/x-divx" = video;
                 "video/x-xvid" = video;
-                "video/x-h264" = video;
-                "video/x-h265" = video;
                 "video/H264" = video;
                 "video/H265" = video;
 
