@@ -31,10 +31,12 @@ logger = logging.getLogger(__name__)
 
 # ── Match / Rule helpers (identical API to YaLTeR's original) ───────────────
 
+
 @dataclass(kw_only=True)
 class Match:
     """Match a window by title and/or app_id (both are Python regexes)."""
-    title:  str | None = None
+
+    title: str | None = None
     app_id: str | None = None
 
     def matches(self, window: dict) -> bool:
@@ -55,15 +57,16 @@ class Rule:
     A window must satisfy at least one `match` entry and none of the `exclude` entries.
     Optionally float to a fixed size / position.
     """
-    match:   list[Match] = field(default_factory=list)
+
+    match: list[Match] = field(default_factory=list)
     exclude: list[Match] = field(default_factory=list)
     # If set, resize the floating window to (width × height) logical pixels.
-    width:   float | None = None
-    height:  float | None = None
+    width: float | None = None
+    height: float | None = None
     # If set, move the window to (x, y) in global compositor coordinates.
     # For DP-3 (starts at x=1920, 2560×1440): x=3900, y=100 puts it top-right.
-    x:       float | None = None
-    y:       float | None = None
+    x: float | None = None
+    y: float | None = None
 
     def matches(self, window: dict) -> bool:
         if self.match and not any(m.matches(window) for m in self.match):
@@ -86,13 +89,14 @@ RULES: list[Rule] = [
         match=[Match(title=r"Bitwarden", app_id=r"^zen$")],
         width=400.0,
         height=600.0,
-        x=3980.0,   # DP-3 right edge is at 1920+2560=4480; this sits ~100px from the right
-        y=60.0,     # below the bar
+        x=none,  # DP-3 right edge is at 1920+2560=4480; this sits ~100px from the right
+        y=none,  # below the bar
     ),
 ]
 
 
 # ── IPC helpers ─────────────────────────────────────────────────────────────
+
 
 def _send(request: dict) -> None:
     with socket(AF_UNIX) as sock:
@@ -107,47 +111,60 @@ def _apply_rule(rule: Rule, win_id: int) -> None:
     _send({"Action": {"MoveWindowToFloating": {"id": win_id}}})
 
     if rule.width is not None and rule.height is not None:
-        _send({
-            "Action": {
-                "SetWindowWidth":  {"id": win_id, "change": {"SetFixed": rule.width}},
-            }
-        })
-        _send({
-            "Action": {
-                "SetWindowHeight": {"id": win_id, "change": {"SetFixed": rule.height}},
-            }
-        })
-
-    if rule.x is not None and rule.y is not None:
-        _send({
-            "Action": {
-                "MoveFloatingWindow": {
-                    "id": win_id,
-                    "x":  {"SetFixed": rule.x},
-                    "y":  {"SetFixed": rule.y},
+        _send(
+            {
+                "Action": {
+                    "SetWindowWidth": {
+                        "id": win_id,
+                        "change": {"SetFixed": rule.width},
+                    },
                 }
             }
-        })
+        )
+        _send(
+            {
+                "Action": {
+                    "SetWindowHeight": {
+                        "id": win_id,
+                        "change": {"SetFixed": rule.height},
+                    },
+                }
+            }
+        )
+
+    if rule.x is not None and rule.y is not None:
+        _send(
+            {
+                "Action": {
+                    "MoveFloatingWindow": {
+                        "id": win_id,
+                        "x": {"SetFixed": rule.x},
+                        "y": {"SetFixed": rule.y},
+                    }
+                }
+            }
+        )
 
 
 def _update_matched(windows: dict, win: dict) -> None:
     win["matched"] = windows.get(win["id"], {}).get("matched", False)
     matched_before = win["matched"]
 
-    matched_rule: Rule | None = next(
-        (r for r in RULES if r.matches(win)), None
-    )
+    matched_rule: Rule | None = next((r for r in RULES if r.matches(win)), None)
     win["matched"] = matched_rule is not None
 
     if win["matched"] and not matched_before:
         logger.info(
             "floating window  title=%r  app_id=%r  id=%s",
-            win["title"], win["app_id"], win["id"],
+            win["title"],
+            win["app_id"],
+            win["id"],
         )
         _apply_rule(matched_rule, win["id"])  # type: ignore[arg-type]
 
 
 # ── Main loop ────────────────────────────────────────────────────────────────
+
 
 def main() -> None:
     if not RULES:
