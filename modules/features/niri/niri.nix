@@ -124,6 +124,8 @@
         seahorse
         wl-clipboard
         nautilus
+        sushi
+        file-roller
         loupe
         gnome-text-editor
         kdePackages.qt6ct
