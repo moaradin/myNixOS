@@ -29,8 +29,41 @@
             ];
             text = builtins.readFile ./scripts/niri-screenshot.sh;
           };
+
+          # Dynamic-float daemon: floats windows that set title/app-id late
+          # (e.g. the Bitwarden extension popup inside Zen Browser).
+          # Source: https://github.com/niri-wm/niri/discussions/1599
+          niri-dynamic-float = pkgs.writeTextFile {
+            name = "niri-dynamic-float";
+            text = builtins.readFile ./scripts/niri-dynamic-float.py;
+            executable = true;
+            destination = "/bin/niri-dynamic-float";
+          };
         in
         {
+
+          # ── Dynamic-float systemd user service ──────────────────────────────
+          # Starts after the graphical session is up, restarts on failure.
+          # Logs are visible via: journalctl --user -u niri-dynamic-float
+          systemd.user.services.niri-dynamic-float = {
+            Unit = {
+              Description = "Niri dynamic window float daemon (Bitwarden / late app-id)";
+              # niri sets NIRI_SOCKET in the graphical session environment.
+              After = [ "graphical-session.target" ];
+              PartOf = [ "graphical-session.target" ];
+            };
+            Service = {
+              Type = "simple";
+              ExecStart = "${pkgs.python3}/bin/python3 ${niri-dynamic-float}/bin/niri-dynamic-float";
+              # Pass the graphical session environment so NIRI_SOCKET is available.
+              Environment = "PATH=/run/current-system/sw/bin";
+              Restart = "on-failure";
+              RestartSec = "5s";
+            };
+            Install = {
+              WantedBy = [ "graphical-session.target" ];
+            };
+          };
 
           # xdg.configFile."niri/config.kdl".text =
           #builtins.replaceStrings
