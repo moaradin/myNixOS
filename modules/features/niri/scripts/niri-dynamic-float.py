@@ -89,8 +89,8 @@ RULES: list[Rule] = [
         match=[Match(title=r"Bitwarden", app_id=r"^zen$")],
         width=400.0,
         height=600.0,
-        x=none,  # DP-3 right edge is at 1920+2560=4480; this sits ~100px from the right
-        y=none,  # below the bar
+        x=None,  # DP-3 right edge is at 1920+2560=4480; this sits ~100px from the right
+        y=None,  # below the bar
     ),
 ]
 
