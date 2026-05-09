@@ -102,6 +102,7 @@
         inxi
         glib
         pciutils
+        lsof
         wayland-utils
         wlr-randr
         wmctrl
