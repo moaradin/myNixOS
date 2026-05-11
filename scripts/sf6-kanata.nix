@@ -1,47 +1,122 @@
 { pkgs, lib, ... }:
 let
-  # ── Macro length ───────────────────────────────────────────────────────────
-  # Each cycle = 15 ms (F down) + 50 ms + 15 ms (ESC down) + 50 ms = 130 ms
-  # 10 hours = 36,000,000 ms / 130 ms = 276,924 cycles
-  reps = 276924;
+  # ── Python macro script ───────────────────────────────────────────────────
+  # Kanata's macro system can only send key-press (1) and key-release (0)
+  # events. Wine/Proton requires periodic KEY_REPEAT (2) events to keep
+  # registering a key as held — without them it stops seeing L as pressed
+  # after ~500 ms. Python + evdev lets us send all three event types directly.
+  #
+  # The script runs inside the kanata-sf6 systemd cgroup, so when the service
+  # is stopped (via LCtrl+Space+Esc or SF6 closing), systemd sends SIGTERM to
+  # the whole cgroup. The finally block catches it and releases KEY_L cleanly.
 
-  # (down l) is included in every cycle, not just at the start.
-  # Wine/Proton requires periodic key-repeat events to register a key as
-  # "still held" — a single key-down at the top of the macro isn't enough.
-  cycle = "(down l) (down f) 15 (up f) 50 (down esc) 15 (up esc) 50 ";
+  pythonWithEvdev = pkgs.python3.withPackages (ps: [ ps.evdev ]);
 
-  loops = builtins.concatStringsSep ""
-    (builtins.genList (_: cycle) reps);
+  sf6Macro = pkgs.writeTextFile {
+    name = "sf6-macro";
+    executable = true;
+    destination = "/bin/sf6-macro";
+    text = ''
+      #!${pythonWithEvdev}/bin/python3
+      import evdev, time, signal, sys, fcntl, os
+      from evdev import UInput, ecodes as e
+
+      # ── Single-instance guard ──────────────────────────────────────────
+      # Prevents a second macro starting if Insert is pressed while one
+      # is already running.
+      lock = open('/tmp/sf6-macro.lock', 'w')
+      try:
+          fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+      except IOError:
+          sys.exit(0)
+
+      # ── Virtual input device ───────────────────────────────────────────
+      ui = UInput(
+          {e.EV_KEY: [e.KEY_L, e.KEY_F, e.KEY_ESC]},
+          name='sf6-macro-virtual',
+      )
+
+      # ── Signal handling ────────────────────────────────────────────────
+      running = True
+      def stop(sig, _):
+          global running
+          running = False
+      signal.signal(signal.SIGTERM, stop)
+      signal.signal(signal.SIGINT, stop)
+
+      # ── Macro loop ─────────────────────────────────────────────────────
+      try:
+          # Initial KEY_L press
+          ui.write(e.EV_KEY, e.KEY_L, 1)
+          ui.syn()
+
+          while running:
+              # KEY_REPEAT (value=2) — re-asserts L as held.
+              # Sent before every F and ESC tap so Wine/Proton always sees
+              # L as actively held, not just "pressed once long ago."
+              ui.write(e.EV_KEY, e.KEY_L, 2)
+              ui.syn()
+
+              # Tap F: original timing — 15 ms down, 50 ms gap
+              ui.write(e.EV_KEY, e.KEY_F, 1)
+              ui.syn()
+              time.sleep(0.015)
+              ui.write(e.EV_KEY, e.KEY_F, 0)
+              ui.syn()
+              time.sleep(0.050)
+
+              # Repeat before ESC too
+              ui.write(e.EV_KEY, e.KEY_L, 2)
+              ui.syn()
+
+              # Tap ESC: 15 ms down, 50 ms gap
+              ui.write(e.EV_KEY, e.KEY_ESC, 1)
+              ui.syn()
+              time.sleep(0.015)
+              ui.write(e.EV_KEY, e.KEY_ESC, 0)
+              ui.syn()
+              time.sleep(0.050)
+
+      finally:
+          # Always release L, even if killed mid-cycle
+          ui.write(e.EV_KEY, e.KEY_L, 0)
+          ui.syn()
+          ui.close()
+          lock.close()
+          try:
+              os.unlink('/tmp/sf6-macro.lock')
+          except OSError:
+              pass
+    '';
+  };
 in
 {
   # ── Kanata ────────────────────────────────────────────────────────────────
+  # Only job here is to watch for Insert and fire the macro script via cmd.
+  # All actual key logic lives in sf6Macro above.
 
   services.kanata = {
     enable = true;
+    package = pkgs.kanata-with-cmd;
     keyboards.sf6 = {
       devices = [
         "/dev/input/by-id/usb-HP__Inc_HyperX_Alloy_Origins-event-kbd"
       ];
-
-      extraDefCfg = "process-unmapped-keys yes";
-
-      # Insert — hold L, tap F+ESC for up to 10 hours.
-      # Stop via kanata's built-in chord: LCtrl + Space + Esc.
+      extraDefCfg = ''
+        process-unmapped-keys yes
+        danger-enable-cmd yes
+      '';
       config = ''
         (defsrc
           ins
         )
-
         (deflayer sf6
           @sf6-start
         )
-
         (defalias
-          sf6-start (macro
-            (down l)
-            ${loops}
-            (up l)
-          )
+          ;; Fires the Python script. Runs inside the kanata-sf6 cgroup so
+          ;; systemd kills it automatically when the service stops.
+          sf6-start (cmd ${sf6Macro}/bin/sf6-macro)
         )
       '';
     };
@@ -50,7 +125,7 @@ in
   # Don't grab the keyboard at boot; the watcher controls start/stop
   systemd.services.kanata-sf6.wantedBy = lib.mkForce [ ];
 
-  # ── sudo rules — watcher only ─────────────────────────────────────────────
+  # ── sudo rules ────────────────────────────────────────────────────────────
 
   security.sudo.extraRules = [
     {
@@ -68,10 +143,7 @@ in
     }
   ];
 
-  # ── Watcher — auto-toggle Kanata when SF6 is running ─────────────────────
-  # Uses /run/wrappers/bin/sudo (the NixOS sudo wrapper) rather than bare
-  # `sudo`, which isn't in PATH inside a systemd user service.
-  # Checks actual service state so it correctly handles manual stops too.
+  # ── Watcher ───────────────────────────────────────────────────────────────
 
   systemd.user.services.sf6-kanata-watcher = {
     description = "Auto-toggle Kanata when SF6 is running";
@@ -90,7 +162,6 @@ in
             /run/wrappers/bin/sudo /run/current-system/sw/bin/systemctl stop kanata-sf6.service
           fi
         fi
-
         sleep 3
       done
     '';
