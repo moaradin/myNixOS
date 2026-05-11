@@ -133,6 +133,7 @@
         bat-extras.batman
         copycat
         tealdeer
+        evtest
 
         # Gstreamer
         gst_all_1.gstreamer
