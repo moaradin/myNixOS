@@ -3,16 +3,16 @@ let
   # ── Macro length ───────────────────────────────────────────────────────────
   # Each cycle = 15 ms (F down) + 50 ms + 15 ms (ESC down) + 50 ms = 130 ms
   # 10 hours = 36,000,000 ms / 130 ms = 276,924 cycles
-  reps  = 276924;
+  reps = 276924;
   cycle = "(down f) 15 (up f) 50 (down esc) 15 (up esc) 50 ";
-  loops = builtins.concatStringsSep ""
-    (builtins.genList (_: cycle) reps);
+  loops = builtins.concatStringsSep "" (builtins.genList (_: cycle) reps);
 in
 {
   # ── Kanata ────────────────────────────────────────────────────────────────
 
   services.kanata = {
     enable = true;
+    package = pkgs.kanata-with-cmd;
     keyboards.sf6 = {
       devices = [
         # Run: ls /dev/input/by-id/
@@ -96,8 +96,8 @@ in
 
   systemd.user.services.sf6-kanata-watcher = {
     description = "Auto-toggle Kanata when SF6 is running";
-    wantedBy    = [ "default.target" ];
-    path        = [ pkgs.procps ];
+    wantedBy = [ "default.target" ];
+    path = [ pkgs.procps ];
     script = ''
       while true; do
         if pgrep -f "StreetFighter6.exe" > /dev/null; then
