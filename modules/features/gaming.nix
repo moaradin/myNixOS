@@ -11,6 +11,7 @@
     {
       imports = [
         ../../scripts/ffxiv-kanata.nix
+        ../../scripts/sf6-kanata.nix
       ];
 
       #  ── Kernel tweaks (optional, uncomment to enable) ─────────────────────
