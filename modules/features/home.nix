@@ -28,6 +28,7 @@
             xdg-utils
             cliphist
             yt-dlp
+            trash-cli
             aria2
             inotify-tools
             yad
