@@ -16,13 +16,10 @@
           home.stateVersion = "25.11";
 
           home.packages = with pkgs; [
-            yazi
-            # Provides the hx command for your text editor workflow
             tree
             firefox
             vesktop
             equibop
-            yazi
             helix
             thunderbird
             qbittorrent
@@ -61,7 +58,6 @@
               shellAbbrs = {
                 ff = "fastfetch";
                 lg = "lazygit";
-                y = "yazi";
               };
 
               shellAliases = {
@@ -251,6 +247,7 @@
           imports = [
             ../../scripts/steam-wire.nix
             ../../scripts/zen-browser.nix
+            ../../scripts/yazi.nix
           ];
 
         };
