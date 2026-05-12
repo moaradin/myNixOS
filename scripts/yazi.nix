@@ -52,16 +52,16 @@
     # ── Plugins ────────────────────────────────────────────────────────────
     plugins = with pkgs.yaziPlugins; {
       inherit
-        bookmarks    # Persistent bookmarks across sessions
-        bypass       # Bypass trash / confirmation on delete
-        chmod        # Change file permissions interactively
-        full-border  # Full-UI border decoration
+        bookmarks # Persistent bookmarks across sessions
+        bypass # Bypass trash / confirmation on delete
+        chmod # Change file permissions interactively
+        full-border # Full-UI border decoration
         jump-to-char # vi-style f-jump within the file list
-        lazygit      # Embedded lazygit pane
-        ouch         # Archive extraction/compression via ouch
-        recycle-bin  # Send to trash instead of permanent delete
+        lazygit # Embedded lazygit pane
+        ouch # Archive extraction/compression via ouch
+        recycle-bin # Send to trash instead of permanent delete
         rich-preview # Richer previews using Python rich
-        smart-enter  # Enter dirs OR open files with one key
+        smart-enter # Enter dirs OR open files with one key
         smart-filter # Interactive filter that stays visible
         wl-clipboard # Copy file paths/content to Wayland clipboard
         ;
@@ -69,22 +69,26 @@
 
     # ── yazi.toml ──────────────────────────────────────────────────────────
     settings = {
-      manager = {
-        sort_by        = "modified";
+      mgr = {
+        sort_by = "modified";
         sort_sensitive = false;
-        sort_reverse   = true;   # newest first
+        sort_reverse = true; # newest first
         sort_dir_first = true;
-        show_hidden    = true;
-        show_symlink   = true;
-        ratio          = [ 1 4 3 ];
+        show_hidden = true;
+        show_symlink = true;
+        ratio = [
+          1
+          4
+          3
+        ];
       };
 
       preview = {
-        image_filter  = "lanczos3";
+        image_filter = "lanczos3";
         image_quality = 90;
-        tab_size      = 2;
-        max_width     = 600;
-        max_height    = 900;
+        tab_size = 2;
+        max_width = 600;
+        max_height = 900;
       };
 
       tasks = {
@@ -135,52 +139,126 @@
 
         # ── smart-enter: l / <Enter> / <Right> ───────────────────────────
         # Enters directories OR opens files — replaces the default two-step.
-        { on = [ "l" ];        run = "plugin smart-enter"; desc = "Enter dir or open file"; }
-        { on = [ "<Enter>" ];  run = "plugin smart-enter"; desc = "Enter dir or open file"; }
-        { on = [ "<Right>" ];  run = "plugin smart-enter"; desc = "Enter dir or open file"; }
+        {
+          on = [ "l" ];
+          run = "plugin smart-enter";
+          desc = "Enter dir or open file";
+        }
+        {
+          on = [ "<Enter>" ];
+          run = "plugin smart-enter";
+          desc = "Enter dir or open file";
+        }
+        {
+          on = [ "<Right>" ];
+          run = "plugin smart-enter";
+          desc = "Enter dir or open file";
+        }
 
         # ── smart-filter: F ───────────────────────────────────────────────
         # Persistent filter bar — stays open while you type.
-        { on = [ "F" ];        run = "plugin smart-filter"; desc = "Smart filter"; }
+        {
+          on = [ "F" ];
+          run = "plugin smart-filter";
+          desc = "Smart filter";
+        }
 
         # ── jump-to-char: f ───────────────────────────────────────────────
         # Press f then a character to jump to the next entry starting with it.
         # (Replaces the built-in filter-prefix on f — use F for that instead.)
-        { on = [ "f" ];        run = "plugin jump-to-char"; desc = "Jump to char"; }
+        {
+          on = [ "f" ];
+          run = "plugin jump-to-char";
+          desc = "Jump to char";
+        }
 
         # ── bookmarks ────────────────────────────────────────────────────
-        { on = [ "b" ];        run = "plugin bookmarks --args=save";   desc = "Bookmark: save"; }
-        { on = [ "B" ];        run = "plugin bookmarks --args=jump";   desc = "Bookmark: jump"; }
-        { on = [ "<C-b>" ];    run = "plugin bookmarks --args=delete"; desc = "Bookmark: delete"; }
+        {
+          on = [ "b" ];
+          run = "plugin bookmarks --args=save";
+          desc = "Bookmark: save";
+        }
+        {
+          on = [ "B" ];
+          run = "plugin bookmarks --args=jump";
+          desc = "Bookmark: jump";
+        }
+        {
+          on = [ "<C-b>" ];
+          run = "plugin bookmarks --args=delete";
+          desc = "Bookmark: delete";
+        }
 
         # ── lazygit ──────────────────────────────────────────────────────
         # Opens a full lazygit pane inside yazi.
-        { on = [ "<C-g>" ];    run = "plugin lazygit"; desc = "Open lazygit"; }
+        {
+          on = [ "<C-g>" ];
+          run = "plugin lazygit";
+          desc = "Open lazygit";
+        }
 
         # ── chmod ────────────────────────────────────────────────────────
         # Interactive permission editor for selected file(s).
-        { on = [ "=" ];        run = "plugin chmod"; desc = "chmod selected"; }
+        {
+          on = [ "=" ];
+          run = "plugin chmod";
+          desc = "chmod selected";
+        }
 
         # ── recycle-bin & bypass ─────────────────────────────────────────
         # dd  → trash (recoverable)
         # dD  → permanent delete (built-in remove)
         # D   → bypass plugin: permanent delete without confirmation prompt
-        { on = [ "d" "d" ];    run = "plugin recycle-bin"; desc = "Move to trash"; }
-        { on = [ "d" "D" ];    run = "remove";             desc = "Delete permanently"; }
-        { on = [ "D" ];        run = "plugin bypass";      desc = "Delete (skip confirm)"; }
+        {
+          on = [
+            "d"
+            "d"
+          ];
+          run = "plugin recycle-bin";
+          desc = "Move to trash";
+        }
+        {
+          on = [
+            "d"
+            "D"
+          ];
+          run = "remove";
+          desc = "Delete permanently";
+        }
+        {
+          on = [ "D" ];
+          run = "plugin bypass";
+          desc = "Delete (skip confirm)";
+        }
 
         # ── ouch ─────────────────────────────────────────────────────────
         # Extract or compress using the ouch CLI.
         # <C-o> → extract the selected archive into the current directory
         # <C-e> → compress the selected files (ouch will prompt for output name)
-        { on = [ "<C-o>" ];    run = "plugin ouch --args=extract";  desc = "Extract with ouch"; }
-        { on = [ "<C-e>" ];    run = "plugin ouch --args=compress"; desc = "Compress with ouch"; }
+        {
+          on = [ "<C-o>" ];
+          run = "plugin ouch --args=extract";
+          desc = "Extract with ouch";
+        }
+        {
+          on = [ "<C-e>" ];
+          run = "plugin ouch --args=compress";
+          desc = "Compress with ouch";
+        }
 
         # ── wl-clipboard ─────────────────────────────────────────────────
         # Copy the path(s) of selected entries to the Wayland clipboard.
         # <C-y> copy | <C-p> paste path
-        { on = [ "<C-y>" ];    run = "plugin wl-clipboard --args=copy";  desc = "Copy path(s) to clipboard"; }
-        { on = [ "<C-p>" ];    run = "plugin wl-clipboard --args=paste"; desc = "Paste path from clipboard"; }
+        {
+          on = [ "<C-y>" ];
+          run = "plugin wl-clipboard --args=copy";
+          desc = "Copy path(s) to clipboard";
+        }
+        {
+          on = [ "<C-p>" ];
+          run = "plugin wl-clipboard --args=paste";
+          desc = "Paste path from clipboard";
+        }
       ];
     };
   };
