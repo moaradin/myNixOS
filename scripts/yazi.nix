@@ -75,6 +75,7 @@
         sort_dir_first = true;
         show_hidden = true;
         show_symlink = true;
+        linemode = "size_and_time";
         ratio = [
           1
           4
@@ -128,6 +129,23 @@
 
       -- Rich-preview: richer previews using Python rich
       setup("rich-preview", { mime_types = true })
+
+      -- Define custom linemode called "size_and_time"
+      function Linemode:size_and_time()
+        local time = (self._file.cha.mtime or 0)
+        local size = self._file:size()
+
+        -- Format the time: show YYYY-MM-DD
+        local time_str = os.date("%Y-%m-%d", math.floor(time))
+        
+        -- Format the size (e.g., 1.2MB)
+        local size_str = size and ya.readable_size(size) or ""
+
+        -- Return both, separated by a couple of spaces
+        return ui.Line {
+          ui.Span(time_str .. "  " .. size_str)
+        }
+      end
     '';
 
     # ── keymap.toml ────────────────────────────────────────────────────────
