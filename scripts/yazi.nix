@@ -70,7 +70,7 @@
     # ── yazi.toml ──────────────────────────────────────────────────────────
     settings = {
       mgr = {
-        sort_by = "modified";
+        sort_by = "mtime";
         sort_sensitive = false;
         sort_reverse = true; # newest first
         sort_dir_first = true;
