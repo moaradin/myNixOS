@@ -113,25 +113,34 @@
     # ── init.lua ───────────────────────────────────────────────────────────
     # Loaded once at startup. Plugins that need setup() go here.
     initLua = /* lua */ ''
+      -- Safe setup helper: silently skips plugins that are missing or that
+      -- don't expose a setup() method, so one bad plugin can't crash yazi.
+      local function setup(name, opts)
+        local ok, plugin = pcall(require, name)
+        if not ok then
+          ya.err("init.lua: failed to load '" .. name .. "': " .. tostring(plugin))
+          return
+        end
+        if type(plugin.setup) ~= "function" then
+          ya.err("init.lua: '" .. name .. "' has no setup() — skipping")
+          return
+        end
+        plugin:setup(opts or {})
+      end
+
       -- Full-border: wraps the entire panel UI in a visible border
-      require("full-border"):setup()
+      setup("full-border")
 
       -- Bookmarks: persist bookmarks to disk across sessions
-      require("bookmarks"):setup({
-        persist      = "all",   -- "all" | "none" | a path string
-        notify       = true,    -- show a notification on save/jump
+      setup("bookmarks", {
+        persist      = "all",
+        notify       = true,
         sort_by      = "time_added",
         sort_reverse = false,
       })
 
-      -- Rich-preview: use Python rich for prettier text/code previews
-      require("rich-preview"):setup({
-        mime_types = true,   -- infer type from mime rather than extension
-      })
-
-      -- Zoxide: the built-in zoxide plugin no longer exposes setup() in yazi 0.4+.
-      -- Navigation via `z` works without any initialization here.
-      -- To control zoxide behaviour, use the [plugin] section in yazi.toml instead.
+      -- Rich-preview: richer previews using Python rich
+      setup("rich-preview", { mime_types = true })
     '';
 
     # ── keymap.toml ────────────────────────────────────────────────────────
