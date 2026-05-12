@@ -1,4 +1,3 @@
-# scripts/yazi.nix
 #
 # Yazi file manager — Home Manager configuration
 # Imported inside home-manager.users.moara in modules/features/home.nix:
