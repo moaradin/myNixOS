@@ -70,21 +70,17 @@
     # ── yazi.toml ──────────────────────────────────────────────────────────
     settings = {
       manager = {
-        # Sort newest-modified first; directories always float to the top
         sort_by        = "modified";
-        sort_sensitive = false;  # case-insensitive sorting
+        sort_sensitive = false;
         sort_reverse   = true;   # newest first
         sort_dir_first = true;
-
-        show_hidden  = true;     # show dotfiles
-        show_symlink = true;     # show symlink targets in status bar
-
-        # Panel width ratio: parent | current | preview
-        ratio = [ 1 4 3 ];
+        show_hidden    = true;
+        show_symlink   = true;
+        ratio          = [ 1 4 3 ];
       };
 
       preview = {
-        image_filter  = "lanczos3"; # high-quality image downscaling
+        image_filter  = "lanczos3";
         image_quality = 90;
         tab_size      = 2;
         max_width     = 600;
@@ -95,18 +91,6 @@
         micro_workers = 5;
         macro_workers = 10;
         bizarre_retry = 5;
-      };
-
-      # ── Opener rules ─────────────────────────────────────────────────────
-      # Mirrors your xdg.mimeApps defaults so yazi uses the same apps.
-      opener = {
-        image   = [{ run = "loupe \"$@\"";                 orphan = true; }];
-        video   = [{ run = "mpv \"$@\"";                   orphan = true; }];
-        audio   = [{ run = "mpv \"$@\"";                   orphan = true; }];
-        pdf     = [{ run = "zen \"$@\"";                   orphan = true; }];
-        archive = [{ run = "file-roller \"$@\"";           orphan = true; }];
-        text    = [{ run = "ghostty -e nvim \"$@\"";       block  = true; }];
-        fallback = [{ run = "xdg-open \"$@\"";             orphan = true; }];
       };
     };
 
