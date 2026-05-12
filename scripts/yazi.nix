@@ -27,7 +27,7 @@
   # ouch   — needed by the ouch plugin for archive extraction/compression
   # python3Packages.rich — needed by rich-preview
   # lazygit — needed by the lazygit plugin (already in your system packages,
-  #            but listed here so this module is self-contained)
+  #           but listed here so this module is self-contained)
   home.packages = with pkgs; [
     ouch
     lazygit
@@ -134,7 +134,7 @@
     # prepend_keymap runs before yazi's built-in binds, so these take priority.
     # Uncomment / adjust to taste.
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
 
         # ── smart-enter: l / <Enter> / <Right> ───────────────────────────
         # Enters directories OR opens files — replaces the default two-step.
