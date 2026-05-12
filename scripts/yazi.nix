@@ -129,8 +129,9 @@
         mime_types = true,   -- infer type from mime rather than extension
       })
 
-      -- Zoxide: update the zoxide database as you navigate (bundled with yazi)
-      require("zoxide"):setup({ update_db = true })
+      -- Zoxide: the built-in zoxide plugin no longer exposes setup() in yazi 0.4+.
+      -- Navigation via `z` works without any initialization here.
+      -- To control zoxide behaviour, use the [plugin] section in yazi.toml instead.
     '';
 
     # ── keymap.toml ────────────────────────────────────────────────────────
