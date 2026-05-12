@@ -128,6 +128,9 @@
       require("rich-preview"):setup({
         mime_types = true,   -- infer type from mime rather than extension
       })
+
+      -- Zoxide: update the zoxide database as you navigate (bundled with yazi)
+      require("zoxide"):setup({ update_db = true })
     '';
 
     # ── keymap.toml ────────────────────────────────────────────────────────
