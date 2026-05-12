@@ -119,6 +119,9 @@
       -- Full-border: wraps the entire panel UI in a visible border
       setup("full-border")
 
+      -- Recycle Bin plugin
+      setup("recycle-bin")
+
       -- Bookmarks: persist bookmarks to disk across sessions
       setup("bookmarks", {
         persist      = "all",
