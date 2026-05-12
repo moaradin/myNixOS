@@ -247,6 +247,14 @@
           run = "plugin bypass";
           desc = "Delete (skip confirm)";
         }
+        {
+          on = [
+            "R"
+            "b"
+          ];
+          run = "plugin recycle-bin";
+          desc = "Open Recycle Bin menu";
+        }
 
         # ── ouch ─────────────────────────────────────────────────────────
         # Extract or compress using the ouch CLI.
