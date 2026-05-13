@@ -96,6 +96,16 @@
         macro_workers = 10;
         bizarre_retry = 5;
       };
+
+      # ── Plugin Settings ──────────────────────────────────────────────────
+      plugin = {
+        prepend_previewers = [
+          {
+            mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}";
+            run = "ouch";
+          }
+        ];
+      };
     };
 
     # ── init.lua ───────────────────────────────────────────────────────────
