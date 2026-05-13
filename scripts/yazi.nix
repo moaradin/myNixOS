@@ -206,14 +206,25 @@
           desc = "Bookmark: save";
         }
         {
-          on = [ "B" ];
+          on = [ "`" ];
           run = "plugin bookmarks jump";
           desc = "Bookmark: jump";
         }
         {
-          on = [ "<C-b>" ];
-          run = "plugin bookmarks --args=delete";
+          on = [
+            "b"
+            "d"
+          ];
+          run = "plugin bookmarks delete";
           desc = "Bookmark: delete";
+        }
+        {
+          on = [
+            "b"
+            "D"
+          ];
+          run = "plugin bookmarks delete_all";
+          desc = "Bookmark: delete all";
         }
 
         # ── lazygit ──────────────────────────────────────────────────────
