@@ -125,9 +125,16 @@
       -- Bookmarks: persist bookmarks to disk across sessions
       setup("bookmarks", {
         persist      = "all",
-        notify       = true,
-        sort_by      = "time_added",
-        sort_reverse = false,
+        notify       = {
+          enable = true,
+          timeout = 1,
+          message = {
+            new = "New bookmark '<key>' -> '<folder>'",
+            delete = "Deleted bookmark in '<key>'",
+            delete_all = "Deleted all bookmarks",
+          }
+        }
+
       })
 
       -- Rich-preview: richer previews using Python rich
