@@ -32,6 +32,8 @@
             aria2
             inotify-tools
             yad
+            lutgen
+            lutgen-studio
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
 
