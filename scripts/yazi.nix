@@ -202,12 +202,12 @@
         # ── bookmarks ────────────────────────────────────────────────────
         {
           on = [ "b" ];
-          run = "plugin bookmarks --args=save";
+          run = "plugin bookmarks save";
           desc = "Bookmark: save";
         }
         {
           on = [ "B" ];
-          run = "plugin bookmarks --args=jump";
+          run = "plugin bookmarks jump";
           desc = "Bookmark: jump";
         }
         {
