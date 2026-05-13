@@ -201,7 +201,7 @@
 
         # ── bookmarks ────────────────────────────────────────────────────
         {
-          on = [ "b" ];
+          on = [ "m" ];
           run = "plugin bookmarks save";
           desc = "Bookmark: save";
         }
