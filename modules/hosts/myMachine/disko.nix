@@ -20,13 +20,12 @@
         mountOptions = [
           "size=25%"
           "mode=755"
-          "defaults"
         ];
       };
 
       # ── Disk layout ──────────────────────────────────────────────────────
       disko.devices.disk.main = {
-        type   = "disk";
+        type = "disk";
         device = "/dev/disk/by-id/nvme-Fanxiang_S501_128GB_26030409611000389";
 
         content = {
@@ -36,23 +35,23 @@
             # EFI System Partition — bootloader lives here
             ESP = {
               priority = 1;
-              name     = "ESP";
-              start    = "1M";
-              end      = "512M";
-              type     = "EF00";
-              content  = {
-                type         = "filesystem";
-                format       = "vfat";
-                mountpoint   = "/boot";
+              name = "ESP";
+              start = "1M";
+              end = "512M";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
                 mountOptions = [ "umask=0077" ];
               };
             };
 
             # Root btrfs partition — holds all subvolumes below
             root = {
-              size    = "100%";
+              size = "100%";
               content = {
-                type      = "btrfs";
+                type = "btrfs";
                 extraArgs = [ "-f" ];
 
                 subvolumes = {
@@ -62,8 +61,12 @@
                   # dotfiles, game saves, downloads etc. survive reboots
                   # automatically without needing individual preservation rules.
                   "/home" = {
-                    mountpoint   = "/home";
-                    mountOptions = [ "subvol=home" "compress=zstd" "noatime" ];
+                    mountpoint = "/home";
+                    mountOptions = [
+                      "subvol=home"
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
 
                   # ── /nix ─────────────────────────────────────────────────
@@ -71,8 +74,12 @@
                   # built packages, system generations, and the bootloader
                   # entries live.
                   "/nix" = {
-                    mountpoint   = "/nix";
-                    mountOptions = [ "subvol=nix" "compress=zstd" "noatime" ];
+                    mountpoint = "/nix";
+                    mountOptions = [
+                      "subvol=nix"
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
 
                   # ── /persistent ──────────────────────────────────────────
@@ -81,8 +88,12 @@
                   # the tmpfs / at boot. Only what is listed in preservation
                   # survives a reboot — everything else in / is wiped.
                   "/persistent" = {
-                    mountpoint   = "/persistent";
-                    mountOptions = [ "subvol=persistent" "compress=zstd" "noatime" ];
+                    mountpoint = "/persistent";
+                    mountOptions = [
+                      "subvol=persistent"
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
 
                 };
