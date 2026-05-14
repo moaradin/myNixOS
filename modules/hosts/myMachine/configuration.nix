@@ -34,6 +34,8 @@
 
       boot.tmp.cleanOnBoot = true;
 
+      systemd.services.systemd-machine-id-commit.enable = false;
+
       networking.hostName = "myMachine";
       networking.networkmanager.enable = true;
 
