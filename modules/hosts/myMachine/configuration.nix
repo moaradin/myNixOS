@@ -11,9 +11,9 @@
     {
 
       imports = [
-        self.nixosModules.myMachineHardware  # hardware-configuration
-        self.nixosModules.myMachineDisko     # disk layout (tmpfs root + subvolumes)
-        self.nixosModules.preservation       # impermanence — bind-mounts /persistent paths
+        self.nixosModules.myMachineHardware # hardware-configuration
+        self.nixosModules.myMachineDisko # disk layout (tmpfs root + subvolumes)
+        self.nixosModules.preservation # impermanence — bind-mounts /persistent paths
         self.nixosModules.zram
         self.nixosModules.niri
         self.nixosModules.noctalia
@@ -31,7 +31,7 @@
       boot.loader.systemd-boot.configurationLimit = 10;
       #Regular Kernel. Disable when using CachyOS
       #boot.kernelPackages = pkgs.linuxPackages_latest;
-      
+
       boot.tmp.cleanOnBoot = true;
 
       networking.hostName = "myMachine";
@@ -83,12 +83,12 @@
         alsa.support32Bit = true;
         pulse.enable = true;
       };
-      
+
       users.users.root.hashedPassword = "$y$j9T$vtypyDI1x4mCTWkrPgG8U.$o7be8PQf4u3/6f2VWAbyaY1aRfMmqgK6Cpe4.Gey2b2";
 
       users.users.moara = {
         isNormalUser = true;
-        HashedPassword = "$y$j9T$vtypyDI1x4mCTWkrPgG8U.$o7be8PQf4u3/6f2VWAbyaY1aRfMmqgK6Cpe4.Gey2b2";
+        hashedPassword = "$y$j9T$vtypyDI1x4mCTWkrPgG8U.$o7be8PQf4u3/6f2VWAbyaY1aRfMmqgK6Cpe4.Gey2b2";
         extraGroups = [
           "wheel"
           "networkmanager"
