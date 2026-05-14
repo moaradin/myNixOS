@@ -61,7 +61,10 @@
             # budget of the tmpfs root.
             # boot.tmp.cleanOnBoot = true in configuration.nix ensures it
             # is wiped on each boot the same way a real tmpfs would be.
-            "/tmp"
+            {
+              directory = "/tmp";
+              mode = "1777";
+            }
 
           ];
 
