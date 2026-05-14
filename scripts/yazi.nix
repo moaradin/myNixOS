@@ -259,27 +259,6 @@
         # D   → bypass plugin: permanent delete without confirmation prompt
         {
           on = [
-            "d"
-            "d"
-          ];
-          run = "plugin recycle-bin";
-          desc = "Move to trash";
-        }
-        {
-          on = [
-            "d"
-            "D"
-          ];
-          run = "remove";
-          desc = "Delete permanently";
-        }
-        {
-          on = [ "D" ];
-          run = "plugin bypass";
-          desc = "Delete (skip confirm)";
-        }
-        {
-          on = [
             "R"
             "b"
           ];
