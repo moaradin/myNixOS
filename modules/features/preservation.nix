@@ -55,7 +55,7 @@
             "/var/log"
 
             # LACT SETTINGS
-            "etc/lact"
+            "/etc/lact"
 
             # ── /tmp ─────────────────────────────────────────────────────
             # Puts /tmp on disk instead of in the root tmpfs. Without this,
