@@ -147,6 +147,10 @@
 
       })
 
+
+      -- Zoxide: update db when changing directories
+      require("zoxide"):setup({ update_db = true })
+
       -- Rich-preview: richer previews using Python rich
       setup("rich-preview", { mime_types = true })
 
