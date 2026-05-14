@@ -22,7 +22,7 @@
             # inInitrd: true — mounted during initrd, before anything else.
             {
               directory = "/var/lib/nixos";
-              inInitrd  = true;
+              inInitrd = true;
             }
 
             # ── Systemd timer state ─────────────────────────────────────
@@ -54,6 +54,9 @@
             # diagnosing issues that happened before the last reboot.
             "/var/log"
 
+            # LACT SETTINGS
+            "etc/lact"
+
             # ── /tmp ─────────────────────────────────────────────────────
             # Puts /tmp on disk instead of in the root tmpfs. Without this,
             # large temp files (game shader caches, downloads in progress,
@@ -76,7 +79,7 @@
             # journald log continuity and some licensed software break.
             # inInitrd: true — needed very early in boot.
             {
-              file     = "/etc/machine-id";
+              file = "/etc/machine-id";
               inInitrd = true;
             }
 
