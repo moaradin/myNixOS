@@ -18,7 +18,7 @@ let
     destination = "/bin/sf6-macro";
     text = ''
       #!${pythonWithEvdev}/bin/python3
-      import evdev, time, signal, sys, fcntl, os
+      import evdev, time, signal, sys, fcntl, os, random
       from evdev import UInput, ecodes as e
 
       # ── Single-instance guard ──────────────────────────────────────────
@@ -57,25 +57,25 @@ let
               ui.write(e.EV_KEY, e.KEY_L, 2)
               ui.syn()
 
-              # Tap F: original timing — 15 ms down, 50 ms gap
+              # Tap F: randomised hold (1–300 ms) and gap (1–300 ms)
               ui.write(e.EV_KEY, e.KEY_F, 1)
               ui.syn()
-              time.sleep(0.015)
+              time.sleep(random.uniform(0.001, 0.300))
               ui.write(e.EV_KEY, e.KEY_F, 0)
               ui.syn()
-              time.sleep(0.050)
+              time.sleep(random.uniform(0.001, 0.300))
 
               # Repeat before ESC too
               ui.write(e.EV_KEY, e.KEY_L, 2)
               ui.syn()
 
-              # Tap ESC: 15 ms down, 50 ms gap
+              # Tap ESC: randomised hold (1–300 ms) and gap (1–300 ms)
               ui.write(e.EV_KEY, e.KEY_ESC, 1)
               ui.syn()
-              time.sleep(0.015)
+              time.sleep(random.uniform(0.001, 0.300))
               ui.write(e.EV_KEY, e.KEY_ESC, 0)
               ui.syn()
-              time.sleep(0.050)
+              time.sleep(random.uniform(0.001, 0.300))
 
       finally:
           # Always release L, even if killed mid-cycle
