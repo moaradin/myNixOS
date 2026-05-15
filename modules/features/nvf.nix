@@ -219,13 +219,27 @@
               };
             };
 
-            extraConfigLua = ''
-              local map = vim.keymap.set
-              map('n', '<leader>S',  function() require('spectre').toggle() end,              { desc = 'Spectre: toggle' })
-              map('n', '<leader>sw', function() require('spectre').open_visual_search() end,  { desc = 'Spectre: search word' })
-              map('v', '<leader>sw', function() require('spectre').open_visual_search() end,  { desc = 'Spectre: search selection' })
-              map('n', '<leader>sf', function() require('spectre').open_file_search({ select_word = true }) end, { desc = 'Spectre: search in file' })
-            '';
+            maps.normal = {
+              "<leader>S" = {
+                action = "<cmd>lua require('spectre').toggle()<cr>";
+                desc = "Spectre: toggle";
+              };
+              "<leader>sw" = {
+                action = "<cmd>lua require('spectre').open_visual_search()<cr>";
+                desc = "Spectre: search word";
+              };
+              "<leader>sf" = {
+                action = "<cmd>lua require('spectre').open_file_search({ select_word = true })<cr>";
+                desc = "Spectre: search in file";
+              };
+            };
+
+            maps.visual = {
+              "<leader>sw" = {
+                action = "<cmd>lua require('spectre').open_visual_search()<cr>";
+                desc = "Spectre: search selection";
+              };
+            };
 
             # ── Utility ────────────────────────────────────────────────────────
             utility = {
