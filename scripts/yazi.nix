@@ -101,7 +101,7 @@
       plugin = {
         prepend_previewers = [
           {
-            mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}";
+            mime = "application/{*zip,tar,bzip2,7z*,xz,zstd,java-archive}";
             run = "ouch";
           }
         ];
