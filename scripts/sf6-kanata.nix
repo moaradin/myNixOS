@@ -57,25 +57,25 @@ let
               ui.write(e.EV_KEY, e.KEY_L, 2)
               ui.syn()
 
-              # Tap F: randomised hold (1–300 ms) and gap (1–300 ms)
+              # Tap F: randomised hold (1–150 ms) and gap (1–150 ms)
               ui.write(e.EV_KEY, e.KEY_F, 1)
               ui.syn()
-              time.sleep(random.uniform(0.001, 0.300))
+              time.sleep(random.uniform(0.001, 0.150))
               ui.write(e.EV_KEY, e.KEY_F, 0)
               ui.syn()
-              time.sleep(random.uniform(0.001, 0.300))
+              time.sleep(random.uniform(0.001, 0.150))
 
               # Repeat before ESC too
               ui.write(e.EV_KEY, e.KEY_L, 2)
               ui.syn()
 
-              # Tap ESC: randomised hold (1–300 ms) and gap (1–300 ms)
+              # Tap ESC: randomised hold (1–150 ms) and gap (1–150 ms)
               ui.write(e.EV_KEY, e.KEY_ESC, 1)
               ui.syn()
-              time.sleep(random.uniform(0.001, 0.300))
+              time.sleep(random.uniform(0.001, 0.150))
               ui.write(e.EV_KEY, e.KEY_ESC, 0)
               ui.syn()
-              time.sleep(random.uniform(0.001, 0.300))
+              time.sleep(random.uniform(0.001, 0.150))
 
       finally:
           # Always release L, even if killed mid-cycle
