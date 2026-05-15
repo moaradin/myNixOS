@@ -209,6 +209,24 @@
               };
             };
 
+            # ── Extra plugins ──────────────────────────────────────────────────
+            extraPlugins = {
+              nvim-spectre = {
+                package = pkgs.vimPlugins.nvim-spectre;
+                setup = ''
+                  require('spectre').setup()
+                '';
+              };
+            };
+
+            extraConfigLua = ''
+              local map = vim.keymap.set
+              map('n', '<leader>S',  function() require('spectre').toggle() end,              { desc = 'Spectre: toggle' })
+              map('n', '<leader>sw', function() require('spectre').open_visual_search() end,  { desc = 'Spectre: search word' })
+              map('v', '<leader>sw', function() require('spectre').open_visual_search() end,  { desc = 'Spectre: search selection' })
+              map('n', '<leader>sf', function() require('spectre').open_file_search({ select_word = true }) end, { desc = 'Spectre: search in file' })
+            '';
+
             # ── Utility ────────────────────────────────────────────────────────
             utility = {
               # View colour values (hex/rgb) in-line
