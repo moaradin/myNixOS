@@ -25,6 +25,8 @@
               inInitrd = true;
             }
 
+            "/etc/ssh"
+
             # ── Systemd timer state ─────────────────────────────────────
             # Stores when each timer last triggered. Without this, any
             # OnCalendar/OnBootSec timers that already ran will fire again
@@ -87,10 +89,10 @@
             # The key pair that identifies this machine to SSH clients.
             # If these change, anyone who has connected before will get a
             # "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED" error.
-            "/etc/ssh/ssh_host_ed25519_key"
-            "/etc/ssh/ssh_host_ed25519_key.pub"
-            "/etc/ssh/ssh_host_rsa_key"
-            "/etc/ssh/ssh_host_rsa_key.pub"
+            #"/etc/ssh/ssh_host_ed25519_key"
+            #"/etc/ssh/ssh_host_ed25519_key.pub"
+            #"/etc/ssh/ssh_host_rsa_key"
+            #"/etc/ssh/ssh_host_rsa_key.pub"
 
           ];
         };
