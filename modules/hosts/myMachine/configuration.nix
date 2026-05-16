@@ -24,7 +24,6 @@
         self.nixosModules.home
         self.nixosModules.nvf
         self.nixosModules.programs
-        self.nixosModules.millennium
       ];
 
       boot.loader.systemd-boot.enable = true;
