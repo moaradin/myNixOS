@@ -164,7 +164,8 @@
         kdePackages.qt6ct
         kdePackages.dolphin
         ffmpegthumbnailer
-        gnome-system-monitor
+        #gnome-system-monitor
+        resources
         gruvbox-kvantum
         kvmarwaita
         libnotify # notify-send (used by Mod+Alt+W wallpaper bind)
