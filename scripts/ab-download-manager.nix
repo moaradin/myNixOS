@@ -101,7 +101,7 @@ stdenv.mkDerivation {
     (makeDesktopItem {
       name = "ab-download-manager";
       exec = "ab-download-manager";
-      icon = "ab-download-manager";
+      icon = "abdownloadmanager";
       desktopName = "AB Download Manager";
       comment = "Manage and organize your download files better than before";
       categories = [
