@@ -62,7 +62,6 @@
       programs.nh = {
         enable = true;
         clean.enable = true;
-        clean.extraArgs = "--keep 10";
         flake = "/home/moara/myNixOS"; # sets NH_OS_FLAKE variable for you
       };
 
