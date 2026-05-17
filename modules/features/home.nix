@@ -34,7 +34,6 @@
             yad
             lutgen
             lutgen-studio
-            mailspring
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             #(callPackage ../../scripts/ab-download-manager.nix { })
           ];
