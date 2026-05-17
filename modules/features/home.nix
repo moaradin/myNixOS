@@ -35,7 +35,7 @@
             lutgen
             lutgen-studio
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-            (callPackage ../../scripts/ab-download-manager.nix { })
+            #(callPackage ../../scripts/ab-download-manager.nix { })
           ];
 
           programs.fish =
@@ -252,6 +252,7 @@
             ../../scripts/steam-wire.nix
             ../../scripts/zen-browser.nix
             ../../scripts/yazi.nix
+            ../../scripts/ab-download-manager.nix
           ];
 
         };
