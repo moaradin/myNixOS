@@ -156,7 +156,7 @@ in
     Type=Application
     Name=AB Download Manager
     Exec=ab-download-manager --background
-    Icon=ab-download-manager
+    Icon=abdownloadmanager
     Terminal=false
     NoDisplay=true
   '';
