@@ -7,7 +7,7 @@
       command = "${pkgs.fish}/bin/fish";
       theme = "Gruvbox Dark";
       background-opacity = 0.80;
-      background-blur = "true";
+      background-blur-radius = 20;
       clipboard-read = "allow";
       clipboard-write = "allow";
       copy-on-select = "clipboard";
