@@ -34,6 +34,7 @@
             yad
             lutgen
             lutgen-studio
+            vscodium
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             #(callPackage ../../scripts/ab-download-manager.nix { })
           ];
