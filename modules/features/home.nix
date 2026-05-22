@@ -18,7 +18,7 @@
           home.packages = with pkgs; [
             tree
             firefox
-            vesktop
+            equicord
             equibop
             helix
             thunderbird
