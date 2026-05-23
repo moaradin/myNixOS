@@ -33,7 +33,7 @@
             lutgen
             lutgen-studio
             vscodium
-            davinci-resolve
+            kdenlive
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             #(callPackage ../../scripts/ab-download-manager.nix { })
           ];
