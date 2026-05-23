@@ -33,7 +33,7 @@
             lutgen
             lutgen-studio
             vscodium
-            kdenlive
+            kdePackages.kdenlive
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             #(callPackage ../../scripts/ab-download-manager.nix { })
           ];
