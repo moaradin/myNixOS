@@ -24,7 +24,7 @@
         self.nixosModules.home
         self.nixosModules.nvf
         self.nixosModules.programs
-        ../../scripts/pipewire-fix.nix
+        ../../../scripts/pipewire-fix.nix
       ];
 
       boot.loader.systemd-boot.enable = true;
