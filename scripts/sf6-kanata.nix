@@ -22,7 +22,7 @@ let
       from evdev import UInput, ecodes as e
 
       # ── Single-instance guard ──────────────────────────────────────────
-      # Prevents a second macro starting if Insert is pressed while one
+      # Prevents a second macro starting if Home is pressed while one
       # is already running.
       lock = open('/tmp/sf6-macro.lock', 'w')
       try:
@@ -92,7 +92,7 @@ let
 in
 {
   # ── Kanata ────────────────────────────────────────────────────────────────
-  # Only job here is to watch for Insert and fire the macro script via cmd.
+  # Only job here is to watch for Home and fire the macro script via cmd.
   # All actual key logic lives in sf6Macro above.
 
   services.kanata = {
@@ -108,7 +108,7 @@ in
       '';
       config = ''
         (defsrc
-          ins
+          home
         )
         (deflayer sf6
           @sf6-start
