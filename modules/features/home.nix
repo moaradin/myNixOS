@@ -239,6 +239,8 @@
           programs.yt-dlp = {
             enable = true;
             settings = {
+              format = "bestvideo+bestaudio/best";
+              merge-output-format = "mkv";
               embed-thumbnail = true;
               embed-subs = true;
               sub-langs = "all";
