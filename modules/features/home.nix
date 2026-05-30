@@ -25,7 +25,6 @@
             mpv
             xdg-utils
             cliphist
-            yt-dlp
             trash-cli
             aria2
             inotify-tools
@@ -238,6 +237,7 @@
           };
 
           programs.yt-dlp = {
+            enable = true;
             settings = {
               embed-thumbnail = true;
               embed-subs = true;
