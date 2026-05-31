@@ -248,6 +248,7 @@
               downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
               paths = "~/Downloads";
               output = "%(title)s.%(ext)s";
+              cookies-from-browser = "firefox:/home/moara/.config/zen/1z2hJoYm.Profile 1";
             };
           };
 
