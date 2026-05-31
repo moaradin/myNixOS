@@ -249,9 +249,9 @@
               paths = "~/Downloads";
               output = "%(title)s.%(ext)s";
             };
-            extraConfig = ''
-              --cookies-from-browser "firefox:/home/moara/.config/zen/1z2hJoYm.Profile 1"
-            '';
+            #extraConfig = ''
+            #  --cookies-from-browser "firefox:/home/moara/.config/zen/1z2hJoYm.Profile 1"
+            #'';
           };
 
           # Example: You can optionally move your Git config here from configuration.nix

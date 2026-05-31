@@ -59,6 +59,10 @@
       # Flatpak
       services.flatpak.enable = true;
 
+      # Appimage
+      programs.appimage.enable = true;
+      programs.appimage.binfmt = true;
+
       programs.nh = {
         enable = true;
         clean.enable = true;
