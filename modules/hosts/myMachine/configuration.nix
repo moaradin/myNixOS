@@ -59,14 +59,31 @@
       # Flatpak
       services.flatpak.enable = true;
 
-      # Appimage
-      programs.appimage.enable = true;
-      programs.appimage.binfmt = true;
-
       programs.nh = {
         enable = true;
         clean.enable = true;
         flake = "/home/moara/myNixOS"; # sets NH_OS_FLAKE variable for you
+      };
+
+      # Appimages
+
+      programs.appimage = {
+        enable = true;
+        binfmt = true;
+        package = pkgs.appimage-run.override {
+          extraPkgs =
+            pkgs: with pkgs; [
+              zstd # libzstd.so.1
+              xorg.libxshmfence # libxshmfence.so.1
+              xorg.libxkbfile # libxkbfile.so.1   ← current crash
+              libxkbcommon # libxkbcommon.so.0, libxkbcommon-x11.so.0
+              libdrm # libdrm.so.2
+              mesa # libgbm.so.1
+              wayland # libwayland-client/cursor/egl.so.*
+              xcbutilcursor # libxcb-cursor.so.0
+              libglvnd
+            ];
+        };
       };
 
       # Gnome Desktop

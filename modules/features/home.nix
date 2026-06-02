@@ -33,6 +33,7 @@
             lutgen-studio
             vscodium
             kdePackages.kdenlive
+            gearlever
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             #(callPackage ../../scripts/ab-download-manager.nix { })
           ];
