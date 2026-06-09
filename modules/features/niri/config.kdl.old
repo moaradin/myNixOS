@@ -190,6 +190,22 @@ window-rule {
     open-on-output "DP-3"
 }
 
+// NTE — main game window: tiling, open fullscreen on DP-3
+//window-rule {
+ //   match app-id=r#"^steam_app_2816997005$"# title=r#"^NTE\s"#
+ //   open-on-output "DP-3"
+ //   open-fullscreen true
+//}
+
+// NTE — floating overlay (160×20, empty title): hide off-screen on DP-2
+//window-rule {
+//    match app-id=r#"^steam_app_2816997005$"# title=r#"^$"#
+//    open-on-output "DP-2"
+//    open-floating true
+//    open-focused false
+ //    default-floating-position x=-5000 y=-5000 relative-to="top-right"
+//}
+
 // OBS / portal / Archon — open to obs workspace, unfocused
 window-rule {
     match app-id="com.obsproject.Studio"
@@ -216,24 +232,6 @@ window-rule {
     draw-border-with-background false
 }
 
-// Noctalia v5 Settings window — floating at a comfortable size
-window-rule {
-    match app-id="dev.noctalia.Noctalia.Settings"
-    open-floating true
-    default-column-width { fixed 1080; }
-    default-window-height { fixed 920; }
-}
-
-// Noctalia v5 — disable xray on bar/panel/dock/notification/osd layer surfaces
-// so blur looks realistic (Noctalia publishes its own blur regions automatically
-// when ext-background-effects is available on niri ≥ 26.04).
-layer-rule {
-    match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|osd)$"
-    background-effect {
-        xray false
-    }
-}
-
 // ============================================================================
 // 5. KEYBINDINGS
 // ============================================================================
@@ -246,14 +244,13 @@ binds {
     Ctrl+Alt+Delete                         { quit; }
     Mod+Shift+P                             { power-off-monitors; }
 
-    // --- Noctalia Shell Controls (v5 IPC: noctalia msg <command>) ---
-    Mod+Space    { spawn-sh "noctalia msg panel-toggle launcher"; }
-    Mod+S        { spawn-sh "noctalia msg panel-toggle control-center"; }
-    Mod+Backspace { spawn-sh "noctalia msg settings-toggle"; }
-    // Mod+F12 — screen-recorder plugin IPC changed in v5; configure via the
-    // bar widget or check https://docs.noctalia.dev/v5 for the updated command.
-    // Mod+F12      { spawn-sh "noctalia msg ..."; }
-    Mod+Alt+W    { spawn-sh "noctalia msg wallpaper-get DP-3 | wl-copy | xargs notify-send 'Current Wallpaper'"; }
+    // --- Noctalia Shell Controls ---
+    // noctalia-shell is in PATH via the noctalia HM module
+    Mod+Space    { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+S        { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
+    Mod+Backspace { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Mod+F12      { spawn "noctalia-shell" "ipc" "call" "plugin:screen-recorder" "toggle"; }
+    Mod+Alt+W    { spawn-sh "noctalia-shell ipc call wallpaper get DP-3 | wl-copy | xargs notify-send 'Current Wallpaper'"; }
 
     // --- Applications ---
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" repeat=false { spawn "ghostty"; }
@@ -265,16 +262,16 @@ binds {
     Print       { spawn "niri-screenshot"; }
 
     // --- Media & Hardware ---
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioMute        allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
     // --- Window Focus & Movement ---
     Mod+Q repeat=false { close-window; }
@@ -396,8 +393,8 @@ binds {
 // 6. AUTOSTART
 // ============================================================================
 
-// Noctalia v5 — binary is now "noctalia" (was "noctalia-shell" in v4)
-spawn-at-startup "noctalia"
+// Noctalia — launched directly, no qs wrapper needed with the official flake
+spawn-at-startup "noctalia-shell"
 
 // Wait for Noctalia IPC, then lock the screen (used for lock-on-start)
 spawn-sh-at-startup "/home/moara/myNixOS/modules/features/niri/scripts/noctalia-lock.sh"
@@ -405,6 +402,6 @@ spawn-sh-at-startup "/home/moara/myNixOS/modules/features/niri/scripts/noctalia-
 // Tile helper script
 spawn-at-startup "/home/moara/myNixOS/modules/features/niri/scripts/niri_tile_to_n.py"
 
-// NOTE: The "include noctalia.kdl" line from v4 has been removed.
-// That file was generated by Quickshell to inject color theme variables.
-// Noctalia v5 handles theming entirely on its own side — no include needed.
+// Noctalia generates its niri color theme here at startup.
+// This must stay so niri picks up the colors on each launch.
+include "/home/moara/.config/niri/noctalia.kdl"
