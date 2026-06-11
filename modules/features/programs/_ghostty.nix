@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  # Forcefully overwrite the file, ignoring existing backups
+  home-manager.users.moara.xdg.configFile."ghostty/config".force = true;
+
   home-manager.users.moara.programs.ghostty = {
     enable = true;
     enableFishIntegration = true;

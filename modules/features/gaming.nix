@@ -149,7 +149,6 @@
         # corectrl               # Alternative GPU tuning GUI
 
         # Capture & streaming
-        obs-studio
         gpu-screen-recorder
 
         # Controller & input
