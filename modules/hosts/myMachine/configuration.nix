@@ -46,6 +46,7 @@
       custom.zram.enable = true;
 
       time.timeZone = "America/New_York";
+      time.hardwareClockInLocalTime = true;
 
       i18n.defaultLocale = "en_US.UTF-8";
       console = {
@@ -55,6 +56,11 @@
           terminus_font
         ];
       };
+
+      # Temp permission for Bitwarden
+      nixpkgs.config.permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
 
       # Flatpak
       services.flatpak.enable = true;
@@ -75,8 +81,8 @@
           extraPkgs =
             pkgs: with pkgs; [
               zstd # libzstd.so.1
-              xorg.libxshmfence # libxshmfence.so.1
-              xorg.libxkbfile # libxkbfile.so.1   ← current crash
+              libxshmfence # libxshmfence.so.1
+              libxkbfile # libxkbfile.so.1   ← current crash
               libxkbcommon # libxkbcommon.so.0, libxkbcommon-x11.so.0
               libdrm # libdrm.so.2
               mesa # libgbm.so.1

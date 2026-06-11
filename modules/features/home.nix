@@ -7,6 +7,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
+        backupFileExtension = "backup";
 
         # Passes flake inputs to Home Manager, useful if you install packages like zen-browser via HM later
         extraSpecialArgs = { inherit self inputs; };
@@ -34,6 +35,7 @@
             vscodium
             kdePackages.kdenlive
             gearlever
+            krita
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             #(callPackage ../../scripts/ab-download-manager.nix { })
           ];

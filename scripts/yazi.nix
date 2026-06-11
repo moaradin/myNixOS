@@ -63,6 +63,7 @@
         smart-enter # Enter dirs OR open files with one key
         smart-filter # Interactive filter that stays visible
         wl-clipboard # Copy file paths/content to Wayland clipboard
+        compress # Yazi plugin that compresses selected files to an archive
         ;
     };
 
@@ -298,6 +299,54 @@
           run = "plugin wl-clipboard --args=paste";
           desc = "Paste path from clipboard";
         }
+
+        # Compress
+        {
+          on = [
+            "c"
+            "a"
+            "a"
+          ];
+          run = "plugin compress";
+          desc = "Archive selected files";
+        }
+        {
+          on = [
+            "c"
+            "a"
+            "p"
+          ];
+          run = "plugin compress -p";
+          desc = "Archive selected files (password)";
+        }
+        {
+          on = [
+            "c"
+            "a"
+            "h"
+          ];
+          run = "plugin compress -ph";
+          desc = "Archive selected files (password+header)";
+        }
+        {
+          on = [
+            "c"
+            "a"
+            "l"
+          ];
+          run = "plugin compress -l";
+          desc = "Archive selected files (compression level)";
+        }
+        {
+          on = [
+            "c"
+            "a"
+            "u"
+          ];
+          run = "plugin compress -phl";
+          desc = "Archive selected files (password+header+level)";
+        }
+
       ];
     };
   };
