@@ -69,9 +69,10 @@
       #   enable = true;
       # };
 
-      programs.gamescope = {
-        enable = true;
-      };
+      # programs.gamescope = {
+      #  enable = true;
+      #  capSysNice = true;
+      #};
 
       # ── Steam ─────────────────────────────────────────────────────────────
 
@@ -79,7 +80,7 @@
         enable = true;
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
-        gamescopeSession.enable = true;
+        #gamescopeSession.enable = true;
         #protontricks.enable = true;  # native version doesn't work for me
         extraPackages = with pkgs; [
           libsecret
