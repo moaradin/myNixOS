@@ -35,7 +35,7 @@
             kdePackages.kdenlive
             gearlever
             krita
-            lmstudio
+            pinta
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             #(callPackage ../../scripts/ab-download-manager.nix { })
           ];
