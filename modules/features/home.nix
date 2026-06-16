@@ -24,7 +24,6 @@
             qbittorrent
             bitwarden-desktop
             mpv
-            xdg-utils
             cliphist
             trash-cli
             aria2

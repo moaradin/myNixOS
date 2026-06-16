@@ -154,6 +154,7 @@
 
       environment.systemPackages = with pkgs; [
         xwayland-satellite
+        xdg-utils
         seahorse
         wl-clipboard
         nautilus
