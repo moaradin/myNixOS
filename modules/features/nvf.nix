@@ -219,27 +219,32 @@
               };
             };
 
-            maps.normal = {
-              "<leader>S" = {
+            keymaps = [
+              {
+                key = "<leader>S";
+                mode = [ "n" ];
                 action = "<cmd>lua require('spectre').toggle()<cr>";
                 desc = "Spectre: toggle";
-              };
-              "<leader>sw" = {
+              }
+              {
+                key = "<leader>sw";
+                mode = [ "n" ];
                 action = "<cmd>lua require('spectre').open_visual_search()<cr>";
                 desc = "Spectre: search word";
-              };
-              "<leader>sf" = {
+              }
+              {
+                key = "<leader>sf";
+                mode = [ "n" ];
                 action = "<cmd>lua require('spectre').open_file_search({ select_word = true })<cr>";
                 desc = "Spectre: search in file";
-              };
-            };
-
-            maps.visual = {
-              "<leader>sw" = {
+              }
+              {
+                key = "<leader>sw";
+                mode = [ "v" ];
                 action = "<cmd>lua require('spectre').open_visual_search()<cr>";
                 desc = "Spectre: search selection";
-              };
-            };
+              }
+            ];
 
             # ── Utility ────────────────────────────────────────────────────────
             utility = {

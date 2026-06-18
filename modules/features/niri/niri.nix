@@ -7,14 +7,14 @@
       programs.niri.enable = true;
 
       # ── Session ───────────────────────────────────────────────────────────
-
-      services.greetd = {
-        enable = true;
-        settings.default_session = {
-          command = "niri-session";
-          user = "moara";
-        };
-      };
+      # Disable when using Noctalia Greeter
+      # services.greetd = {
+      #  enable = true;
+      #  settings.default_session = {
+      #    command = "niri-session";
+      #    user = "moara";
+      #  };
+      # };
 
       # ── Home User Settings ────────────────────────────────────────────────
 
