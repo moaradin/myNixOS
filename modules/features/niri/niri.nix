@@ -8,13 +8,13 @@
 
       # ── Session ───────────────────────────────────────────────────────────
       # Disable when using Noctalia Greeter
-      # services.greetd = {
-      #  enable = true;
-      #  settings.default_session = {
-      #    command = "niri-session";
-      #    user = "moara";
-      #  };
-      # };
+      services.greetd = {
+        enable = true;
+        settings.default_session = {
+          command = "niri-session";
+          user = "moara";
+        };
+      };
 
       # ── Home User Settings ────────────────────────────────────────────────
 
@@ -94,8 +94,8 @@
 
           qt = {
             enable = true;
-            platformTheme.name = "kvantum";
-            style.name = "kvantum";
+            # platformTheme.name = "kvantum";
+            # style.name = "kvantum";
           };
 
           services.gnome-keyring = {
@@ -161,14 +161,13 @@
         sushi
         file-roller
         loupe
+        gnome-calculator
         gnome-text-editor
-        kdePackages.qt6ct
+        qt6Packages.qt6ct
         kdePackages.dolphin
         ffmpegthumbnailer
         #gnome-system-monitor
         resources
-        gruvbox-kvantum
-        kvmarwaita
         libnotify # notify-send (used by Mod+Alt+W wallpaper bind)
         playerctl # media key binds
       ];

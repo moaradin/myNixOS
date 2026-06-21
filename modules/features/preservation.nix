@@ -51,6 +51,11 @@
             # data. Without this, all Flatpak apps disappear on reboot.
             "/var/lib/flatpak"
 
+            # ── Noctalia Greeter ──────────────────────────────────────
+            # Synced color scheme when sync data is present.
+            # Session and color scheme are remembered here.
+            "/var/lib/noctalia-greeter"
+
             # ── System logs ─────────────────────────────────────────────
             # Persists journald and other logs across reboots. Useful for
             # diagnosing issues that happened before the last reboot.
