@@ -164,6 +164,7 @@
         gnome-calculator
         gnome-text-editor
         kdePackages.qt6ct
+        kdePackages.breeze
         kdePackages.dolphin
         ffmpegthumbnailer
         #gnome-system-monitor
