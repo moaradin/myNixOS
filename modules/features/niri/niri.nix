@@ -163,7 +163,7 @@
         loupe
         gnome-calculator
         gnome-text-editor
-        qt6Packages.qt6ct
+        kdePackages.qt6ct
         kdePackages.dolphin
         ffmpegthumbnailer
         #gnome-system-monitor

@@ -17,6 +17,7 @@
         self.nixosModules.zram
         self.nixosModules.niri
         self.nixosModules.noctalia
+        self.nixosModules.qt6ct-kde
         #self.nixosModules.noctalia-greeter
         self.nixosModules.nvidia
         self.nixosModules.gaming
