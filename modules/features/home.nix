@@ -18,6 +18,7 @@
 
           home.packages = with pkgs; [
             tree
+            discord
             equibop
             helix
             thunderbird
@@ -36,6 +37,7 @@
             gearlever
             krita
             pinta
+            losange
             inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
             #(callPackage ../../scripts/ab-download-manager.nix { })
           ];
