@@ -18,8 +18,8 @@
 
           home.packages = with pkgs; [
             tree
-            discord
-            equibop
+            # discord
+            # equibop
             helix
             thunderbird
             qbittorrent
