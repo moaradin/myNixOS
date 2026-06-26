@@ -161,7 +161,7 @@
         mesa-demos # glxinfo, glxgears
 
         # Other
-        fflogs
+        # fflogs
         sgdboop
 
       ];
