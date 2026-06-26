@@ -18,7 +18,7 @@
 
           home.packages = with pkgs; [
             tree
-            # discord
+            discord
             # equibop
             helix
             thunderbird
