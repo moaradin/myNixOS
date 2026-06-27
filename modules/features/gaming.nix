@@ -69,10 +69,11 @@
       #   enable = true;
       # };
 
-      # programs.gamescope = {
-      #  enable = true;
-      #  capSysNice = true;
-      #};
+      programs.gamescope = {
+        enable = true;
+        enableWsi = true;
+        capSysNice = false;
+      };
 
       # ── Steam ─────────────────────────────────────────────────────────────
 
