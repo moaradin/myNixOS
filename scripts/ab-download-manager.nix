@@ -38,16 +38,16 @@ let
     }:
 
     let
-      version = "1.8.8";
+      version = "1.9.2";
 
       sources = {
         "x86_64-linux" = {
           url = "https://github.com/amir1376/ab-download-manager/releases/download/v${version}/ABDownloadManager_${version}_linux_x64.tar.gz";
-          sha256 = "efd436cdea53424c98613b3013f620a9807d944ad230541b6c0566fbaae8aeee";
+          sha256 = "";
         };
         "aarch64-linux" = {
           url = "https://github.com/amir1376/ab-download-manager/releases/download/v${version}/ABDownloadManager_${version}_linux_arm64.tar.gz";
-          sha256 = "a335e86c7bff57614a5bf4b916acdf32fd25098f18fe3874ee8f620b6c1796fe";
+          sha256 = "";
         };
       };
 
