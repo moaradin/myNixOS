@@ -43,7 +43,7 @@ let
       sources = {
         "x86_64-linux" = {
           url = "https://github.com/amir1376/ab-download-manager/releases/download/v${version}/ABDownloadManager_${version}_linux_x64.tar.gz";
-          sha256 = "";
+          sha256 = "sha256-+Au7DbLjRkm7zLIP0fl2fDld6OynDLEfMPFoNQV36Ig=";
         };
         "aarch64-linux" = {
           url = "https://github.com/amir1376/ab-download-manager/releases/download/v${version}/ABDownloadManager_${version}_linux_arm64.tar.gz";
