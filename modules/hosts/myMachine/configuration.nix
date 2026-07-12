@@ -170,6 +170,7 @@
         copycat
         tealdeer
         evtest
+        directx-shader-compiler
 
         # Gstreamer
         gst_all_1.gstreamer
@@ -178,7 +179,7 @@
         gst_all_1.gst-plugins-bad
         gst_all_1.gst-plugins-ugly
         gst_all_1.gst-libav
-        gst_all_1.gst-vaapi
+        # gst_all_1.gst-vaapi # removed in GStreamer 1.28
       ];
 
       environment.variables = {
