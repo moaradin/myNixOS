@@ -12,6 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    jay.url = "github:mahkoh/jay";
+
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     disko.url = "github:nix-community/disko/latest";
