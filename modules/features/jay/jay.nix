@@ -2,11 +2,20 @@
 {
   flake.nixosModules.jay =
     { pkgs, lib, ... }:
+    let
+      # Grab the default package from the Jay flake and apply your local patch
+      patchedJay = inputs.jay.packages.${pkgs.system}.default.overrideAttrs (oldAttrs: {
+        patches = (oldAttrs.patches or [ ]) ++ [
+          ./jay-anchor.patch
+        ];
+      });
+    in
     {
       # Bring in the native module options from the Jay flake
       imports = [ inputs.jay.nixosModules.default ];
 
       programs.jay.enable = true;
+      programs.jay.package = patchedJay; # Enforce using your newly patched package
 
       # ── Session ───────────────────────────────────────────────────────────
       # Disable when using Noctalia Greeter
