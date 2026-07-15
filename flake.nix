@@ -7,8 +7,6 @@
 
     noctalia.url = "github:noctalia-dev/noctalia";
 
-    jay.url = "github:mahkoh/jay";
-
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
