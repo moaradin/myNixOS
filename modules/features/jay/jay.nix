@@ -3,11 +3,18 @@
   flake.nixosModules.jay =
     { pkgs, lib, ... }:
     let
-      # Grab the default package from the Jay flake and apply your local patch
+      # Option A: Perform direct source substitution during the build phase.
+      # This approach is fully self-contained and immune to copy-paste whitespace corruption.
       patchedJay = inputs.jay.packages.${pkgs.system}.default.overrideAttrs (oldAttrs: {
-        patches = (oldAttrs.patches or [ ]) ++ [
-          ./jay-anchor.patch
-        ];
+        postPatch = (oldAttrs.postPatch or "") + ''
+          substituteInPlace src/ifs/wl_surface/zwlr_layer_surface_v1.rs \
+            --replace-fail '        if anchor == 0 {
+                      anchor = LEFT | RIGHT | TOP | BOTTOM;' '        if anchor & (LEFT | RIGHT) == 0 {
+                      anchor |= LEFT | RIGHT;
+                  }
+                  if anchor & (TOP | BOTTOM) == 0 {
+                      anchor |= TOP | BOTTOM;'
+        '';
       });
     in
     {
@@ -15,7 +22,7 @@
       imports = [ inputs.jay.nixosModules.default ];
 
       programs.jay.enable = true;
-      programs.jay.package = patchedJay; # Enforce using your newly patched package
+      programs.jay.package = patchedJay; # Enforce the use of our modified package
 
       # ── Session ───────────────────────────────────────────────────────────
       # Disable when using Noctalia Greeter
