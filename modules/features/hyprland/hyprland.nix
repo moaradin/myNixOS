@@ -5,14 +5,18 @@
     {
 
       # Enables critical components needed to run Hyprland properly
-      programs.hyprland.enable = true;
+      programs.hyprland = {
+        enable = true;
+        withUWSM = true;
+        xwayland.enable = true;
+      };
 
       # ── Session ───────────────────────────────────────────────────────────
 
       services.greetd = {
         enable = true;
         settings.default_session = {
-          command = "Hyprland";
+          command = "uwsm start hyprland-uwsm.desktop";
           user = "moara";
         };
       };
