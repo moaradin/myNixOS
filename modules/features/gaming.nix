@@ -164,6 +164,7 @@
         # Other
         # fflogs
         sgdboop
+        ludusavi
 
       ];
     };

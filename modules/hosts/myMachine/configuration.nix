@@ -35,6 +35,9 @@
       #Regular Kernel. Disable when using CachyOS
       #boot.kernelPackages = pkgs.linuxPackages_latest;
 
+      # For certain games
+      boot.kernelParams = [ "clearcpuid=umip" ];
+
       boot.tmp.cleanOnBoot = true;
 
       systemd.services.systemd-machine-id-commit.enable = false;
