@@ -37,7 +37,7 @@
       #boot.kernelPackages = pkgs.linuxPackages_latest;
 
       # For certain games
-      # boot.kernelParams = [ "clearcpuid=umip" ];
+      boot.kernelParams = [ "clearcpuid=umip" ];
 
       boot.tmp.cleanOnBoot = true;
 
