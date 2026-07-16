@@ -15,8 +15,9 @@
         self.nixosModules.myMachineDisko # disk layout (tmpfs root + subvolumes)
         self.nixosModules.preservation # impermanence — bind-mounts /persistent paths
         self.nixosModules.zram
-        self.nixosModules.niri
+        #self.nixosModules.niri
         #self.nixosModules.jay
+        self.nixosModules.hyprland
         self.nixosModules.noctalia
         self.nixosModules.qt6ct-kde
         #self.nixosModules.noctalia-greeter
